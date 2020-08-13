@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Role;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -49,11 +50,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $messages = [
+            'email.unique' => 'El correo electrónico ya existe',
+            'username.unique' => 'El nombre de usuario ya existe',
+            'password.required' => 'La contraseña no puede estar vacía',
+            'password.confirmed' => 'La contraseña no coincide con el campo de confirmación',
+            'password.min' => 'La contraseña debe contener al menos :min caracteres',
+        ];
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ], $messages);
     }
 
     /**
@@ -64,10 +73,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user = User::create([
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $roleName = $data['type'] ?? 'aspirante';
+
+        $role =  Role::where('name', $roleName)->first();
+
+        $user->attachRole($role);
+
+        return $user;
     }
 }
