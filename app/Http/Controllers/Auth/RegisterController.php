@@ -52,14 +52,17 @@ class RegisterController extends Controller
     {
         $messages = [
             'email.unique' => 'El correo electrónico ya existe',
-            'username.unique' => 'El nombre de usuario ya existe',
+            'email.required' => 'El correo electrónico es un campo necesario',
+            'first_name.required' => 'Los nombres son un campo necesario',
+            'last_name.required' => 'Los apellidos son un campo necesario',
             'password.required' => 'La contraseña no puede estar vacía',
             'password.confirmed' => 'La contraseña no coincide con el campo de confirmación',
             'password.min' => 'La contraseña debe contener al menos :min caracteres',
         ];
 
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ], $messages);
@@ -74,7 +77,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'username' => $data['username'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

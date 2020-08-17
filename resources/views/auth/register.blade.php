@@ -28,6 +28,22 @@
                 </label>
               </div>
               <div class="form-group">
+                <input id="first_name" type="text" size="40" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="email" placeholder="Nombres * ">
+                @error('first_name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <input id="last_name" type="text" size="40" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="email" placeholder="Apellidos * ">
+                @error('last_name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="form-group">
                 <input id="email" type="email" size="40" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Correo electrónico * ">
                 @error('email')
                     <span class="invalid-feedback" role="alert">
@@ -35,14 +51,14 @@
                     </span>
                 @enderror
               </div>
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <input id="username" type="text" size="40" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" placeholder="Nombre de usuario * ">
                 @error('username')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
-              </div>
+              </div> --}}
               <div class="form-group">
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder=" Contraseña * ">
                 @error('password')

@@ -9,6 +9,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" href="assets/images/fav.png" type="image/gif" sizes="64x64">
 
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
+
+<!-- Fonts -->
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+<!-- Styles -->
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 <!-- CSS
 ================================================== -->
 <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700&display=swap&subset=latin-ext" rel="stylesheet">
@@ -243,7 +252,7 @@
 
 <!-- Main
 ================================================== -->
-<main>
+<main id="app">
     @yield('content')
 </main>
 
@@ -368,6 +377,7 @@
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/aos.js"></script>
 <script src="assets/js/custom.js"></script>
+@yield('js')
 </body>
 </html>
 
