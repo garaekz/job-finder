@@ -4,6 +4,12 @@ const mix = require('laravel-mix')
 require('laravel-mix-versionhash')
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
+mix.combine([
+  'resources/js/plugins/aos.js',
+  'resources/js/plugins/select2.min.js',
+  'resources/js/plugins/owl.carousel.min.js'
+], 'public/dist/js/custom.js')
+
 mix
   .js('resources/js/app.js', 'public/dist/js')
   .sass('resources/sass/app.scss', 'public/dist/css')

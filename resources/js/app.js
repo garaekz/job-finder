@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import AOS from 'aos'
 import store from '~/store'
 import router from '~/router'
 import i18n from '~/plugins/i18n'
@@ -15,4 +16,9 @@ new Vue({
   store,
   router,
   ...App
+})
+
+AOS.init({
+  delay: 100,
+  duration: 1000
 })

@@ -1,39 +1,640 @@
 <template>
-  <div>
-    <div class="top-right links">
-      <template v-if="authenticated">
-        <router-link :to="{ name: 'home' }">
-          {{ $t('home') }}
-        </router-link>
-      </template>
-      <template v-else>
-        <router-link :to="{ name: 'login' }">
-          {{ $t('login') }}
-        </router-link>
-        <router-link :to="{ name: 'register' }">
-          {{ $t('register') }}
-        </router-link>
-      </template>
+  <main>
+    <div class="section category-section ">
+      <div class="bg-v">
+        <div class="bg-v-1 bg-t-l" data-aos="zoom-in" />
+        <div class="bg-v-2 bg-b-r" data-aos="zoom-in" />
+        <!-- <div class="bg-v-4">
+            </div>
+            <div class="bg-v-5">
+            </div>
+            <div class="bg-v-6">
+            </div>
+            <div class="bg-v-7">
+            </div>
+            <div class="bg-v-8">
+            </div>
+            <div class="bg-v-9">
+            </div>
+            <div class="bg-v-10">
+            </div>
+            <div class="bg-v-11">
+            </div> -->
+      </div>
+      <div class="container">
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
+          Popular Job Categories
+        </h2>
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
+              <div class="cb_header">
+                <img alt="" src="/images/i-code.png">
+                <span class="job_count">363</span>
+              </div>
+              <div class="cb_bottom">
+                <h3>Web & Software Dev</h3>
+                <p>Software Engineer, Web / Mobile Developer &amp; More</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
+              <div class="cb_header">
+                <img alt="" src="/images/i-server.png">
+                <span class="job_count">572</span>
+              </div>
+              <div class="cb_bottom">
+                <h3>Data Science & Analitycs</h3>
+                <p>Data Specialist / Scientist, Data Analyst & More</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
+              <div class="cb_header">
+                <img alt="" src="/images/i-calculator.png">
+                <span class="job_count">252</span>
+              </div>
+              <div class="cb_bottom">
+                <h3>Accounting & Consulting</h3>
+                <p>Auditor, Accountant, Fnancial Analyst & More</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
+              <div class="cb_header">
+                <img alt="" src="/images/i-pan.png">
+                <span class="job_count">523</span>
+              </div>
+              <div class="cb_bottom">
+                <h3>Writing & Translations</h3>
+                <p>Copywriter, Creative Writer, Translator & More</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
+              <div class="cb_header">
+                <img alt="" src="/images/i-chart.png">
+                <span class="job_count">98</span>
+              </div>
+              <div class="cb_bottom">
+                <h3>Sales & Marketing</h3>
+                <p>Brand Manager, Marketing Coordinator & More</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
+              <div class="cb_header">
+                <img alt="" src="/images/i-graphic.png">
+                <span class="job_count">53</span>
+              </div>
+              <div class="cb_bottom">
+                <h3>Graphics & Design</h3>
+                <p>Creative Director, Web Designer & More</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
+              <div class="cb_header">
+                <img alt="" src="/images/i-digital.png">
+                <span class="job_count">75</span>
+              </div>
+              <div class="cb_bottom">
+                <h3>Digital Marketing</h3>
+                <p>Darketing Analyst, Social Profile Admin & More</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
+              <div class="cb_header">
+                <img alt="" src="/images/i-education.png">
+                <span class="job_count">366</span>
+              </div>
+              <div class="cb_bottom">
+                <h3>Education & Training</h3>
+                <p>Advisor, Coach, Education Coordinator & More</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="text-center">
-      <div class="title mb-4">
-        {{ title }}
+    <div class="section dark-section featured_section">
+      <div class="bg-v">
+        <div class="bg-v-3 bg-t-r" />
+        <div class="bg-v-3 bg-b-l" />
       </div>
-
-      <div class="links">
-        <a href="https://github.com/cretueusebiu/laravel-vue-spa">github.com/cretueusebiu/laravel-vue-spa</a>
+      <div class="container">
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
+          Featured Jobs
+        </h2>
+        <div class="row two_col featured_box_outer">
+          <div class="col-sm-6">
+            <div class="featured_box ">
+              <div class="fb_image">
+                <a href="compnay-profile-single.html">
+                  <img alt="brand logo" src="/images/c-logo-01.webp">
+                </a>
+              </div>
+              <div class="fb_content">
+                <h4>
+                  <a href="job-single.html">2000 Words English to German</a>
+                </h4>
+                <ul>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-landmark" />
+                      Magna Aliqua
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-map-marker-alt" />
+                      New York
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="far fa-clock" />
+                      2 days ago
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="fb_action">
+                <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a>
+                <a class="btn btn-third" href="job-single.html">Apply Now</a>
+                <ul class="tags">
+                  <li>copywriting</li>
+                  <li>translating</li>
+                  <li>editing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="featured_box ">
+              <div class="fb_image">
+                <a href="compnay-profile-single.html">
+                  <img alt="brand logo" src="/images/c-logo-02.webp">
+                </a>
+              </div>
+              <div class="fb_content">
+                <h4>
+                  <a href="job-single.html">Fix Python Selenium Code</a>
+                </h4>
+                <ul>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-landmark" />
+                      Magna Aliqua
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-map-marker-alt" />
+                      New York
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="far fa-clock" />
+                      3 days ago
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="fb_action">
+                <a title="add to favourite" href="index.html#"><i class="fas fa-heart" /></a>
+                <a class="btn btn-third" href="job-single.html">Apply Now</a>
+                <ul class="tags">
+                  <li>Python</li>
+                  <li>Flask</li>
+                  <li>API Development</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="featured_box ">
+              <div class="fb_image">
+                <a href="compnay-profile-single.html">
+                  <img alt="brand logo" src="/images/c-logo-03.webp">
+                </a>
+              </div>
+              <div class="fb_content">
+                <h4>
+                  <a href="job-single.html">Restaurant General Manager</a>
+                </h4>
+                <ul>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-landmark" />
+                      Magna Aliqua
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-map-marker-alt" />
+                      New York
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="far fa-clock" />
+                      5 days ago
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="fb_action">
+                <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a>
+                <a class="btn btn-third disabled" href="job-single.html">Applied</a>
+                <ul class="tags">
+                  <li>Python</li>
+                  <li>Flask</li>
+                  <li>API Development</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="featured_box ">
+              <div class="fb_image">
+                <a href="compnay-profile-single.html">
+                  <img alt="brand logo" src="/images/c-logo-05.webp">
+                </a>
+              </div>
+              <div class="fb_content">
+                <h4>
+                  <a href="job-single.html">PHP Core Website Fixes</a>
+                </h4>
+                <ul>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-landmark" />
+                      Magna Aliqua
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-map-marker-alt" />
+                      New York
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="far fa-clock" />
+                      5 days ago
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="fb_action">
+                <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a>
+                <a class="btn btn-third" href="job-single.html">Apply Now</a>
+                <ul class="tags">
+                  <li>PHP</li>
+                  <li>MySQL </li>
+                  <li>API Development</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="featured_box ">
+              <div class="fb_image">
+                <a href="compnay-profile-single.html">
+                  <img alt="brand logo" src="/images/c-logo-05.webp">
+                </a>
+              </div>
+              <div class="fb_content">
+                <h4>
+                  <a href="job-single.html">Restaurant General Manager</a>
+                </h4>
+                <ul>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-landmark" />
+                      Magna Aliqua
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-map-marker-alt" />
+                      New York
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="far fa-clock" />
+                      7 days ago
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="fb_action">
+                <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a>
+                <a class="btn btn-third" href="job-single.html">Apply Now</a>
+                <ul class="tags">
+                  <li>PHP</li>
+                  <li>MySQL </li>
+                  <li>API Development</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="featured_box ">
+              <div class="fb_image">
+                <a href="compnay-profile-single.html">
+                  <img alt="brand logo" src="/images/c-logo-05.webp">
+                </a>
+              </div>
+              <div class="fb_content">
+                <h4>
+                  <a href="job-single.html">Food Delviery Mobile App</a>
+                </h4>
+                <ul>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-landmark" />
+                      Magna Aliqua
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="fas fa-map-marker-alt" />
+                      New York
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index.html#">
+                      <i class="far fa-clock" />
+                      9 days ago
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="fb_action">
+                <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a>
+                <a class="btn btn-third" href="job-single.html">Apply Now</a>
+                <ul class="tags">
+                  <li>IOS</li>
+                  <li>Android</li>
+                  <li>mobile apps</li>
+                  <li>design</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 text-right">
+            <a data-aos="fade-down" data-aos-delay="400" class="btn btn-primary" href="browse-jobs.html">Browse All Jobs <i class="fas fa-long-arrow-alt-right" /></a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+
+    <div class="section  paln_section">
+      <div class="bg-v">
+        <div class="bg-v-1 bg-t-l" />
+        <div class="bg-v-2 bg-b-l" />
+      </div>
+      <div class="container">
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
+          Membership Plans
+        </h2>
+        <div class="planduration" data-aos="fade-in" data-aos-delay="400">
+          <div class="custom-control custom-switch text-center">
+            <label class="before-custom-control-label" for="customSwitch1"> <span>Billed Monthly</span></label>
+            <input id="customSwitch1" type="checkbox" class="custom-control-input">
+            <label class="custom-control-label" for="customSwitch1"> <span>Billed Yearly</span> </label>
+            <div class="small-alert alert-success">
+              Save 21%
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4" data-aos="fade-left" data-aos-delay="600">
+            <div class="plan_box">
+              <h3>Basic Plan</h3>
+              <p>One time fee for one listing or task highlighted in search results.</p>
+              <div class="plan_price pl-monthly">
+                <h4><strong>$19</strong>/ monthly</h4>
+              </div>
+              <div class="plan_price pl-yearly hide">
+                <h4><strong>$200</strong>/ yearly</h4>
+              </div>
+              <h5>Features of Basic Plan</h5>
+              <ul>
+                <li><i class="fas fa-check" /> 1 Listing</li>
+                <li><i class="fas fa-check" /> 30 Days Visibility</li>
+                <li><i class="fas fa-check" /> Highlighted in Search Results</li>
+                <li><i class="fas fa-check" />Fraud protection</li>
+                <li><i class="fas fa-check" />Featured Listing</li>
+              </ul>
+              <a class="btn btn-third" href="index.html#">Buy Now</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="plan_box plan_box_hoverd">
+              <div class="populer_plan">
+                Most Populer
+              </div>
+              <h3>Standard Plan</h3>
+              <p>One time fee for one listing or task highlighted in search results.</p>
+              <div class="plan_price">
+                <h4><strong>$36</strong>/ monthly</h4>
+              </div>
+              <div class="plan_price pl-yearly hide">
+                <h4><strong>$396</strong>/ yearly</h4>
+              </div>
+              <h5>Features of Standard Plan</h5>
+              <ul>
+                <li><i class="fas fa-check" /> 6 Listing</li>
+                <li><i class="fas fa-check" /> 65 Days Visibility</li>
+                <li><i class="fas fa-check" /> Highlighted in Search Results</li>
+                <li><i class="fas fa-check" />Fraud protection</li>
+                <li><i class="fas fa-check" />Featured Listing</li>
+              </ul>
+              <a class="btn btn-third" href="index.html#">Buy Now</a>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-right" data-aos-delay="600">
+            <div class="plan_box">
+              <h3>Extended Plan</h3>
+              <p>One time fee for one listing or task highlighted in search results.</p>
+              <div class="plan_price">
+                <h4><strong>$79</strong>/ monthly</h4>
+              </div>
+              <div class="plan_price pl-yearly hide">
+                <h4><strong>$850</strong>/ yearly</h4>
+              </div>
+              <h5>Features of Extended Plan</h5>
+              <ul>
+                <li><i class="fas fa-check" /> Unlimited Listings Listing</li>
+                <li><i class="fas fa-check" /> 100 Days Visibility</li>
+                <li><i class="fas fa-check" /> Highlighted in Search Results</li>
+                <li><i class="fas fa-check" />Fraud protection</li>
+                <li><i class="fas fa-check" />Featured Listing</li>
+              </ul>
+              <a class="btn btn-third" href="index.html#">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section post_section">
+      <div class="bg-v">
+        <div class="bg-v-2 bg-t-l" />
+        <div class="bg-v-2 bg-b-r" />
+      </div>
+      <div class="container">
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
+          Featured Posts
+        </h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="post_box">
+              <img alt="" src="/images/blog1.jpg" class="img-responsive">
+              <div class="post_content">
+                <h6>
+                  <a href="blog-single.html">4 Secrets To Be Strategic About Your Job Search</a>
+                </h6>
+                <p>Queequeg removed himself to just beyond the head of the … </p>
+                <a class="btn btn-secondary btn-rounded" href="blog-single.html">Continue reading</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="post_box">
+              <img alt="" src="/images/blog2.jpg" class="img-responsive">
+              <div class="post_content">
+                <h6>
+                  <a href="blog-single.html">Why Long-Term Unemployment Isn’t As Bad As You Think</a>
+                </h6>
+                <p>Queequeg removed himself to just beyond the head of the … </p>
+                <a class="btn btn-secondary btn-rounded" href="blog-single.html">Continue reading</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="post_box">
+              <img alt="" src="/images/blog3.jpg" class="img-responsive">
+              <div class="post_content">
+                <h6>
+                  <a href="blog-single.html">6 Ways Your Job is Losing You Future Earnings</a>
+                </h6>
+                <p>Queequeg removed himself to just beyond the head of the … </p>
+                <a class="btn btn-secondary btn-rounded" href="blog-single.html">Continue reading</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section status_section">
+      <div class="bg-v">
+        <div class="bg-v-1 bg-t-r" />
+        <div class="bg-v-2 bg-b-l" />
+      </div>
+      <div class="container">
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
+          JoDice Status
+        </h2>
+
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <div class="status_box" data-aos="fade-in" data-aos-delay="600">
+              <img alt="" data-aos="fade-up" data-aos-delay="1000" src="/images/i-paper-plane.png">
+
+              <h3>83</h3>
+              <p>Job Posted.</p>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="status_box" data-aos="fade-in" data-aos-delay="800">
+              <img alt="" data-aos="fade-up" data-aos-delay="1200" src="/images/i-doctor.png">
+
+              <h3>16</h3>
+              <p>Job Filled.</p>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="status_box" data-aos="fade-in" data-aos-delay="1000">
+              <img alt="" data-aos="fade-up" data-aos-delay="1400" src="/images/i-company.png">
+              <h3>36</h3>
+              <p>Companies</p>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="status_box" data-aos="fade-in" data-aos-delay="1200">
+              <img alt="" data-aos="fade-up" data-aos-delay="1600" src="/images/i-mamber.png">
+              <h3>175</h3>
+              <p>Members</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section gray  partner_section">
+      <div class="bg-v">
+        <div class="bg-v-1 bg-t-l" />
+        <div class="bg-v-3 bg-b-r" />
+      </div>
+      <div class="container">
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
+          Our Partners
+        </h2>
+        <ul class="partner_carousel owl-carousel owl-theme">
+          <li>
+            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-1.svg"></a>
+          </li>
+          <li>
+            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-2.svg"></a>
+          </li>
+          <li>
+            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-3.svg"></a>
+          </li>
+          <li>
+            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-4.png"></a>
+          </li>
+          <li>
+            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-5.png"></a>
+          </li>
+          <li>
+            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-1.svg"></a>
+          </li>
+          <li>
+            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-2.svg"></a>
+          </li>
+          <li>
+            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-3.svg"></a>
+          </li>
+          <li>
+            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-4.png"></a>
+          </li>
+          <li>
+            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-5.png"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 
 export default {
-  layout: 'basic',
-
   metaInfo () {
     return { title: this.$t('home') }
   },
