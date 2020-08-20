@@ -9,9 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" href="assets/images/fav.png" type="image/gif" sizes="64x64">
 
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
-
 <!-- Fonts -->
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
@@ -371,12 +368,16 @@
 
 <!-- Scripts
 ================================================== -->
-<script src="assets/js/jquery-3.4.1.min.js"></script>
+{{-- <script src="assets/js/jquery-3.4.1.min.js"></script>
 <script src="assets/js/select2.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/aos.js"></script>
-<script src="assets/js/custom.js"></script>
+<script src="assets/js/custom.js"></script> --}}
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/custom.js') }}" defer></script>
+
 @yield('js')
 </body>
 </html>

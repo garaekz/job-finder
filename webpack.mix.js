@@ -10,6 +10,11 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+mix.combine([
+  'resources/js/select2.min.js',
+  'resources/js/owl.carousel.min.js',
+  'resources/js/custom.js'
+], 'public/js/custom.js');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');

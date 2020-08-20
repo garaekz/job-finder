@@ -7,28 +7,12 @@
           <img alt="brand logo" src="assets/images/avatar-placeholder.png">
         </div>
         <div class="profile_details" v-if="profile">
-          <h2>{{ profile.first_name }} {{ profile.last_name }} <span class="varified"><i class="fas fa-check"></i>Verified</span></h2>
+          <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
           <h5>{{ profile.email }}</h5>
-          <div class="staff_rating">
-            <span>4.5</span>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
         </div>
         <div class="profile_details" v-else>
-          <h2> <span class="varified"><i class="fas fa-check"></i>Verified</span></h2>
+          <h2></h2>
           <h5></h5>
-          <div class="staff_rating">
-            <span>4.5</span>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
         </div>
       </div>
     </div>
