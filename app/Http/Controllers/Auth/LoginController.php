@@ -2,32 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Exceptions\VerifyEmailException;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -40,42 +24,77 @@ class LoginController extends Controller
     }
 
     /**
-     * Get the login username to be used by the controller.
+     * Attempt to log the user into the application.
      *
-     * @return string
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
      */
-    public function username()
+    protected function attemptLogin(Request $request)
     {
-        $login = request()->input('identity');
+        $token = $this->guard()->attempt($this->credentials($request));
 
-        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        request()->merge([$field => $login]);
+        if (! $token) {
+            return false;
+        }
 
-        return $field;
+        $user = $this->guard()->user();
+        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
+            return false;
+        }
+
+        $this->guard()->setToken($token);
+
+        return true;
     }
 
     /**
-     * Validate the user login request.
+     * Send the response after the user was authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return void
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function sendLoginResponse(Request $request)
+    {
+        $this->clearLoginAttempts($request);
+
+        $token = (string) $this->guard()->getToken();
+        $expiration = $this->guard()->getPayload()->get('exp');
+
+        return response()->json([
+            'token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => $expiration - time(),
+        ]);
+    }
+
+    /**
+     * Get the failed login response instance.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected function validateLogin(Request $request)
+    protected function sendFailedLoginResponse(Request $request)
     {
-        $messages = [
-            'identity.required' => 'El nombre de usuario o correo electrónico no pueden estar vacíos',
-            'email.exists' => 'El correo electrónico ya existe',
-            'username.exists' => 'El nombre de usuario ya existe',
-            'password.required' => 'La contraseña no puede estar vacía',
-        ];
+        $user = $this->guard()->user();
+        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
+            throw VerifyEmailException::forUser($user);
+        }
 
-        $request->validate([
-            'identity' => 'required|string',
-            'password' => 'required|string',
-            'email' => 'string|exists:users',
-            'username' => 'string|exists:users',
-        ], $messages);
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+        ]);
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
     }
 }
