@@ -1,66 +1,49 @@
 <template>
-  <div class="row">
-    <div class="col-lg-8 m-auto">
-      <card :title="$t('login')">
-        <form @submit.prevent="login" @keydown="form.onKeydown($event)">
-          <!-- Email -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
-            <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
-              <has-error :form="form" field="email" />
-            </div>
+  <div class="only-form-pages">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="only-form-box">
+            <form @submit.prevent="login" @keydown="form.onKeydown($event)">
+              <div class="com_class_form">
+                <div class="form-group">
+                  <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" autocomplete="email" autofocus size="40" class="form-control" type="email" name="email">
+                  <has-error :form="form" field="email" placeholder=" Correo electrónico o nombre de usuario * " />
+                </div>
+                <div class="form-group">
+                  <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password">
+                  <has-error :form="form" field="password" placeholder=" Contraseña * " />
+                </div>
+                <div class="form-group">
+                  <input class="btn btn-primary" type="submit" value="Ingresar">
+                </div>
+                <div class="form-group form-check">
+                  <checkbox v-model="remember" name="remember">
+                    {{ $t('remember_me') }}
+                  </checkbox>
+                </div>
+                <div>
+                  <router-link :to="{ name: 'password.request' }" class="small ml-auto my-auto">
+                    {{ $t('forgot_password') }}
+                  </router-link>
+                </div>
+              </div>
+            </form>
           </div>
-
-          <!-- Password -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
-            <div class="col-md-7">
-              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password">
-              <has-error :form="form" field="password" />
-            </div>
-          </div>
-
-          <!-- Remember Me -->
-          <div class="form-group row">
-            <div class="col-md-3" />
-            <div class="col-md-7 d-flex">
-              <checkbox v-model="remember" name="remember">
-                {{ $t('remember_me') }}
-              </checkbox>
-
-              <router-link :to="{ name: 'password.request' }" class="small ml-auto my-auto">
-                {{ $t('forgot_password') }}
-              </router-link>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="col-md-7 offset-md-3 d-flex">
-              <!-- Submit Button -->
-              <v-button :loading="form.busy">
-                {{ $t('login') }}
-              </v-button>
-
-              <!-- GitHub Login Button -->
-              <login-with-github />
-            </div>
-          </div>
-        </form>
-      </card>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Form from 'vform'
-import LoginWithGithub from '~/components/LoginWithGithub'
+import { mapActions } from 'vuex'
 
 export default {
   middleware: 'guest',
 
   components: {
-    LoginWithGithub
   },
 
   metaInfo () {
@@ -74,8 +57,13 @@ export default {
     }),
     remember: false
   }),
-
+  mounted () {
+    this.setTitle('Ingresar')
+  },
   methods: {
+    ...mapActions({
+      setTitle: 'page/setTitle'
+    }),
     async login () {
       // Submit the form.
       const { data } = await this.form.post('/api/login')

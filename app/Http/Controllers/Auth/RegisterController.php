@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\PerfilAspirante;
+use App\PerfilEmpresa;
+use App\Role;
 use App\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -47,11 +50,25 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
+        if ($data['userType'] == 'empresa') {
+          return Validator::make($data, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'telefono' => 'required|max:255',
+            'nombre_comercial' => 'required|max:255',
+            'rfc' => 'required|max:255',
+            'razon_social' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
+        } else {
+          return Validator::make($data, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+          ]);
+        }
     }
 
     /**
@@ -62,10 +79,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+      $user = User::create([
+        'first_name' => $data['first_name'],
+        'last_name' => $data['last_name'],
+        'email' => $data['email'],
+        'password' => bcrypt($data['password']),
+      ]);
+
+      if ($data['userType'] == 'empresa') {
+        $empresa = Role::where('name', 'empresa')->first();
+        $user->attachRole($empresa);
+        $perfil = new PerfilEmpresa($data);
+        $user->perfil_empresa()->save($perfil);
+      } else {
+        $aspirante = Role::where('name', 'aspirante')->first();
+        $user->attachRole($aspirante);
+        $perfil = new PerfilAspirante($data);
+        $user->perfil_aspirante()->save($perfil);
+      }
+
+      return $user;
     }
 }

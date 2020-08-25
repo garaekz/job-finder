@@ -13,18 +13,13 @@ class CivilStatusTableSeeder extends Seeder
     public function run()
     {
         $statuses = [
-          'soltero' => 'Soltero/a',
-          'casado' => 'Casado/a',
-          'divorciado' => 'Divorciado/a',
-          'viudo' => 'Viudo/a',
-          'union_libre' => 'Unión libre',
+          ['slug' => 'soltero', 'name' => 'Soltero/a'],
+          ['slug' => 'casado', 'name' => 'Casado/a'],
+          ['slug' => 'divorciado', 'name' => 'Divorciado/a'],
+          ['slug' => 'viudo', 'name' => 'Viudo/a'],
+          ['slug' => 'union_libre', 'name' => 'Unión libre'],
         ];
 
-        foreach ($statuses as $slug => $status) {
-          CivilStatus::create([
-            'name' => $status,
-            'slug' => $slug
-          ]);
-        }
+        CivilStatus::insert($statuses);
     }
 }

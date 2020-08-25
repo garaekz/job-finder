@@ -18,7 +18,4 @@ new Vue({
   ...App
 })
 
-AOS.init({
-  delay: 100,
-  duration: 1000
-})
+AOS.init()

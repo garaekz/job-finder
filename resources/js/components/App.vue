@@ -22,7 +22,7 @@ const layouts = requireContext.keys()
     components[name] = component.default || component
     return components
   }, {})
-
+console.log('layouts', layouts)
 export default {
   el: '#app',
 

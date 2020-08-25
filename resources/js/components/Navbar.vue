@@ -5,9 +5,9 @@
         <div class="container">
           <div class="header_top">
             <div class="logo">
-              <a href="index.html">
+              <router-link :to="{ name: 'welcome' }">
                 <img alt="JoDice" class="img-fluid" src="/images/dice-logo.png">
-              </a>
+              </router-link>
             </div>
             <div class="navigation">
               <nav>
@@ -132,25 +132,77 @@
                   </li>
                 </ul>
               </nav>
-              <div class="ac_nav">
+              <div v-if="user" class="ac_nav after_login_ac_nav">
+                <div class="login_pop after_login">
+                  <button class="btn btn-primary withdp">
+                    <img alt="" src="/images/profile-5.png"> Hola {{ user.first_name }} {{ user.last_name }} <i class="fas fa-caret-down" />
+                  </button>
+                  <div class="login_pop_box login_pop_box_menu">
+                    <div class="login_pop_box_head">
+                      <div class=" ">
+                        <img alt="" src="/images/profile-5.png">
+                        <span v-if="role == 'empresa'">{{ user.perfil.nombre_comercial }}</span>
+                        <h5>{{ user.first_name }} {{ user.last_name }}</h5>
+                        <h6>{{ user.nombre_comercial }}</h6>
+                      </div>
+                    </div>
+                    <ul>
+                      <li>
+                        <a href="browse-jobs.html"><i class="fas fa-search" /> Browse Jobs </a>
+                      </li>
+                      <li>
+                        <a href="my-stared-jobs.html"><i class="fas fa-star" /> View My Stared Jobs</a>
+                      </li>
+                      <li>
+                        <router-link :to="{ name: 'home' }">
+                          <i class="fas fa-user" /> Ver mi perfil
+                        </router-link>
+                      </li>
+                      <li>
+                        <a href="edit-password.html"><i class="fas fa-key" />Change Password</a>
+                      </li>
+                      <li>
+                        <a href="#" @click="logout">
+                          <i class="fas fa-power-off" /> Logout
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="login_pop after_login">
+                  <button class="btn btn-msg">
+                    <i class="fas fa-envelope" />
+                    <span class="msg-count">2</span>
+                  </button>
+                  <div class="login_pop_box job_seekernotifi ">
+                    <h6>Inbox</h6>
+                    <ul>
+                      <li><img alt="" src="assets/images/c-logo-02.webp"><a href="staff-profile-single.html#"> Thanks for applying this job, our HR team will contact you soon</a> </li>
+                      <li><img alt="" src="assets/images/profile-5.png"><a href="staff-profile-single.html#">You updated your profile picture .</a> </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div v-else class="ac_nav">
                 <!--Not logedin-->
                 <div class="login_pop">
                   <button class="btn btn-primary">Login / Sign up <i class="fas fa-caret-down" /></button>
                   <div class="login_pop_box">
                     <span class="twobtn_cont">
-                      <a class=" signjs_btn" href="registration.html">
-                        <span>Job seekers</span> Sign up
+                      <router-link :to="{ name: 'register' }" class="signjs_btn">
+                        <span>Aspirante</span> Registro
                         <i class="far fa-user" />
-                      </a>
-                      <a class=" signrs_btn" href="emp-registration.html">	<span>EMPLOYERS</span> Sign up
-                        <i class="fas fa-landmark" />
-                      </a>
+                      </router-link>
+                      <router-link :to="{ name: 'register', params: {type: 'empresa' } }" class="signjs_btn">
+                        <span>Empresa</span> Registro
+                        <i class="far fa-landmark" />
+                      </router-link>
                     </span>
                     <div>
-                      <span class="member_btn">Already a member?</span>
-                      <a class="lgin_btn btn btn-primary" href="login.html">
-                        Login
-                      </a>
+                      <span class="member_btn">¿Ya eres miembro?</span>
+                      <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
+                        {{ $t('login') }}
+                      </router-link>
                     </div>
                   </div>
                 </div>
@@ -226,8 +278,8 @@
                           <div class="user_type_inner user_type_post">
                             <a href="post-a-job.html">
                               <div class="usertype_img">
-                                <img alt=""  src="/images/usertype-1.png">
-                                <img alt=""  class="usertype-addon" src="/images/usertype-1-addon.png">
+                                <img alt="" src="/images/usertype-1.png">
+                                <img alt="" class="usertype-addon" src="/images/usertype-1-addon.png">
                               </div>
                               <div>
                                 <h3>I want to post job</h3>
@@ -246,6 +298,11 @@
           </div>
         </div>
       </div>
+      <div v-else class="header_inner">
+        <div class="header_btm">
+          <h2>{{ header }}</h2>
+        </div>
+      </div>
     </div>
   </header>
 </template>
@@ -262,7 +319,9 @@ export default {
   }),
 
   computed: mapGetters({
-    user: 'auth/user'
+    user: 'auth/user',
+    role: 'auth/role',
+    header: 'page/title'
   }),
 
   methods: {

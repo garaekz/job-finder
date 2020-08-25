@@ -21,7 +21,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password',
     ];
 
     /**
@@ -48,6 +48,8 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
      * @var array
      */
     protected $appends = [
+        'perfil',
+        'role',
         'photo_url',
     ];
 
@@ -59,6 +61,52 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     public function getPhotoUrlAttribute()
     {
         return 'https://www.gravatar.com/avatar/'.md5(strtolower($this->email)).'.jpg?s=200&d=mm';
+    }
+
+    /**
+     * Retorna el perfil segun el tipo de usuario.
+     *
+     * @return \App\PerfilAspirante|\App\PerfilEmpresa
+     */
+    public function getPerfilAttribute()
+    {
+      if ($this->hasRole('empresa')) {
+        return $this->perfil_empresa;
+      }
+      return $this->perfil_aspirante;
+    }
+
+    /**
+     * Retorna el primer rol del user.
+     *
+     * @return string
+     */
+    public function getRoleAttribute()
+    {
+      if ($this->hasRole('empresa')) {
+        return 'empresa';
+      }
+      return 'aspirante';
+    }
+
+    /**
+     * Retorna el perfil de el usuario con rol aspirante
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function perfil_aspirante()
+    {
+        return $this->hasOne(PerfilAspirante::class);
+    }
+
+    /**
+     * Retorna el perfil de el usuario con rol empresa
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function perfil_empresa()
+    {
+        return $this->hasOne(PerfilEmpresa::class);
     }
 
     /**
