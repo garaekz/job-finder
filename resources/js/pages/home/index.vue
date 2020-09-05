@@ -5,7 +5,7 @@
         <div class="sidebar">
           <ul class="user_navigation">
             <li>
-              <a href="browse-jobs.html"><i class="fas fa-search" /> Browse Jobs </a>
+              <a href="browse-jobs.html"><i class="fas fa-search" /> Buscar empleos </a>
               <a class="filter_btn" href="job-seeker-dashboard.html#sidebar_filter_option">
                 <i class="fas fa-filter" />
                 <i class="fas fa-times" />
@@ -89,20 +89,20 @@
                 </div>
               </form>
             </li>
-            <li class="is-active">
+            <!-- <li class="is-active">
               <a href="job-seeker-dashboard.html">
                 <i class="fas fa-border-all" /> Job Dashboard
               </a>
-            </li>
+            </li> -->
           </ul>
-          <h5>Organize and Manage</h5>
+          <h5>Organizar y Administrar</h5>
           <ul class="user_navigation">
             <li>
-              <a href="my-stared-jobs.html"><i class="fas fa-star" /> View My Stared Jobs</a>
+              <a href="my-stared-jobs.html"><i class="fas fa-star" /> Ver mis empleos favoritos</a>
             </li>
           </ul>
-          <h5>Account</h5>
-          <ul class="user_navigation">
+          <h5 v-if="user">Account</h5>
+          <ul v-if="user" class="user_navigation">
             <li>
               <router-link :to="{ name: 'home' }">
                 <i class="fas fa-user" /> Ver mi perfil
@@ -127,11 +127,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'HomeLayout',
 
   components: {
   },
+  computed: mapGetters({
+    user: 'auth/user'
+  }),
   methods: {
     async logout () {
       // Log out the user.

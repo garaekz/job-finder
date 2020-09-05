@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/welcome', function () {
-//     return view('welcome');
-// });
+/* Route::get('/test', function () {
+    $faker = Faker\Factory::create();
+    $test = \App\Prestacion::inRandomOrder()->limit($faker->numberBetween(1, 9))->get('id')->pluck('id')->toArray();
+    dd($test);
+});
+ */

@@ -12,6 +12,12 @@ import '~/plugins'
 import '~/components'
 
 // Vue.component('Select2', Select2)
+Vue.component('pagination', require('laravel-vue-pagination'))
+const moment = require('moment')
+require('moment/locale/es')
+
+Vue.use(require('vue-moment'), { moment })
+
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 

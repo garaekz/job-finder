@@ -728,6 +728,9 @@ background-repeat: no-repeat;
 background-size: 100%;
 background-position: center bottom;
 min-height: 80vh;
+&.header_job_single {
+  min-height: 240px;
+}
 display: -webkit-box;
 display: -ms-flexbox;
 display: flex;
