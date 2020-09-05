@@ -231,37 +231,36 @@
         </div>
       </div>
       <div v-else-if="$route.name == 'empleos.ver'" class="header_btm header_job_single">
-        <div class="header_job_single_inner container">
+        <div v-if="vacante" class="header_job_single_inner container">
           <div class="poster_company">
-            <img alt="brand logo" src="assets/images/demologo.png">
+            <img alt="brand logo" :src="vacante.user.perfil.logo">
           </div>
           <div class="poster_details">
-            <h2>PHP Core Website Fixes <span class="varified"><i class="fas fa-check" />Verified</span></h2>
-            <h5>About the Employer</h5>
+            <h2>{{ vacante.puesto }} <!-- <span class="varified"><i class="fas fa-check" />Verified</span> --></h2>
+            <h5>Sobre el empleador</h5>
             <ul>
               <li>
                 <a href="#">
                   <i class="fas fa-landmark" />
-                  Magna Aliqua
+                  {{ vacante.empresa }}
                 </a>
               </li>
               <li>
                 <a href="#">
                   <i class="fas fa-map-marker-alt" />
-                  New York
+                  {{ vacante.estado.name }}
                 </a>
               </li>
               <li>
                 <a href="#">
                   <i class="far fa-clock" />
-                  5 days ago
+                  {{ $moment(vacante.created_at).fromNow() }}
                 </a>
               </li>
             </ul>
           </div>
           <div class="poster_action">
-            <a class="addtofav" title="add to favourite" href="#"><i class="far fa-heart" /></a>
-            <a class="btn btn-third" href="#">Apply Now</a>
+            <a class="btn btn-third" href="#">Aplicar a la vacante</a>
           </div>
         </div>
       </div>
@@ -302,7 +301,7 @@ export default {
     user: 'auth/user',
     role: 'auth/role',
     header: 'page/title',
-    vacante: 'empleos/vacante'
+    vacante: 'empleo/vacante'
   }),
 
   methods: {

@@ -9,7 +9,8 @@ $factory->define(Vacante::class, function (Faker $faker) {
     return [
         'empresa' => $faker->company,
         'puesto'  => $faker->jobTitle,
-        'jornada' => $faker->paragraphs(5, true),
+        'jornada'  => $faker->randomElement(['Tiempo completo', 'Medio tiempo', 'Fin de semana', 'Tiempo completo, nocturno', 'Medio tiempo, nocturno', 'Fin de semana, nocturno']),
+        'descripcion' => $faker->randomHtml(4,10),
         'edad' => $faker->numberBetween(18, 65),
         'sexo' => $faker->numberBetween(1, 2) == 1 ? 'Hombre':'Mujer',
         'experiencia' => $faker->numberBetween(1, 5).' años',

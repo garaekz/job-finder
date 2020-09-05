@@ -21,7 +21,8 @@ class CreateVacantesTable extends Migration
             $table->id();
             $table->string('empresa');
             $table->string('puesto');
-            $table->text('jornada');
+            $table->string('jornada');
+            $table->longText('descripcion');
             $table->integer('edad');
             $table->string('sexo');
             $table->string('experiencia');

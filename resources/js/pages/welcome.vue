@@ -405,11 +405,11 @@
         <div class="bg-v-1 bg-t-l"/><div class="bg-v-2 bg-b-l"/>
       </div>
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Planes de Membresia</h2>
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Planes de Membresía</h2>
         <div class="planduration" data-aos="fade-in" data-aos-delay="400">
           <div class="custom-control custom-switch text-center">
             <label class="before-custom-control-label" for="customSwitch1"> <span>Plan Mensual</span></label>
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <input v-model="plan" type="checkbox" class="custom-control-input" id="customSwitch1">
             <label class="custom-control-label" for="customSwitch1"> <span>Plan Anual</span> </label>
             <div class="small-alert alert-success"> Ahorra hasta un 20%  </div>
           </div>
@@ -419,11 +419,11 @@
             <div class="plan_box">
               <h3>Plan Gratuito</h3>
               <p>Consigue tu talento con nuestros productos especializados de floristeria</p>
-              <div class="plan_price pl-monthly">
-                <h4><strong>$0</strong>/ al mes</h4>
-              </div>
-              <div class="plan_price pl-yearly hide">
+              <div v-if="plan" class="plan_price pl-yearly">
                 <h4><strong>$0</strong>/ al año</h4>
+              </div>
+              <div v-else class="plan_price pl-monthly">
+                <h4><strong>$0</strong>/ al mes</h4>
               </div>
               <h5>Características del Plan Básico</h5>
               <ul>
@@ -443,11 +443,11 @@
               </div>
               <h3>Plan Destacado</h3>
               <p>Consigue tu talento con nuestros productos especializados de floristeria</p>
-              <div class="plan_price">
-                <h4><strong>$240</strong>/ al mes</h4>
-              </div>
-              <div class="plan_price pl-yearly hide">
+              <div v-if="plan" class="plan_price pl-yearly">
                 <h4><strong>$2,300</strong>/ al año</h4>
+              </div>
+              <div v-else class="plan_price">
+                <h4><strong>$240</strong>/ al mes</h4>
               </div>
               <h5>Características del Plan Destacado</h5>
               <ul>
@@ -466,11 +466,11 @@
             <div class="plan_box">
               <h3>Plan Plus</h3>
               <p>Consigue tu talento con nuestros productos especializados de floristeria</p>
-              <div class="plan_price">
-                <h4><strong>$350</strong>/ al mes</h4>
-              </div>
-              <div class="plan_price pl-yearly hide">
+              <div v-if="plan" class="plan_price pl-yearly">
                 <h4><strong>$3,696</strong>/ al año</h4>
+              </div>
+              <div v-else class="plan_price">
+                <h4><strong>$350</strong>/ al mes</h4>
               </div>
               <h5>Características del Plan Plus</h5>
               <ul>
@@ -600,7 +600,8 @@ export default {
   },
 
   data: () => ({
-    title: window.config.appName
+    title: window.config.appName,
+    plan: false
   }),
   computed: mapGetters({
     authenticated: 'auth/check'

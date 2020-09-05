@@ -2,9 +2,9 @@
   <div class="main-layout">
     <navbar />
 
-    <div class="">
+    <main>
       <child />
-    </div>
+    </main>
     <Footer />
   </div>
 </template>

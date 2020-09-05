@@ -11,7 +11,7 @@ export default [
       { path: '', name: 'empleos', component: page('empleos.vue') }
     ]
   },
-  { path: '/empleos/:id', name: 'empleos.ver', component: page('vacantes/show.vue') },
+  { path: '/empleos/:id', name: 'empleos.ver', component: page('vacantes/show.vue'), props: true },
 
   { path: '/login', name: 'login', component: page('auth/login.vue') },
   { path: '/register', name: 'register', component: page('auth/register.vue'), props: true },

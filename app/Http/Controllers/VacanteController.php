@@ -36,7 +36,7 @@ class VacanteController extends Controller
      */
     public function show($id)
     {
-        //
+      return Vacante::with(['estado', 'prestaciones','user'])->where('id', $id)->first();
     }
 
     /**

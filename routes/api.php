@@ -38,4 +38,5 @@ Route::group(['middleware' => 'guest:api'], function () {
     Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
 
     Route::get('/vacantes', 'VacanteController@index');
+    Route::get('/vacantes/{id}', 'VacanteController@show');
 });

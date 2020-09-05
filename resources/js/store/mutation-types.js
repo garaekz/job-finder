@@ -13,4 +13,5 @@ export const SET_LOCALE = 'SET_LOCALE'
 export const SET_TITLE = 'SET_TITLE'
 
 // empleo.js
+export const SET_SINGLE_VACANTE = 'SET_SINGLE_VACANTE'
 export const SET_VACANTES = 'SET_VACANTES'
