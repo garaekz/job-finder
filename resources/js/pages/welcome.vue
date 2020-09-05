@@ -5,120 +5,118 @@
         <div class="bg-v-1 bg-t-l" data-aos="zoom-in" />
         <div class="bg-v-2 bg-b-r" data-aos="zoom-in" />
         <!-- <div class="bg-v-4">
-            </div>
-            <div class="bg-v-5">
-            </div>
-            <div class="bg-v-6">
-            </div>
-            <div class="bg-v-7">
-            </div>
-            <div class="bg-v-8">
-            </div>
-            <div class="bg-v-9">
-            </div>
-            <div class="bg-v-10">
-            </div>
-            <div class="bg-v-11">
-            </div> -->
+        </div>
+        <div class="bg-v-5">
+        </div>
+        <div class="bg-v-6">
+        </div>
+        <div class="bg-v-7">
+        </div>
+        <div class="bg-v-8">
+        </div>
+        <div class="bg-v-9">
+        </div>
+        <div class="bg-v-10">
+        </div>
+        <div class="bg-v-11">
+        </div> -->
       </div>
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
-          Popular Job Categories
-        </h2>
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Categorias de Trabajo Populares</h2>
         <div class="row">
-          <div class="col-lg-3 col-md-6">
-            <div class="category_box">
+          <div class="col-lg-3 col-md-6" >
+            <div class="category_box" >
               <div class="cb_header">
                 <img alt="" src="/images/i-code.png">
                 <span class="job_count">363</span>
               </div>
               <div class="cb_bottom">
-                <h3>Web & Software Dev</h3>
-                <p>Software Engineer, Web / Mobile Developer &amp; More</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="category_box">
+          <div class="col-lg-3 col-md-6" >
+            <div class="category_box" >
               <div class="cb_header">
                 <img alt="" src="/images/i-server.png">
                 <span class="job_count">572</span>
               </div>
               <div class="cb_bottom">
-                <h3>Data Science & Analitycs</h3>
-                <p>Data Specialist / Scientist, Data Analyst & More</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="category_box">
+          <div class="col-lg-3 col-md-6" >
+            <div class="category_box" >
               <div class="cb_header">
                 <img alt="" src="/images/i-calculator.png">
                 <span class="job_count">252</span>
               </div>
               <div class="cb_bottom">
-                <h3>Accounting & Consulting</h3>
-                <p>Auditor, Accountant, Fnancial Analyst & More</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="category_box">
+          <div class="col-lg-3 col-md-6" >
+            <div class="category_box" >
               <div class="cb_header">
                 <img alt="" src="/images/i-pan.png">
                 <span class="job_count">523</span>
               </div>
               <div class="cb_bottom">
-                <h3>Writing & Translations</h3>
-                <p>Copywriter, Creative Writer, Translator & More</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="category_box">
+          <div class="col-lg-3 col-md-6" >
+            <div class="category_box" >
               <div class="cb_header">
                 <img alt="" src="/images/i-chart.png">
                 <span class="job_count">98</span>
               </div>
               <div class="cb_bottom">
-                <h3>Sales & Marketing</h3>
-                <p>Brand Manager, Marketing Coordinator & More</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="category_box">
+          <div class="col-lg-3 col-md-6" >
+            <div class="category_box" >
               <div class="cb_header">
                 <img alt="" src="/images/i-graphic.png">
                 <span class="job_count">53</span>
               </div>
               <div class="cb_bottom">
-                <h3>Graphics & Design</h3>
-                <p>Creative Director, Web Designer & More</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="category_box">
+          <div class="col-lg-3 col-md-6" >
+            <div class="category_box" >
               <div class="cb_header">
                 <img alt="" src="/images/i-digital.png">
                 <span class="job_count">75</span>
               </div>
               <div class="cb_bottom">
-                <h3>Digital Marketing</h3>
-                <p>Darketing Analyst, Social Profile Admin & More</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="category_box">
+          <div class="col-lg-3 col-md-6" >
+            <div class="category_box" >
               <div class="cb_header">
                 <img alt="" src="/images/i-education.png">
                 <span class="job_count">366</span>
               </div>
               <div class="cb_bottom">
-                <h3>Education & Training</h3>
-                <p>Advisor, Coach, Education Coordinator & More</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
               </div>
             </div>
           </div>
@@ -133,7 +131,7 @@
       </div>
       <div class="container">
         <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
-          Featured Jobs
+          Trabajos Destacados
         </h2>
         <div class="row two_col featured_box_outer">
           <div class="col-sm-6">
@@ -404,182 +402,132 @@
 
     <div class="section  paln_section">
       <div class="bg-v">
-        <div class="bg-v-1 bg-t-l" />
-        <div class="bg-v-2 bg-b-l" />
+        <div class="bg-v-1 bg-t-l"/><div class="bg-v-2 bg-b-l"/>
       </div>
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
-          Membership Plans
-        </h2>
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Planes de Membresia</h2>
         <div class="planduration" data-aos="fade-in" data-aos-delay="400">
           <div class="custom-control custom-switch text-center">
-            <label class="before-custom-control-label" for="customSwitch1"> <span>Billed Monthly</span></label>
-            <input id="customSwitch1" type="checkbox" class="custom-control-input">
-            <label class="custom-control-label" for="customSwitch1"> <span>Billed Yearly</span> </label>
-            <div class="small-alert alert-success">
-              Save 21%
-            </div>
+            <label class="before-custom-control-label" for="customSwitch1"> <span>Plan Mensual</span></label>
+            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1"> <span>Plan Anual</span> </label>
+            <div class="small-alert alert-success"> Ahorra hasta un 20%  </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4" data-aos="fade-left" data-aos-delay="600">
             <div class="plan_box">
-              <h3>Basic Plan</h3>
-              <p>One time fee for one listing or task highlighted in search results.</p>
+              <h3>Plan Gratuito</h3>
+              <p>Consigue tu talento con nuestros productos especializados de floristeria</p>
               <div class="plan_price pl-monthly">
-                <h4><strong>$19</strong>/ monthly</h4>
+                <h4><strong>$0</strong>/ al mes</h4>
               </div>
               <div class="plan_price pl-yearly hide">
-                <h4><strong>$200</strong>/ yearly</h4>
+                <h4><strong>$0</strong>/ al año</h4>
               </div>
-              <h5>Features of Basic Plan</h5>
+              <h5>Características del Plan Básico</h5>
               <ul>
-                <li><i class="fas fa-check" /> 1 Listing</li>
-                <li><i class="fas fa-check" /> 30 Days Visibility</li>
-                <li><i class="fas fa-check" /> Highlighted in Search Results</li>
-                <li><i class="fas fa-check" />Fraud protection</li>
-                <li><i class="fas fa-check" />Featured Listing</li>
+                <li><i class="fas fa-check"/>10 visualizaciones Gratis x Mes</li>
+                <li><i class="fas fa-check"/>Acceso a la plataforma</li>
+                <li><i class="fas fa-check"/>Gestion de perfil</li>
+                <li><i class="fas fa-check"/>Subir cv + portafolio</li>
+                <li><i class="fas fa-check"/>Conectar con clientes</li>
               </ul>
-              <a class="btn btn-third" href="index.html#">Buy Now</a>
+              <a class="btn btn-third" href="index.html#">Unirse Ahora</a>
             </div>
           </div>
           <div class="col-md-4">
             <div class="plan_box plan_box_hoverd">
               <div class="populer_plan">
-                Most Populer
+                Más Popular
               </div>
-              <h3>Standard Plan</h3>
-              <p>One time fee for one listing or task highlighted in search results.</p>
+              <h3>Plan Destacado</h3>
+              <p>Consigue tu talento con nuestros productos especializados de floristeria</p>
               <div class="plan_price">
-                <h4><strong>$36</strong>/ monthly</h4>
+                <h4><strong>$240</strong>/ al mes</h4>
               </div>
               <div class="plan_price pl-yearly hide">
-                <h4><strong>$396</strong>/ yearly</h4>
+                <h4><strong>$2,300</strong>/ al año</h4>
               </div>
-              <h5>Features of Standard Plan</h5>
+              <h5>Características del Plan Destacado</h5>
               <ul>
-                <li><i class="fas fa-check" /> 6 Listing</li>
-                <li><i class="fas fa-check" /> 65 Days Visibility</li>
-                <li><i class="fas fa-check" /> Highlighted in Search Results</li>
-                <li><i class="fas fa-check" />Fraud protection</li>
-                <li><i class="fas fa-check" />Featured Listing</li>
+                <li><i class="fas fa-check"/>10 visualizaciones Gratis x Mes</li>
+                <li><i class="fas fa-check"/>60 días de publicación</li>
+                <li><i class="fas fa-check"/>Visualización de perfiles (30 días)</li>
+                <li><i class="fas fa-check"/>Acceso a la plataforma</li>
+                <li><i class="fas fa-check"/>Gestion de perfil</li>
+                <li><i class="fas fa-check"/>Subir cv + portafolio</li>
+                <li><i class="fas fa-check"/>Conectar con clientes</li>
               </ul>
-              <a class="btn btn-third" href="index.html#">Buy Now</a>
+              <a class="btn btn-third" href="index.html#">Mejorar a Plan Destacado</a>
             </div>
           </div>
           <div class="col-md-4" data-aos="fade-right" data-aos-delay="600">
             <div class="plan_box">
-              <h3>Extended Plan</h3>
-              <p>One time fee for one listing or task highlighted in search results.</p>
+              <h3>Plan Plus</h3>
+              <p>Consigue tu talento con nuestros productos especializados de floristeria</p>
               <div class="plan_price">
-                <h4><strong>$79</strong>/ monthly</h4>
+                <h4><strong>$350</strong>/ al mes</h4>
               </div>
               <div class="plan_price pl-yearly hide">
-                <h4><strong>$850</strong>/ yearly</h4>
+                <h4><strong>$3,696</strong>/ al año</h4>
               </div>
-              <h5>Features of Extended Plan</h5>
+              <h5>Características del Plan Plus</h5>
               <ul>
-                <li><i class="fas fa-check" /> Unlimited Listings Listing</li>
-                <li><i class="fas fa-check" /> 100 Days Visibility</li>
-                <li><i class="fas fa-check" /> Highlighted in Search Results</li>
-                <li><i class="fas fa-check" />Fraud protection</li>
-                <li><i class="fas fa-check" />Featured Listing</li>
+                <li><i class="fas fa-check"/>10 visualizaciones Gratis x Mes</li>
+                <li><i class="fas fa-check"/>60 días de publicación</li>
+                <li><i class="fas fa-check"/>Visualización de perfiles (30 días)</li>
+                <li><i class="fas fa-check"/>Filtros Especializados</li>
+                <li><i class="fas fa-check"/>Oferta Urgente (2) X (30 días)</li>
+                <li><i class="fas fa-check"/>Acceso a la plataforma</li>
+                <li><i class="fas fa-check"/>Gestion de perfil</li>
+                <li><i class="fas fa-check"/>Subir cv + portafolio</li>
+                <li><i class="fas fa-check"/>Conectar con clientes</li>
               </ul>
-              <a class="btn btn-third" href="index.html#">Buy Now</a>
+              <a class="btn btn-third" href="index.html#">Mejorar a Plan Plus</a>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="section post_section">
-      <div class="bg-v">
-        <div class="bg-v-2 bg-t-l" />
-        <div class="bg-v-2 bg-b-r" />
-      </div>
-      <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
-          Featured Posts
-        </h2>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="post_box">
-              <img alt="" src="/images/blog1.jpg" class="img-responsive">
-              <div class="post_content">
-                <h6>
-                  <a href="blog-single.html">4 Secrets To Be Strategic About Your Job Search</a>
-                </h6>
-                <p>Queequeg removed himself to just beyond the head of the … </p>
-                <a class="btn btn-secondary btn-rounded" href="blog-single.html">Continue reading</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="post_box">
-              <img alt="" src="/images/blog2.jpg" class="img-responsive">
-              <div class="post_content">
-                <h6>
-                  <a href="blog-single.html">Why Long-Term Unemployment Isn’t As Bad As You Think</a>
-                </h6>
-                <p>Queequeg removed himself to just beyond the head of the … </p>
-                <a class="btn btn-secondary btn-rounded" href="blog-single.html">Continue reading</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="post_box">
-              <img alt="" src="/images/blog3.jpg" class="img-responsive">
-              <div class="post_content">
-                <h6>
-                  <a href="blog-single.html">6 Ways Your Job is Losing You Future Earnings</a>
-                </h6>
-                <p>Queequeg removed himself to just beyond the head of the … </p>
-                <a class="btn btn-secondary btn-rounded" href="blog-single.html">Continue reading</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="section status_section">
       <div class="bg-v">
-        <div class="bg-v-1 bg-t-r" />
-        <div class="bg-v-2 bg-b-l" />
+        <div class="bg-v-1 bg-t-r"/>
+        <div class="bg-v-2 bg-b-l"/>
       </div>
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
-          JoDice Status
-        </h2>
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Comunidad Calinextia</h2>
 
         <div class="row justify-content-center">
           <div class="col-auto">
             <div class="status_box" data-aos="fade-in" data-aos-delay="600">
-              <img alt="" data-aos="fade-up" data-aos-delay="1000" src="/images/i-paper-plane.png">
+              <img alt=""  data-aos="fade-up" data-aos-delay="1000" src="/images/i-paper-plane.png">
 
               <h3>83</h3>
-              <p>Job Posted.</p>
+              <p>Trabajos Publicados</p>
             </div>
           </div>
           <div class="col-auto">
             <div class="status_box" data-aos="fade-in" data-aos-delay="800">
-              <img alt="" data-aos="fade-up" data-aos-delay="1200" src="/images/i-doctor.png">
+              <img alt=""  data-aos="fade-up" data-aos-delay="1200" src="/images/i-doctor.png">
 
               <h3>16</h3>
-              <p>Job Filled.</p>
+              <p>Trabajos Cubiertos</p>
             </div>
           </div>
           <div class="col-auto">
             <div class="status_box" data-aos="fade-in" data-aos-delay="1000">
-              <img alt="" data-aos="fade-up" data-aos-delay="1400" src="/images/i-company.png">
+              <img alt=""  data-aos="fade-up" data-aos-delay="1400" src="/images/i-company.png">
               <h3>36</h3>
-              <p>Companies</p>
+              <p>Empleadores</p>
             </div>
           </div>
           <div class="col-auto">
             <div class="status_box" data-aos="fade-in" data-aos-delay="1200">
-              <img alt="" data-aos="fade-up" data-aos-delay="1600" src="/images/i-mamber.png">
+              <img alt=""  data-aos="fade-up" data-aos-delay="1600" src="/images/i-mamber.png">
               <h3>175</h3>
-              <p>Members</p>
+              <p>Miembros</p>
             </div>
           </div>
         </div>
@@ -591,41 +539,51 @@
         <div class="bg-v-3 bg-b-r" />
       </div>
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
-          Our Partners
-        </h2>
-        <ul class="partner_carousel owl-carousel owl-theme">
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Afiliados</h2>
+        <carousel class="partner_carousel" :dots="false" :loop="true" :autoplay="true" :nav="false" :responsive="{0:{items:2},600:{items:4},1000:{items:5}}">
+          <a href="index.html#"><img alt="brand logo" src="/images/company-logo-1.svg"></a>
+          <a href="index.html#"><img alt="brand logo" src="/images/company-logo-2.svg"></a>
+          <a href="index.html#"><img alt="brand logo" src="/images/company-logo-3.svg"></a>
+          <a href="index.html#"><img alt="brand logo" src="/images/company-logo-4.png"></a>
+          <a href="index.html#"><img alt="brand logo" src="/images/company-logo-5.png"></a>
+          <a href="index.html#"><img alt="brand logo" src="/images/company-logo-1.svg"></a>
+          <a href="index.html#"><img alt="brand logo" src="/images/company-logo-2.svg"></a>
+          <a href="index.html#"><img alt="brand logo" src="/images/company-logo-3.svg"></a>
+          <a href="index.html#"><img alt="brand logo" src="/images/company-logo-4.png"></a>
+          <a href="index.html#"><img alt="brand logo" src="/images/company-logo-5.png"></a>
+        </carousel>
+        <!-- <ul class="partner_carousel owl-carousel owl-theme">
           <li>
-            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-1.svg"></a>
+            <a href="index.html#"><img  alt="brand logo" src="/images/company-logo-1.svg"></a>
           </li>
           <li>
-            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-2.svg"></a>
+            <a href="index.html#"><img   alt="brand logo" src="/images/company-logo-2.svg"></a>
           </li>
           <li>
-            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-3.svg"></a>
+            <a href="index.html#"><img   alt="brand logo" src="/images/company-logo-3.svg"></a>
           </li>
           <li>
-            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-4.png"></a>
+            <a href="index.html#"><img  alt="brand logo" src="/images/company-logo-4.png"></a>
           </li>
           <li>
-            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-5.png"></a>
+            <a href="index.html#"><img   alt="brand logo" src="/images/company-logo-5.png"></a>
           </li>
           <li>
-            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-1.svg"></a>
+            <a href="index.html#"><img   alt="brand logo" src="/images/company-logo-1.svg"></a>
           </li>
           <li>
-            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-2.svg"></a>
+            <a href="index.html#"><img  alt="brand logo" src="/images/company-logo-2.svg"></a>
           </li>
           <li>
-            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-3.svg"></a>
+            <a href="index.html#"><img  alt="brand logo" src="/images/company-logo-3.svg"></a>
           </li>
           <li>
-            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-4.png"></a>
+            <a href="index.html#"><img   alt="brand logo" src="/images/company-logo-4.png"></a>
           </li>
           <li>
-            <a href="index.html#"><img alt="brand logo" src="/images/company-logo-5.png"></a>
+            <a href="index.html#"><img  alt="brand logo" src="/images/company-logo-5.png"></a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
   </main>
@@ -633,8 +591,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import carousel from 'vue-owl-carousel'
 
 export default {
+  components: { carousel },
   metaInfo () {
     return { title: this.$t('home') }
   },
@@ -642,7 +602,6 @@ export default {
   data: () => ({
     title: window.config.appName
   }),
-
   computed: mapGetters({
     authenticated: 'auth/check'
   })
@@ -658,5 +617,8 @@ export default {
 
 .title {
   font-size: 85px;
+}
+.owl-theme .owl-dots .owl-dot span {
+  display: none !important;
 }
 </style>

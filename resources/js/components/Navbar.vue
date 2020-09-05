@@ -17,91 +17,18 @@
                   </div>
                 </div>
                 <ul>
-                  <li class="has-sub-menu current_page">
-                    <a href="index.html">Home</a>
-                    <ul class="sub-menu">
-                      <li class="current_page">
-                        <a href="index.html">Homepage 1</a>
-                      </li>
-                      <li>
-                        <a href="home-page-2.html">Homepage 2</a>
-                      </li>
-                      <li>
-                        <a href="home-page-3.html">Homepage 3</a>
-                      </li>
-                      <li>
-                        <a href="home-page-4.html">Homepage 4</a>
-                      </li>
-                    </ul>
+                  <li :class="currentPageClass('welcome')">
+                    <router-link :to="{ name: 'welcome' }">
+                      Inicio
+                    </router-link>
                   </li>
-                  <li class="has-sub-menu">
-                    <a href="index.html">Job Seekers</a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a href="job-seeker-dashboard.html">Job dashboard</a>
-                      </li>
-                      <li>
-                        <a href="browse-jobs.html">Browse jobs</a>
-                      </li>
-
-                      <li>
-                        <a href="job-single.html">Job single</a>
-                      </li>
-
-                      <li>
-                        <a href="my-stared-jobs.html">My stared jobs</a>
-                      </li>
-                      <li>
-                        <a href="staff-profile-single.html">Job seeker profile</a>
-                      </li>
-                      <li>
-                        <a href="edit-profile.html">Update my profile</a>
-                      </li>
-
-                      <li>
-                        <a href="edit-password.html">Change password</a>
-                      </li>
-                      <li>
-                        <a href="registration.html">Registration</a>
-                      </li>
-                      <li>
-                        <a href="browse-companies.html">Browse companies</a>
-                      </li>
-                    </ul>
+                  <li :class="currentPageClass('welcome')">
+                    <router-link :to="{ name: 'welcome' }">
+                      Lista de empleos
+                    </router-link>
                   </li>
 
-                  <li class="has-sub-menu">
-                    <a href="index.html#">For employers</a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a href="job-dashboard.html">Job dashboard</a>
-                      </li>
-                      <li>
-                        <a href="post-a-job.html">Post a job</a>
-                      </li>
-                      <li>
-                        <a href="my-job-listing.html">My Jobs listing</a>
-                      </li>
-                      <li>
-                        <a href="find-staff.html">Find staff</a>
-                      </li>
-                      <li>
-                        <a href="compnay-profile-single.html">Company profile</a>
-                      </li>
-
-                      <li>
-                        <a href="emp-edit-profile.html">Update profile</a>
-                      </li>
-                      <li>
-                        <a href="emp-edit-password.html">Change password</a>
-                      </li>
-                      <li>
-                        <a href="emp-registration.html">Employer registration</a>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="has-sub-menu">
+                  <!-- <li class="has-sub-menu">
                     <a href="index.html#">Pages</a>
                     <ul class="sub-menu">
                       <li>
@@ -129,7 +56,7 @@
                         <a href="404.html">404</a>
                       </li>
                     </ul>
-                  </li>
+                  </li> -->
                 </ul>
               </nav>
               <div v-if="user" class="ac_nav after_login_ac_nav">
@@ -186,7 +113,9 @@
               <div v-else class="ac_nav">
                 <!--Not logedin-->
                 <div class="login_pop">
-                  <button class="btn btn-primary">Login / Sign up <i class="fas fa-caret-down" /></button>
+                  <button class="btn btn-primary">
+                    Login / Sign up <i class="fas fa-caret-down" />
+                  </button>
                   <div class="login_pop_box">
                     <span class="twobtn_cont">
                       <router-link :to="{ name: 'register' }" class="signjs_btn">
@@ -200,7 +129,7 @@
                     </span>
                     <div>
                       <span class="member_btn">¿Ya eres miembro?</span>
-                      <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
+                      <router-link :to="{ name: 'login' }" class="lgin_btn btn btn-primary" active-class="active">
                         {{ $t('login') }}
                       </router-link>
                     </div>
@@ -223,9 +152,11 @@
             <div class="">
               <div class="row align-items-center">
                 <div class="col-lg-4" data-aos="fade-down" data-aos-delay="200">
-                  <h2>Find the most exciting<br> starup jobs</h2>
-                  <p>Most complete 2020 template for Job board sites.</p>
-                  <a class="btn btn-primary" href="browse-jobs.html">Know more
+                  <h2>Encuentra la oferta de <br> trabajo correcta para ti</h2>
+                  <p style="color: #fff;">
+                    El sitio más completo de trabajo para decoradores y profesionales de eventos
+                  </p>
+                  <a class="btn btn-primary" href="browse-jobs.html">Conoce más
                     <i class="material-icons">arrow_right_alt</i>
                   </a>
                 </div>
@@ -235,24 +166,25 @@
                       <div class="banerSearch" data-aos="fade-up" data-aos-delay="200">
                         <div class="fild-wrap fw-job-title">
                           <i class="fas fa-briefcase" />
-                          <select class="js-example-basic-multiple" name="state">
-                            <option value="AL">JOB TITLE, SKILL, INDUSTRY</option>
-                            <option value="1">Concierge</option>
-                            <option value="2">Event Planner</option>
-                            <option value="3">Executive Chef</option>
-                            <option value="4">General Manager</option>
-                          </select>
+                          <Select2 v-model="empleo" class="js-example-basic-multiple" :options="empleos" :settings="{ placeholder: 'EMPLEO, HABILIDAD, INDUSTRIA'}" />
                         </div>
                         <div class="fild-wrap fw-job-location">
                           <i class="fas fa-map-marker-alt" />
-                          <select class="js-example-basic-single" name="state">
-                            <option value="AL">ALABAMA</option>
-                            <option value="WY">WYOMING</option>
-                          </select>
+                          <!-- <Select2 v-model="state" class="js-example-basic-single" :options="states" :settings="{ settingOption: value, settingOption: value }" @change="myChangeEvent($event)" @select="mySelectEvent($event)" /> -->
+                          <Select2 v-model="estado" class="js-example-basic-single" :options="estados" :settings="{ placeholder: 'SELECCIONA UN ESTADO'}" />
+
+                          <!-- <select class="js-example-basic-single" name="state">
+                            <option value="AL">
+                              ALABAMA
+                            </option>
+                            <option value="WY">
+                              WYOMING
+                            </option>
+                          </select> -->
                         </div>
                         <div class="fild-wrap fw-submit">
                           <button type="submit" class="btn btn-primary" value="">
-                            <i class="material-icons">search</i> SEARCH JOBS
+                            <i class="material-icons">search</i> BUSCAR
                           </button>
                         </div>
                       </div>
@@ -267,8 +199,8 @@
                                 <img alt="" class="usertype-addon" src="/images/usertype-2-addon.png">
                               </div>
                               <div>
-                                <h3>I'm looking for a job</h3>
-                                <p>Post CV and apply job you love</p>
+                                <h3>Estoy buscando un trabajo</h3>
+                                <p>Sube tu CV y aplica para un trabajo</p>
                                 <i class="fas fa-long-arrow-alt-right" />
                               </div>
                             </a>
@@ -282,8 +214,8 @@
                                 <img alt="" class="usertype-addon" src="/images/usertype-1-addon.png">
                               </div>
                               <div>
-                                <h3>I want to post job</h3>
-                                <p>Post jobs & hire porfessionls</p>
+                                <h3>Quiero ofertar un emeplo</h3>
+                                <p>Oferta trabajos y contrata profesionales</p>
                                 <i class="fas fa-long-arrow-alt-right" />
                               </div>
                             </a>
@@ -309,13 +241,26 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Select2 from 'v-select2-component'
 
 export default {
   components: {
+    Select2
   },
 
   data: () => ({
-    appName: window.config.appName
+    appName: window.config.appName,
+    empleo: null,
+    estado: null,
+    empleos: [
+      { id: 1, text: 'FLORISTERÍA' },
+      { id: 2, text: 'RAMOS DE BODA' },
+      { id: 3, text: 'ARREGLOS FLORALES' }
+    ],
+    estados: [
+      { id: 1, text: 'BAJA CALIFORNIA' },
+      { id: 2, text: 'CHIAPAS' }
+    ]
   }),
 
   computed: mapGetters({
@@ -331,6 +276,9 @@ export default {
 
       // Redirect to login.
       this.$router.push({ name: 'login' })
+    },
+    currentPageClass (page) {
+      return this.$route.name === page ? 'current_page' : ''
     }
   }
 }
@@ -341,5 +289,8 @@ export default {
   width: 2rem;
   height: 2rem;
   margin: -.375rem 0;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #888;
 }
 </style>

@@ -9,7 +9,7 @@
   --fontgreen-color: #1fc8d7;
 
 
-  --thm-color-1: #ff6158;
+  --thm-color-1: #975493;
   --thm-color-1-2: #372354;
   --very-light-1:#fff1f0;
 
@@ -20,11 +20,11 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    color: #666666;
+    color:  #c4adce;
 }
 
 h1, h2, h3, h4, h5, h6{
-  color: #333333
+  color: #975493;
 }
 
 .footer_widget_box h1,
@@ -36,7 +36,7 @@ h1, h2, h3, h4, h5, h6{
   color: #fff;
 }
 a {
-  color: var(--thm-color-1);
+  color:#efefef;
 }
 a:hover {
   color: var(--thm-color-1-2);
@@ -44,8 +44,8 @@ a:hover {
 
 
 .btn-primary, button {
-    background: var(--thm-color-1);
-    border-color: var(--thm-color-1);
+    background: #ecc827;;
+    border-color: #ecc827;;
 }
 
 .btn-secondary  {
@@ -104,7 +104,7 @@ a:hover {
   color: #333333;
 }
 .navigation ul > li a:hover, .navigation ul > li.active a:hover, .navigation ul .current_page > a  {
-  color: var(--thm-color-1)
+  color: #89156f
 }
 .hamburger-inner, .hamburger-inner::after, .hamburger-inner::before {
   background: var(--thm-color-1)
@@ -142,7 +142,7 @@ a:hover {
 }
 
 .plan_price {
-  background: var(--very-light-1);
+  background: #c4adce;
 }
 /*.plan_box, .plan_box.plan_box_hoverd {
 	border: 1px solid var(--thm-color-1);
@@ -171,9 +171,9 @@ a:hover {
   color: #fff;
 }
 
-.fb_action {
+/* .fb_action {
 
-}
+} */
 
 .section.post_section:after {
   background-image:url(/images/vector1-1.jpg);
@@ -183,7 +183,7 @@ a:hover {
 
 
 .fild-wrap > i {
-    color: var(--thm-color-1);
+    color: #89156f;
 }
 
 .header_btm .select2-dropdown {
@@ -271,9 +271,9 @@ a:hover {
 }
 
 
-.header_01 .user_type_seeker i{
-
-}
+/* .header_01 .user_type_seeker i{
+  color:
+} */
 
 .user_type_inner  a h3 {
   color: var(--thm-color-1-2)

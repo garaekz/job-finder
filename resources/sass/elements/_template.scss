@@ -723,7 +723,7 @@ background: #fff;
 top: 0;*/
 }
 .header_01 .header_btm {
-background-color: #fbf8f1;
+ background: url(/images/bg_search.jpg) no-repeat center center fixed;
 background-repeat: no-repeat;
 background-size: 100%;
 background-position: center bottom;
@@ -762,6 +762,8 @@ font-size: 18px;
 
 .header_01 .header_btm form {
   margin-top: 15px;
+/*       background-color: #; */
+
 }
 .header_01 .header_btm h1 {
   width: 100%;
@@ -955,7 +957,7 @@ margin: 0 auto;
 padding: 20px;
 border-radius: 0 0 10px 10px;
 /*background-color: #fbf8f1;*/
-background-color: #fbf8f1;
+background-color: #c4adce;
 }
 
 .header_01  .user_type_inner > a{
@@ -1172,7 +1174,7 @@ margin-left: auto;
 margin-right: auto;
 max-width: 900px;
 background: transparent;
-background-color: #fbf8f1;
+background-color:89146f;
 border-radius: 10px 10px 0 0;
 border-bottom: 4px solid #fff;
 border-bottom: 2px solid #fff;
@@ -1193,7 +1195,7 @@ padding-right: 20%;
 /* margin-right: auto; */
 /* max-width: 850px; */
 /* background: #fff; */
-border: 2px solid #ff6158;
+border: 2px solid #89146f;
 padding: 8px;
 border-radius: 90px;
 background: #fff;
@@ -2078,7 +2080,7 @@ margin-left: 0;
 margin-right: 0;
 }*/
 .plan_box {
-background: #fff;
+background: #372354;
 padding: 20px;
 margin-top: 0;
 border: 1px solid rgba(0,0,0,0.04);
@@ -2104,18 +2106,18 @@ font-size: 16px;
 }
 .plan_box .btn-third {
 background: none;
-border-color: var(--thm-color-1-2);
-color: var(--thm-color-1-2);
+    border-color: #c4adce;
+  color: #c4adce;
 width: 100%;
 }
 .plan_box .btn-third:hover {
 color: #fff;
-background: var(--thm-color-1-2);
+background: #ecc827;
 border-color: var(--thm-color-1-2);
 }
 .plan_box.plan_box_hoverd .btn-third{
 color: #fff;
-background: var(--thm-color-1-2);
+background: #ecc827;
 border-color: var(--thm-color-1-2)
 }
 .plan_box.plan_box_hoverd .btn-third:hover{
@@ -2513,6 +2515,7 @@ margin-left: -16px;
 }
 .ut_or {
 position: absolute;
+/* border: ; */
 left: 0;
 right: 0;
 text-align: center;
@@ -3517,7 +3520,7 @@ margin: 0;
 }
 
 .user_type input:checked ~ span{
-background: #149934;
+    background: #4a3964;
 color: #fff;
 }
 
@@ -4293,6 +4296,8 @@ form.newsletter > div{
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+
+
  /*form.newsletter .form-control, form.newsletter .btn {
   max-width: 100%;
   width: 100%;
@@ -4303,7 +4308,4 @@ form.newsletter > div{
 }*/
 
 }
-
-
-
 

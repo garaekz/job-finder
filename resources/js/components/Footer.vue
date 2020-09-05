@@ -49,54 +49,59 @@
             </ul>
           </div>
         </div>
+
         <div class="col-md-3">
           <div class="footer_widget_box">
-            <h2 data-aos="fade-up" data-aos-delay="400">Community</h2>
+            <h2 data-aos="fade-up" data-aos-delay="400">Comunidad</h2>
             <ul data-aos="fade-in" data-aos-delay="200">
-              <li> <a href="contact-us.html">Help / Contact Us</a>
+              <li>
+                <a href="contact-us.html">Contacto</a>
               </li>
-              <li> <a href="content-page.html">Guidelines</a>
+              <li>
+                <a href="content-page.html">Lineamientos</a>
               </li>
-              <li> <a href="content-page.html">Terms of Use</a>
+              <li>
+                <a href="content-page.html">Terminos de Uso</a>
               </li>
-              <li> <a href="content-page.html">Privacy &amp; Cookies </a>
+              <li>
+                <a href="content-page.html">Privacidad &amp; Cookies </a>
               </li>
             </ul>
-
           </div>
         </div>
         <div class="col-md-3">
           <div class="footer_widget_box">
-            <h2 data-aos="fade-up" data-aos-delay="400">Get In Touch</h2>
+            <h2 data-aos="fade-up" data-aos-delay="400">Contáctanos</h2>
             <ul data-aos="fade-in" data-aos-delay="200" class="social_list">
-              <li> <a href="index.html#"><i class="fab fa-twitter"></i></a>
+              <li>
+                <a href="index.html#"><i class="fab fa-twitter" /></a>
               </li>
-              <li> <a href="index.html#"><i class="fab fa-facebook"></i></a>
+              <li>
+                <a href="index.html#"><i class="fab fa-facebook" /></a>
               </li>
-              <li> <a href="index.html#"><i class="fab fa-linkedin"></i></a>
+              <li>
+                <a href="index.html#"><i class="fab fa-linkedin" /></a>
               </li>
-              <li> <a href="index.html#"><i class="fab fa-youtube"></i></a>
+              <li>
+                <a href="index.html#"><i class="fab fa-youtube" /></a>
               </li>
             </ul>
-
           </div>
 
           <div class="footer_widget_box">
             <form class="newsletter">
               <h2 data-aos="fade-up" data-aos-delay="400">Newsletter</h2>
               <div data-aos="fade-in" data-aos-delay="200" class="d-flex">
-
                 <input class="form-control" type="email" placeholder="Enter your email ">
-                <button class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
-
+                <button class="btn btn-primary"><i class="fa fa-paper-plane" /></button>
               </div>
-
             </form>
           </div>
         </div>
         <div class="col-md-12">
-          <div class="footer_widget_box"  >
-            <p class="copyright-text">© Copyright 2020 by JoDice. All rights reserved.
+          <div class="footer_widget_box">
+            <p class="copyright-text">
+              Calinextia es un desarrollo en colaboración de Perro Negro Studio, Peekaboo Creativos & Daga Coding © Copyright 2020 Calinextia. Todos los derechos reservados.
             </p>
           </div>
         </div>
