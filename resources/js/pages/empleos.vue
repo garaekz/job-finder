@@ -12,7 +12,7 @@
               <img alt="brand logo" :src="vacante.user.perfil.logo">
             </div>
             <div class="fb_content">
-              <h4>{{ vacante.puesto }}</h4>
+              <h4>Empleo de {{ vacante.puesto }}</h4>
               <ul>
                 <li>
                   <a>

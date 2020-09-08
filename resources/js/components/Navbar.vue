@@ -1,5 +1,5 @@
 <template>
-  <header class="header_01">
+  <header class="header_01" :class="$route.name !== 'welcome' ? 'header_inner':''">
     <div class="header_main">
       <div class="header_menu fixed-top">
         <div class="container">
@@ -11,12 +11,12 @@
             </div>
             <div class="navigation">
               <nav>
-                <div class="hamburger hamburger--spring js-hamburger ">
+                <div class="hamburger hamburger--spring js-hamburger " :class="isActive ? 'is-active':''" @click="toggleMenu">
                   <div class="hamburger-box">
                     <div class="hamburger-inner" />
                   </div>
                 </div>
-                <ul>
+                <ul :style="`display:${isActive ? 'block':'none'}`">
                   <li :class="currentPageClass('welcome')">
                     <router-link :to="{ name: 'welcome' }">
                       Inicio
@@ -61,16 +61,44 @@
               </nav>
               <div v-if="user" class="ac_nav after_login_ac_nav">
                 <div class="login_pop after_login">
-                  <button class="btn btn-primary withdp">
-                    <img alt="" src="/images/profile-5.png"> Hola {{ user.first_name }} {{ user.last_name }} <i class="fas fa-caret-down" />
+                  <button class="btn btn-primary withdp" @click="loginPopActive = !loginPopActive">
+                    <img alt="" :src="user.perfil && user.perfil.logo ? user.perfil.logo : '/images/avatar-placeholder.png'"> Hola {{ user.first_name }} {{ user.last_name }} <i class="fas fa-caret-down" />
                   </button>
-                  <div class="login_pop_box login_pop_box_menu">
+                  <div v-if="role == 'empresa'" class="login_pop_box login_pop_box_menu" :style="loginPopActive ? 'display: block;':''">
                     <div class="login_pop_box_head">
                       <div class=" ">
-                        <img alt="" src="/images/profile-5.png">
-                        <span v-if="role == 'empresa'">{{ user.perfil.nombre_comercial }}</span>
+                        <img alt="" :src="user.perfil && user.perfil.logo ? user.perfil.logo : '/images/avatar-placeholder.png'">
+                        <span>{{ user.perfil.nombre_comercial }}</span>
                         <h5>{{ user.first_name }} {{ user.last_name }}</h5>
-                        <h6>{{ user.nombre_comercial }}</h6>
+                      </div>
+                    </div>
+                    <ul>
+                      <li>
+                        <a href="browse-jobs.html"><i class="fas fa-search" /> Browse Jobs </a>
+                      </li>
+                      <li>
+                        <a href="my-stared-jobs.html"><i class="fas fa-star" /> View My Stared Jobs</a>
+                      </li>
+                      <li>
+                        <router-link :to="{ name: 'home' }">
+                          <i class="fas fa-user" /> Ver mi perfil
+                        </router-link>
+                      </li>
+                      <li>
+                        <a href="edit-password.html"><i class="fas fa-key" />Change Password</a>
+                      </li>
+                      <li>
+                        <a href="#" @click="logout">
+                          <i class="fas fa-power-off" /> Logout
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div v-else class="login_pop_box login_pop_box_menu">
+                    <div class="login_pop_box_head">
+                      <div class=" ">
+                        <img alt="" :src="user.perfil && user.perfil.foto ? user.perfil.foto : '/images/avatar-placeholder.png'">
+                        <h5>{{ user.first_name }} {{ user.last_name }}</h5>
                       </div>
                     </div>
                     <ul>
@@ -113,10 +141,10 @@
               <div v-else class="ac_nav">
                 <!--Not logedin-->
                 <div class="login_pop">
-                  <button class="btn btn-primary">
+                  <button class="btn btn-primary" @click="loginPopActive = !loginPopActive">
                     Ingresar / Registrarse <i class="fas fa-caret-down" />
                   </button>
-                  <div class="login_pop_box">
+                  <div class="login_pop_box" :style="loginPopActive ? 'display:block;':''">
                     <span class="twobtn_cont">
                       <router-link :to="{ name: 'register' }" class="signjs_btn">
                         <span>Aspirante</span> Registro
@@ -264,7 +292,7 @@
           </div>
         </div>
       </div>
-      <div v-else class="header_inner">
+      <div v-else>
         <div class="header_btm">
           <h2>{{ header }}</h2>
         </div>
@@ -286,6 +314,9 @@ export default {
     appName: window.config.appName,
     empleo: null,
     estado: null,
+    isActive: false,
+    loginPopActive: false,
+    active: false,
     empleos: [
       { id: 1, text: 'FLORISTERÍA' },
       { id: 2, text: 'RAMOS DE BODA' },
@@ -314,6 +345,9 @@ export default {
     },
     currentPageClass (page) {
       return this.$route.name === page ? 'current_page' : ''
+    },
+    toggleMenu ()  {
+      this.isActive = !this.isActive
     }
   }
 }

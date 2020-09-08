@@ -18,10 +18,10 @@
         </div>
       </div>
       <div v-else class="row">
-        <div v-if="role == 'empresa' == !edit" class="col-md-12">
+        <div v-if="role == 'empresa' && !edit" class="col-md-12">
           <div class="header_job_single_inner container">
             <div class="poster_staff">
-              <img v-if="user.perfil.logo" alt="brand logo" :src="user.perfil.logo">
+              <img v-if="user.perfil && user.perfil.logo" alt="brand logo" :src="user.perfil.logo">
               <img v-else alt="brand logo" src="/images/avatar-placeholder.png">
             </div>
             <div class="profile_details">
@@ -32,7 +32,7 @@
             <a v-if="!edit" class="btn btn-primary mypbtn boton-editar" href="#" @click="edit = true">Editar</a>
           </div>
         </div>
-        <div v-else-if="role == 'empresa' == edit" class="col-md-12">
+        <div v-else-if="role == 'empresa' && edit" class="col-md-12">
           <div class="header_job_single_inner container">
             <div class="poster_staff">
               <el-upload
@@ -45,7 +45,7 @@
               <el-dialog :visible.sync="dialogVisible">
                 <img width="100%" :src="dialogImageUrl" alt="">
               </el-dialog>
-              <img v-if="user.perfil.logo" alt="brand logo" :src="user.perfil.logo">
+              <img v-if="user.perfil && user.perfil.logo" alt="brand logo" :src="user.perfil.logo">
               <img v-else alt="brand logo" src="/images/avatar-placeholder.png">
             </div>
             <div class="profile_details">
@@ -55,16 +55,38 @@
             </div>
           </div>
         </div>
-        <div v-else class="col-md-12">
-          <div v-if="!edit" class="header_job_single_inner container">
+        <div v-if="role == 'aspirante' && !edit" class="col-md-12">
+          <div class="header_job_single_inner container">
             <div class="poster_staff">
-              <img v-if="user.perfil.logo" alt="brand logo" :src="user.perfil.logo">
+              <img v-if="user.perfil && user.perfil.foto" alt="brand logo" :src="user.perfil.foto">
               <img v-else alt="brand logo" src="/images/avatar-placeholder.png">
             </div>
             <div class="profile_details">
               <h2>{{ user.first_name }} {{ user.last_name }}</h2>
               <h5>{{ user.email }}</h5>
-              <h5>{{ user.perfil.nombre_comercial }}</h5>
+            </div>
+            <a v-if="!edit" class="btn btn-primary mypbtn boton-editar" href="#" @click="edit = true">Editar</a>
+          </div>
+        </div>
+        <div v-else-if="role == 'aspirante' && edit" class="col-md-12">
+          <div class="header_job_single_inner container">
+            <div class="poster_staff">
+              <el-upload
+                action="https://jsonplaceholder.typicode.com/posts/"
+                list-type="picture-card"
+                :on-preview="handlePictureCardPreview"
+                :on-remove="handleRemove">
+                <i class="el-icon-plus" />
+              </el-upload>
+              <el-dialog :visible.sync="dialogVisible">
+                <img width="100%" :src="dialogImageUrl" alt="">
+              </el-dialog>
+              <img v-if="user.perfil && user.perfil.foto" alt="brand logo" :src="user.perfil.foto">
+              <img v-else alt="brand logo" src="/images/avatar-placeholder.png">
+            </div>
+            <div class="profile_details">
+              <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+              <h5>{{ user.email }}</h5>
             </div>
           </div>
         </div>
@@ -85,6 +107,8 @@ export default {
   middleware: 'auth',
   data: () => ({
     edit: false,
+    dialogImageUrl: '',
+    dialogVisible: false,
     imageUrl: ''
   }),
   computed: mapGetters({
@@ -112,7 +136,14 @@ export default {
         this.$message.error('La imagen excede los 2MB!')
       }
       return isJPG && isLt2M
-    }
+    },
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePictureCardPreview (file) {
+      this.dialogImageUrl = file.url
+      this.dialogVisible = true
+    },
   }
 }
 </script>
