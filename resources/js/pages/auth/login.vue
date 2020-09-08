@@ -7,12 +7,12 @@
             <form @submit.prevent="login" @keydown="form.onKeydown($event)">
               <div class="com_class_form">
                 <div class="form-group">
-                  <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" autocomplete="email" autofocus size="40" class="form-control" type="email" name="email">
-                  <has-error :form="form" field="email" placeholder=" Correo electrónico o nombre de usuario * " />
+                  <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" autocomplete="email" autofocus size="40" class="form-control" type="email" name="email" placeholder=" Correo electrónico * ">
+                  <has-error :form="form" field="email" />
                 </div>
                 <div class="form-group">
-                  <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password">
-                  <has-error :form="form" field="password" placeholder=" Contraseña * " />
+                  <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password" placeholder=" Contraseña * ">
+                  <has-error :form="form" field="password" />
                 </div>
                 <div class="form-group">
                   <input class="btn btn-primary" type="submit" value="Ingresar">
