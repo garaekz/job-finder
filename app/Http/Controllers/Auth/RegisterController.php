@@ -93,6 +93,13 @@ class RegisterController extends Controller
         $user->perfil_empresa()->save($perfil);
       }
 
+      if ($data['userType'] == 'aspirante') {
+        $aspirante = Role::where('name', 'aspirante')->first();
+        $user->attachRole($aspirante);
+        $perfil = new PerfilAspirante;
+        $user->perfil_aspirante()->save($perfil);
+      }
+
       return $user;
     }
 }

@@ -24,6 +24,10 @@ export const mutations = {
     Cookies.set('token', token, { expires: remember ? 365 : null })
   },
 
+  [types.SAVE_PERFIL] (state, user) {
+    state.user = user
+  },
+
   [types.FETCH_USER_SUCCESS] (state, { user }) {
     state.user = user
     state.role = user.role
@@ -64,6 +68,15 @@ export const actions = {
 
   updateUser ({ commit }, payload) {
     commit(types.UPDATE_USER, payload)
+  },
+
+  async savePerfil ({ commit }, payload) {
+    try {
+      const { data } = await axios.post(`/api/perfil/update`, payload)
+      console.log(data.user)
+      let user = data.user
+      commit(types.SAVE_PERFIL, user)
+    } catch (e) { }
   },
 
   async logout ({ commit }) {

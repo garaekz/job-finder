@@ -56,7 +56,6 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  middleware: 'guest',
   data: () => ({
     edit: false,
     imageUrl: ''

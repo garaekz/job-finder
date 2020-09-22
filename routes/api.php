@@ -18,6 +18,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('/user', 'Auth\UserController@current');
 
+    Route::post('perfil/update-image', 'PerfilController@updateImage');
+    Route::post('perfil/update', 'PerfilController@update');
     Route::patch('settings/profile', 'Settings\ProfileController@update');
     Route::patch('settings/password', 'Settings\PasswordController@update');
 });
@@ -36,7 +38,10 @@ Route::group(['middleware' => 'guest:api'], function () {
     Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
 
     Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
-
-    Route::get('/vacantes', 'VacanteController@index');
-    Route::get('/vacantes/{id}', 'VacanteController@show');
 });
+
+Route::get('/vacantes', 'VacanteController@index');
+Route::get('/vacantes/{id}', 'VacanteController@show');
+
+Route::get('/estados', 'ResourcesController@estados');
+Route::get('/municipios/{id}', 'ResourcesController@municipios');

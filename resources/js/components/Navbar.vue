@@ -62,7 +62,9 @@
               <div v-if="user" class="ac_nav after_login_ac_nav">
                 <div class="login_pop after_login">
                   <button class="btn btn-primary withdp" @click="loginPopActive = !loginPopActive">
-                    <img alt="" :src="user.perfil && user.perfil.logo ? user.perfil.logo : '/images/avatar-placeholder.png'"> Hola {{ user.first_name }} {{ user.last_name }} <i class="fas fa-caret-down" />
+                    <img v-if="role == 'empresa'" alt="" :src="user.perfil && user.perfil.logo ? user.perfil.logo : '/images/avatar-placeholder.png'">
+                    <img v-if="role == 'aspirante'" alt="" :src="user.perfil && user.perfil.foto ? user.perfil.foto : '/images/avatar-placeholder.png'">
+                    Hola {{ user.first_name }} {{ user.last_name }} <i class="fas fa-caret-down" />
                   </button>
                   <div v-if="role == 'empresa'" class="login_pop_box login_pop_box_menu" :style="loginPopActive ? 'display: block;':''">
                     <div class="login_pop_box_head">
@@ -184,7 +186,7 @@
                   <p style="color: #fff;">
                     El sitio más completo de trabajo para decoradores y profesionales de eventos
                   </p>
-                  <a class="btn btn-primary" href="browse-jobs.html">Conoce más
+                  <a class="btn btn-primary" href="#planes">Conoce más
                     <i class="material-icons">arrow_right_alt</i>
                   </a>
                 </div>
@@ -242,7 +244,7 @@
                                 <img alt="" class="usertype-addon" src="/images/usertype-1-addon.png">
                               </div>
                               <div>
-                                <h3>Quiero ofertar un emeplo</h3>
+                                <h3>Quiero ofertar un empleo</h3>
                                 <p>Oferta trabajos y contrata profesionales</p>
                                 <i class="fas fa-long-arrow-alt-right" />
                               </div>
@@ -334,7 +336,13 @@ export default {
     header: 'page/title',
     vacante: 'empleo/vacante'
   }),
-
+  watch: {
+    '$route' () {
+      this.isActive = false
+      this.loginPopActive = false
+      this.active = false
+    }
+  },
   methods: {
     async logout () {
       // Log out the user.
@@ -346,7 +354,7 @@ export default {
     currentPageClass (page) {
       return this.$route.name === page ? 'current_page' : ''
     },
-    toggleMenu ()  {
+    toggleMenu () {
       this.isActive = !this.isActive
     }
   }

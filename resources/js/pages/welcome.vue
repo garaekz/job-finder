@@ -22,10 +22,12 @@
         </div> -->
       </div>
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Categorias de Trabajo Populares</h2>
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
+          Categorias de Trabajo Populares
+        </h2>
         <div class="row">
-          <div class="col-lg-3 col-md-6" >
-            <div class="category_box" >
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
               <div class="cb_header">
                 <img alt="" src="/images/i-code.png">
                 <span class="job_count">363</span>
@@ -36,8 +38,8 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" >
-            <div class="category_box" >
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
               <div class="cb_header">
                 <img alt="" src="/images/i-server.png">
                 <span class="job_count">572</span>
@@ -48,8 +50,8 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" >
-            <div class="category_box" >
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
               <div class="cb_header">
                 <img alt="" src="/images/i-calculator.png">
                 <span class="job_count">252</span>
@@ -60,8 +62,8 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" >
-            <div class="category_box" >
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
               <div class="cb_header">
                 <img alt="" src="/images/i-pan.png">
                 <span class="job_count">523</span>
@@ -72,8 +74,8 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" >
-            <div class="category_box" >
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
               <div class="cb_header">
                 <img alt="" src="/images/i-chart.png">
                 <span class="job_count">98</span>
@@ -84,8 +86,8 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" >
-            <div class="category_box" >
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
               <div class="cb_header">
                 <img alt="" src="/images/i-graphic.png">
                 <span class="job_count">53</span>
@@ -96,8 +98,8 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" >
-            <div class="category_box" >
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
               <div class="cb_header">
                 <img alt="" src="/images/i-digital.png">
                 <span class="job_count">75</span>
@@ -108,8 +110,8 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" >
-            <div class="category_box" >
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
               <div class="cb_header">
                 <img alt="" src="/images/i-education.png">
                 <span class="job_count">366</span>
@@ -400,18 +402,22 @@
       </div>
     </div>
 
-    <div class="section  paln_section">
+    <div id="planes" class="section paln_section">
       <div class="bg-v">
-        <div class="bg-v-1 bg-t-l"/><div class="bg-v-2 bg-b-l"/>
+        <div class="bg-v-1 bg-t-l" /><div class="bg-v-2 bg-b-l" />
       </div>
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Planes de Membresía</h2>
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
+          Planes de Membresía
+        </h2>
         <div class="planduration" data-aos="fade-in" data-aos-delay="400">
           <div class="custom-control custom-switch text-center">
             <label class="before-custom-control-label" for="customSwitch1"> <span>Plan Mensual</span></label>
-            <input v-model="plan" type="checkbox" class="custom-control-input" id="customSwitch1">
+            <input id="customSwitch1" v-model="plan" type="checkbox" class="custom-control-input">
             <label class="custom-control-label" for="customSwitch1"> <span>Plan Anual</span> </label>
-            <div class="small-alert alert-success"> Ahorra hasta un 20%  </div>
+            <div class="small-alert alert-success">
+              Ahorra hasta un 20%
+            </div>
           </div>
         </div>
         <div class="row">
@@ -427,11 +433,11 @@
               </div>
               <h5>Características del Plan Básico</h5>
               <ul>
-                <li><i class="fas fa-check"/>10 visualizaciones Gratis x Mes</li>
-                <li><i class="fas fa-check"/>Acceso a la plataforma</li>
-                <li><i class="fas fa-check"/>Gestion de perfil</li>
-                <li><i class="fas fa-check"/>Subir cv + portafolio</li>
-                <li><i class="fas fa-check"/>Conectar con clientes</li>
+                <li><i class="fas fa-check" />10 visualizaciones Gratis x Mes</li>
+                <li><i class="fas fa-check" />Acceso a la plataforma</li>
+                <li><i class="fas fa-check" />Gestion de perfil</li>
+                <li><i class="fas fa-check" />Subir cv + portafolio</li>
+                <li><i class="fas fa-check" />Conectar con clientes</li>
               </ul>
               <a class="btn btn-third" href="index.html#">Unirse Ahora</a>
             </div>
@@ -451,13 +457,13 @@
               </div>
               <h5>Características del Plan Destacado</h5>
               <ul>
-                <li><i class="fas fa-check"/>10 visualizaciones Gratis x Mes</li>
-                <li><i class="fas fa-check"/>60 días de publicación</li>
-                <li><i class="fas fa-check"/>Visualización de perfiles (30 días)</li>
-                <li><i class="fas fa-check"/>Acceso a la plataforma</li>
-                <li><i class="fas fa-check"/>Gestion de perfil</li>
-                <li><i class="fas fa-check"/>Subir cv + portafolio</li>
-                <li><i class="fas fa-check"/>Conectar con clientes</li>
+                <li><i class="fas fa-check" />10 visualizaciones Gratis x Mes</li>
+                <li><i class="fas fa-check" />60 días de publicación</li>
+                <li><i class="fas fa-check" />Visualización de perfiles (30 días)</li>
+                <li><i class="fas fa-check" />Acceso a la plataforma</li>
+                <li><i class="fas fa-check" />Gestion de perfil</li>
+                <li><i class="fas fa-check" />Subir cv + portafolio</li>
+                <li><i class="fas fa-check" />Conectar con clientes</li>
               </ul>
               <a class="btn btn-third" href="index.html#">Mejorar a Plan Destacado</a>
             </div>
@@ -474,15 +480,15 @@
               </div>
               <h5>Características del Plan Plus</h5>
               <ul>
-                <li><i class="fas fa-check"/>10 visualizaciones Gratis x Mes</li>
-                <li><i class="fas fa-check"/>60 días de publicación</li>
-                <li><i class="fas fa-check"/>Visualización de perfiles (30 días)</li>
-                <li><i class="fas fa-check"/>Filtros Especializados</li>
-                <li><i class="fas fa-check"/>Oferta Urgente (2) X (30 días)</li>
-                <li><i class="fas fa-check"/>Acceso a la plataforma</li>
-                <li><i class="fas fa-check"/>Gestion de perfil</li>
-                <li><i class="fas fa-check"/>Subir cv + portafolio</li>
-                <li><i class="fas fa-check"/>Conectar con clientes</li>
+                <li><i class="fas fa-check" />10 visualizaciones Gratis x Mes</li>
+                <li><i class="fas fa-check" />60 días de publicación</li>
+                <li><i class="fas fa-check" />Visualización de perfiles (30 días)</li>
+                <li><i class="fas fa-check" />Filtros Especializados</li>
+                <li><i class="fas fa-check" />Oferta Urgente (2) X (30 días)</li>
+                <li><i class="fas fa-check" />Acceso a la plataforma</li>
+                <li><i class="fas fa-check" />Gestion de perfil</li>
+                <li><i class="fas fa-check" />Subir cv + portafolio</li>
+                <li><i class="fas fa-check" />Conectar con clientes</li>
               </ul>
               <a class="btn btn-third" href="index.html#">Mejorar a Plan Plus</a>
             </div>
@@ -493,16 +499,18 @@
 
     <div class="section status_section">
       <div class="bg-v">
-        <div class="bg-v-1 bg-t-r"/>
-        <div class="bg-v-2 bg-b-l"/>
+        <div class="bg-v-1 bg-t-r" />
+        <div class="bg-v-2 bg-b-l" />
       </div>
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Comunidad Calinextia</h2>
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
+          Comunidad Calinextia
+        </h2>
 
         <div class="row justify-content-center">
           <div class="col-auto">
             <div class="status_box" data-aos="fade-in" data-aos-delay="600">
-              <img alt=""  data-aos="fade-up" data-aos-delay="1000" src="/images/i-paper-plane.png">
+              <img alt="" data-aos="fade-up" data-aos-delay="1000" src="/images/i-paper-plane.png">
 
               <h3>83</h3>
               <p>Trabajos Publicados</p>
@@ -510,7 +518,7 @@
           </div>
           <div class="col-auto">
             <div class="status_box" data-aos="fade-in" data-aos-delay="800">
-              <img alt=""  data-aos="fade-up" data-aos-delay="1200" src="/images/i-doctor.png">
+              <img alt="" data-aos="fade-up" data-aos-delay="1200" src="/images/i-doctor.png">
 
               <h3>16</h3>
               <p>Trabajos Cubiertos</p>
@@ -518,14 +526,14 @@
           </div>
           <div class="col-auto">
             <div class="status_box" data-aos="fade-in" data-aos-delay="1000">
-              <img alt=""  data-aos="fade-up" data-aos-delay="1400" src="/images/i-company.png">
+              <img alt="" data-aos="fade-up" data-aos-delay="1400" src="/images/i-company.png">
               <h3>36</h3>
               <p>Empleadores</p>
             </div>
           </div>
           <div class="col-auto">
             <div class="status_box" data-aos="fade-in" data-aos-delay="1200">
-              <img alt=""  data-aos="fade-up" data-aos-delay="1600" src="/images/i-mamber.png">
+              <img alt="" data-aos="fade-up" data-aos-delay="1600" src="/images/i-mamber.png">
               <h3>175</h3>
               <p>Miembros</p>
             </div>
@@ -539,7 +547,9 @@
         <div class="bg-v-3 bg-b-r" />
       </div>
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">Afiliados</h2>
+        <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
+          Afiliados
+        </h2>
         <carousel class="partner_carousel" :dots="false" :loop="true" :autoplay="true" :nav="false" :responsive="{0:{items:2},600:{items:4},1000:{items:5}}">
           <a href="index.html#"><img alt="brand logo" src="/images/company-logo-1.svg"></a>
           <a href="index.html#"><img alt="brand logo" src="/images/company-logo-2.svg"></a>

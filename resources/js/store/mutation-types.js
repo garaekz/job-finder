@@ -5,6 +5,7 @@ export const FETCH_USER = 'FETCH_USER'
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS'
 export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE'
 export const UPDATE_USER = 'UPDATE_USER'
+export const SAVE_PERFIL = 'SAVE_PERFIL'
 
 // lang.js
 export const SET_LOCALE = 'SET_LOCALE'
@@ -15,3 +16,7 @@ export const SET_TITLE = 'SET_TITLE'
 // empleo.js
 export const SET_SINGLE_VACANTE = 'SET_SINGLE_VACANTE'
 export const SET_VACANTES = 'SET_VACANTES'
+
+// resources.js
+export const SET_ESTADOS = 'SET_ESTADOS'
+export const SET_MUNICIPIOS = 'SET_MUNICIPIOS'

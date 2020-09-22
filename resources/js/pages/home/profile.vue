@@ -19,12 +19,12 @@
       </div>
       <div v-else class="row">
         <div v-if="role == 'empresa' && !edit" class="col-md-12">
-          <div class="header_job_single_inner container">
-            <div class="poster_staff">
+          <div class="header_job_single_inner container row">
+            <div class="poster_staff col-md-3">
               <img v-if="user.perfil && user.perfil.logo" alt="brand logo" :src="user.perfil.logo">
               <img v-else alt="brand logo" src="/images/avatar-placeholder.png">
             </div>
-            <div class="profile_details">
+            <div class="profile_details col-md-8">
               <h2>{{ user.first_name }} {{ user.last_name }}</h2>
               <h5>{{ user.email }}</h5>
               <h5>{{ user.perfil.nombre_comercial }}</h5>
@@ -33,25 +33,140 @@
           </div>
         </div>
         <div v-else-if="role == 'empresa' && edit" class="col-md-12">
-          <div class="header_job_single_inner container">
-            <div class="poster_staff">
+          <div class="header_job_single_inner container row">
+            <div class="poster_staff col-md-12 text-center">
               <el-upload
-                action="https://jsonplaceholder.typicode.com/posts/"
+                action="/api/perfil/update-image"
                 list-type="picture-card"
                 :on-preview="handlePictureCardPreview"
-                :on-remove="handleRemove">
+                :on-remove="handleRemove"
+                :before-upload="beforeAvatarUpload"
+                :on-success="handleAvatarSuccess"
+                :file-list="fileList"
+                :disabled="fileList.length > 0"
+              >
                 <i class="el-icon-plus" />
+                <div slot="file" slot-scope="{file}">
+                  <img
+                    class="el-upload-list__item-thumbnail"
+                    :src="file.url" alt=""
+                  >
+                  <span class="el-upload-list__item-actions">
+                    <span
+                      class="el-upload-list__item-preview"
+                      @click="handlePictureCardPreview(file)"
+                    >
+                      <i class="el-icon-zoom-in" />
+                    </span>
+                    <span
+                      v-if="!disabled"
+                      class="el-upload-list__item-delete"
+                      @click="handleRemove(file)"
+                    >
+                      <i class="el-icon-delete" />
+                    </span>
+                  </span>
+                </div>
               </el-upload>
               <el-dialog :visible.sync="dialogVisible">
                 <img width="100%" :src="dialogImageUrl" alt="">
               </el-dialog>
-              <img v-if="user.perfil && user.perfil.logo" alt="brand logo" :src="user.perfil.logo">
-              <img v-else alt="brand logo" src="/images/avatar-placeholder.png">
             </div>
-            <div class="profile_details">
-              <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-              <h5>{{ user.email }}</h5>
-              <h5>{{ user.perfil.nombre_comercial }}</h5>
+          </div>
+          <div class="row" style="margin-top: 2em;">
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Nombre(s)</label>
+                <input v-model="perfil.first_name" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Apellido(s)</label>
+                <input v-model="perfil.last_name" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Email</label>
+                <input v-model="perfil.email" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Nombre comercial</label>
+                <input v-model="perfil.nombre_comercial" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Nueva contraseña</label>
+                <input v-model="perfil.password" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Confirmar contraseña</label>
+                <input v-model="perfil.password_confirmation" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 1em;">
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Estado</label>
+                <el-select v-model="perfil.estado_id" placeholder="Select" @change="perfil.municipio_id=null;fetchMunicipios($event)">
+                  <el-option
+                    v-for="item in estados"
+                    :key="item.id"
+                    :label="item.name"
+                    :value="item.id"
+                  />
+                </el-select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Municipio</label>
+                <el-select v-model="perfil.municipio_id" :disabled="municipios.length < 1" placeholder="Select">
+                  <el-option
+                    v-for="item in municipios"
+                    :key="item.id"
+                    :label="item.name"
+                    :value="item.id"
+                  />
+                </el-select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Código postal</label>
+                <input v-model="perfil.cp" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Teléfono</label>
+                <input v-model="perfil.telefono" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Página Web</label>
+                <input v-model="perfil.web" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <label>Cantidad de empleados</label>
+                <input v-model="perfil.empleados" type="number" class="form-control" placeholder="">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group ">
+                <label>Descripción</label>
+                <textarea v-model="perfil.descripcion" rows="5" style="width:100%;" />
+              </div>
             </div>
           </div>
         </div>
@@ -72,10 +187,12 @@
           <div class="header_job_single_inner container">
             <div class="poster_staff">
               <el-upload
-                action="https://jsonplaceholder.typicode.com/posts/"
+                action="/api/perfil/update-image"
                 list-type="picture-card"
                 :on-preview="handlePictureCardPreview"
-                :on-remove="handleRemove">
+                :on-remove="handleRemove"
+                :before-upload="beforeAvatarUpload"
+              >
                 <i class="el-icon-plus" />
               </el-upload>
               <el-dialog :visible.sync="dialogVisible">
@@ -94,7 +211,9 @@
     </div>
     <div v-if="edit" class="form-group row">
       <div class="col-md-12 text-right">
-        <button type="submit" class="btn btn-primary" @click="edit = false">Guardar</button>
+        <button type="submit" class="btn btn-primary" @click="onSavePerfil(perfil)">
+          Guardar
+        </button>
       </div>
     </div>
   </div>
@@ -106,44 +225,83 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   middleware: 'auth',
   data: () => ({
+    fileList: [],
+    disabled: false,
     edit: false,
     dialogImageUrl: '',
     dialogVisible: false,
-    imageUrl: ''
+    imageUrl: '',
+    perfil: {}
   }),
   computed: mapGetters({
     user: 'auth/user',
-    role: 'auth/role'
+    role: 'auth/role',
+    estados: 'resources/estados',
+    municipios: 'resources/municipios'
   }),
   mounted () {
     this.setTitle('Perfil')
+    if (this.user) {
+      this.perfil = this.user.perfil
+      this.perfil.first_name = this.user.first_name
+      this.perfil.last_name = this.user.last_name
+      this.perfil.email = this.user.email
+
+      let url
+      if (this.role === 'empresa') {
+        url = this.user.perfil.logo ?? '/images/avatar-placeholder.png'
+      } else {
+        url = this.user.perfil.foto ?? '/images/avatar-placeholder.png'
+      }
+      this.fileList.push({ url: url })
+
+      this.fetchEstados()
+    }
+    console.log('estados', this.estados)
   },
   methods: {
     ...mapActions({
-      setTitle: 'page/setTitle'
+      setTitle: 'page/setTitle',
+      fetchEstados: 'resources/fetchEstados',
+      fetchMunicipios: 'resources/fetchMunicipios',
+      savePerfil: 'auth/savePerfil'
     }),
+    onSavePerfil (perfil) {
+      this.savePerfil(perfil).then(() => {
+        this.edit = false
+      })
+    },
     handleAvatarSuccess (res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw)
+      if (res) {
+        this.fileList = [{ url: res.path }]
+        let user = this.user
+        if (this.role === 'empresa') {
+          user.perfil.logo = res.path
+        } else {
+          user.perfil.foto = res.path
+        }
+      }
     },
     beforeAvatarUpload (file) {
-      const isJPG = file.type === 'image/jpeg'
+      const isValidMime = file.type === 'image/jpeg' || file.type === 'image/png'
       const isLt2M = file.size / 1024 / 1024 < 2
 
-      if (!isJPG) {
-        this.$message.error('La imagen debe estar en formato JPG!')
+      if (!isValidMime) {
+        this.$message.error('La imagen debe estar en formato JPG o PNG!')
       }
       if (!isLt2M) {
         this.$message.error('La imagen excede los 2MB!')
       }
-      return isJPG && isLt2M
+      return isValidMime && isLt2M
     },
     handleRemove (file, fileList) {
       console.log(file, fileList)
+      this.fileList = []
     },
     handlePictureCardPreview (file) {
       this.dialogImageUrl = file.url
       this.dialogVisible = true
-    },
+    }
   }
 }
 </script>
