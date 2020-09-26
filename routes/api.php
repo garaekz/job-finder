@@ -17,11 +17,19 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', 'Auth\LoginController@logout');
 
     Route::get('/user', 'Auth\UserController@current');
+    Route::get('/estados', 'ResourcesController@estados');
+    Route::get('/municipios/{id}', 'ResourcesController@municipios');
+    Route::get('/area-especialidad', 'ResourcesController@areaEspecialidad');
+    Route::get('/estados-civiles', 'ResourcesController@estadosCiviles');
 
     Route::post('perfil/update-image', 'PerfilController@updateImage');
     Route::post('perfil/update', 'PerfilController@update');
     Route::patch('settings/profile', 'Settings\ProfileController@update');
     Route::patch('settings/password', 'Settings\PasswordController@update');
+
+    Route::group(['prefix' => 'empresa', 'middleware' => ['role:empresa']], function() {
+      Route::get('/vacantes', 'Empresa\VacanteController@index');
+  });
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
@@ -42,6 +50,3 @@ Route::group(['middleware' => 'guest:api'], function () {
 
 Route::get('/vacantes', 'VacanteController@index');
 Route::get('/vacantes/{id}', 'VacanteController@show');
-
-Route::get('/estados', 'ResourcesController@estados');
-Route::get('/municipios/{id}', 'ResourcesController@municipios');

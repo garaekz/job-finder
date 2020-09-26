@@ -13,6 +13,8 @@ class PerfilEmpresa extends Model
     'estado_id',
     'municipio_id',
     'cp',
+    'rfc',
+    'razon_social',
     'web',
     'empleados'
   ];

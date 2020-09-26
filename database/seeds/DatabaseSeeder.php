@@ -1,5 +1,6 @@
 <?php
 
+use App\Especialidad;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,5 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CivilStatusTableSeeder::class);
         $this->call(EstadoTableSeeder::class);
         $this->call(MunicipioTableSeeder::class);
+        $this->call(EspecialidadTableSeeder::class);
+        $this->call(PrestacionTableSeeder::class);
     }
 }

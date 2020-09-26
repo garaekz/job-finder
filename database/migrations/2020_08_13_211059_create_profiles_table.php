@@ -110,7 +110,9 @@ class CreateProfilesTable extends Migration
       Schema::create('perfil_empresas', function (Blueprint $table) {
         $table->id();
         $table->string('logo')->nullable();
-        $table->string('nombre_comercial')->nullable();
+        $table->string('nombre_comercial');
+        $table->string('rfc');
+        $table->string('razon_social');
         $table->text('descripcion')->nullable();
         $table->string('telefono')->nullable();
         $table->unsignedBigInteger('estado_id')->nullable();

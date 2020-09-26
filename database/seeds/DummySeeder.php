@@ -26,6 +26,8 @@ class DummySeeder extends Seeder
         $data = [
           'logo' => '/images/fav.png',
           'nombre_comercial' => 'Empresa de prueba',
+          'rfc' => 'EMPSA220110FE',
+          'razon_social' => 'Empresa SA de CV',
           'descripcion' => 'Es una empresa de prueba para poder verificar nuevos features relacionados con los usuarios del tipo empresa',
           'telefono' => '(664) 555-1234',
           'estado_id' => 2,

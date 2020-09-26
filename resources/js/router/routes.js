@@ -25,6 +25,7 @@ export default [
     component: page('home/index.vue'),
     children: [
       { path: '', name: 'home', component: page('home/profile.vue') },
+      { path: 'vacantes', name: 'home.vacantes', component: page('home/vacantes.vue') },
     ]
   },
   { path: '/settings',
