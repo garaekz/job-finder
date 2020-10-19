@@ -21,11 +21,16 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/municipios/{id}', 'ResourcesController@municipios');
     Route::get('/area-especialidad', 'ResourcesController@areaEspecialidad');
     Route::get('/estados-civiles', 'ResourcesController@estadosCiviles');
+    Route::get('/prestaciones', 'ResourcesController@prestaciones');
 
     Route::post('perfil/update-image', 'PerfilController@updateImage');
     Route::post('perfil/update', 'PerfilController@update');
     Route::patch('settings/profile', 'Settings\ProfileController@update');
     Route::patch('settings/password', 'Settings\PasswordController@update');
+
+    Route::post('/vacantes', 'VacanteController@store');
+    Route::put('/vacantes/{id}', 'VacanteController@update');
+    Route::delete('/vacantes/{id}', 'VacanteController@destroy');
 
     Route::group(['prefix' => 'empresa', 'middleware' => ['role:empresa']], function() {
       Route::get('/vacantes', 'Empresa\VacanteController@index');

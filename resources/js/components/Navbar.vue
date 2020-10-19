@@ -126,19 +126,6 @@
                     </ul>
                   </div>
                 </div>
-                <div class="login_pop after_login">
-                  <button class="btn btn-msg">
-                    <i class="fas fa-envelope" />
-                    <span class="msg-count">2</span>
-                  </button>
-                  <div class="login_pop_box job_seekernotifi ">
-                    <h6>Inbox</h6>
-                    <ul>
-                      <li><img alt="" src="assets/images/c-logo-02.webp"><a href="staff-profile-single.html#"> Thanks for applying this job, our HR team will contact you soon</a> </li>
-                      <li><img alt="" src="assets/images/profile-5.png"><a href="staff-profile-single.html#">You updated your profile picture .</a> </li>
-                    </ul>
-                  </div>
-                </div>
               </div>
               <div v-else class="ac_nav">
                 <!--Not logedin-->

@@ -16,6 +16,7 @@ class Vacante extends Model
     'experiencia',
     'sueldo',
     'estado_id',
+    'user_id',
     'comentario',
     'telefono',
     'email',

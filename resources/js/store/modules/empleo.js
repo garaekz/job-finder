@@ -30,11 +30,9 @@ export const mutations = {
 // actions
 export const actions = {
   async fetchSingleVacante ({ commit }, id) {
-    console.log(id)
     if (id) {
       try {
         const { data } = await axios.get(`/api/vacantes/${id}`)
-        console.log(data)
         commit(types.SET_SINGLE_VACANTE, data)
         return data
       } catch (e) {
@@ -55,11 +53,29 @@ export const actions = {
   async fetchEmpresaVacantes ({ commit }, page = 1) {
     try {
       const { data } = await axios.get(`/api/empresa/vacantes?page=${page}`)
-      console.log(data)
       commit(types.SET_EMPRESA_VACANTES, data)
       return data
     } catch (e) {
       console.log(e)
     }
+  },
+  async saveVacante ({ commit }, payload) {
+    try {
+      const { data } = await axios.post(`/api/vacantes`, payload)
+      return data
+    } catch (e) { }
+  },
+  async updateVacante ({ commit }, payload) {
+    try {
+      const id = payload.id
+      const { data } = await axios.put(`/api/vacantes/${id}`, payload)
+      return data
+    } catch (e) { }
+  },
+  async deleteVacante ({ commit }, id) {
+    try {
+      const { data } = await axios.delete(`/api/vacantes/${id}`)
+      return data
+    } catch (e) { }
   }
 }

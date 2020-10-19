@@ -6,7 +6,8 @@ export const state = {
   estados: [],
   municipios: [],
   estados_civiles: [],
-  areas_especialidad: []
+  areas_especialidad: [],
+  prestaciones: []
 }
 
 // getters
@@ -14,7 +15,8 @@ export const getters = {
   estados: state => state.estados,
   municipios: state => state.municipios,
   estados_civiles: state => state.estados_civiles,
-  areas_especialidad: state => state.areas_especialidad
+  areas_especialidad: state => state.areas_especialidad,
+  prestaciones: state => state.prestaciones
 }
 
 // mutations
@@ -30,6 +32,9 @@ export const mutations = {
   },
   [types.SET_AREAS_ESPECIALIDAD] (state, { data }) {
     state.areas_especialidad = data
+  },
+  [types.SET_PRESTACIONES] (state, { data }) {
+    state.prestaciones = data
   }
 }
 
@@ -71,4 +76,13 @@ export const actions = {
       console.log(e)
     }
   },
+  async fetchPrestaciones ({ commit }, payload) {
+    try {
+      const { data } = await axios.get(`/api/prestaciones`)
+      commit(types.SET_PRESTACIONES, { data })
+      return data
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }

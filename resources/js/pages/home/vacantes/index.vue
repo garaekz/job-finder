@@ -1,7 +1,16 @@
 <template>
   <div class="col-sm-12">
-    <div class="jm_headings">
-      <h5>Mis vacantes publicadas</h5>
+    <div class="">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Mis vacantes publicadas</h5>
+        </div>
+        <div class="col-md-6 text-right">
+          <router-link class="btn btn-success" :to="{ name: 'home.vacantes.new' }">
+            Nueva vacante
+          </router-link>
+        </div>
+      </div>
     </div>
     <div class="section-divider" />
     <div class="row">
@@ -25,16 +34,16 @@
                   <h6>{{ vacante.puesto }}</h6>
                   <ul class="job-dashboard-actions">
                     <li>
-                      <a href="#" class="job-dashboard-action-edit">
+                      <router-link :to="{ name: 'home.vacantes.edit', params: { id: vacante.id.toString() } }" class="job-dashboard-action-edit">
                         Editar
-                      </a>
+                      </router-link>
                     </li>
                     <li>
                       <a href="#" class="job-dashboard-action-mark_filled">
                         Desactivar</a>
                     </li>
                     <li>
-                      <a href="#" class="job-dashboard-action-delete">
+                      <a href="javascript:void(0);" class="job-dashboard-action-delete" @click="borrarVacante(vacante.id)">
                         Borrar
                       </a>
                     </li>
@@ -72,6 +81,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import Swal from 'sweetalert2'
 
 export default {
   middleware: 'auth',
@@ -99,8 +109,33 @@ export default {
   methods: {
     ...mapActions({
       setTitle: 'page/setTitle',
-      fetchEmpresaVacantes: 'empleo/fetchEmpresaVacantes'
-    })
+      fetchEmpresaVacantes: 'empleo/fetchEmpresaVacantes',
+      deleteVacante: 'empleo/deleteVacante'
+    }),
+    borrarVacante (id) {
+      console.log(id)
+      Swal.fire({
+        type: 'warning',
+        title: '¿Estás seguro?',
+        showCancelButton: true,
+        text: 'La vacante se eliminará por completo y no podrás recuperarla',
+        reverseButtons: true,
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.value) {
+          this.deleteVacante(id).then(() => {
+            Swal.fire({
+              type: 'success',
+              title: 'Se ha eliminado exitosamente',
+              showConfirmButton: true,
+              timer: 1500
+            })
+            this.fetchEmpresaVacantes()
+          })
+        }
+      })
+    }
   }
 }
 </script>

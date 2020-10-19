@@ -6,6 +6,7 @@ use App\CivilStatus;
 use App\Especialidad;
 use App\Estado;
 use App\Municipio;
+use App\Prestacion;
 use Illuminate\Http\Request;
 
 class ResourcesController extends Controller
@@ -25,5 +26,9 @@ class ResourcesController extends Controller
   public function areaEspecialidad()
   {
     return response()->json(Especialidad::all());
+  }
+  public function prestaciones()
+  {
+    return response()->json(Prestacion::all());
   }
 }

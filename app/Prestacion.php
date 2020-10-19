@@ -12,4 +12,11 @@ class Prestacion extends Model
   protected $fillable = [
     'name'
   ];
+  /**
+   * Las Vacantes que pertenecen a esta Prestacion.
+   */
+  public function vacantes()
+  {
+      return $this->belongsToMany(Vacante::class);
+  }
 }

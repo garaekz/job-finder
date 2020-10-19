@@ -25,7 +25,9 @@ export default [
     component: page('home/index.vue'),
     children: [
       { path: '', name: 'home', component: page('home/profile.vue') },
-      { path: 'vacantes', name: 'home.vacantes', component: page('home/vacantes.vue') },
+      { path: 'vacantes', name: 'home.vacantes', component: page('home/vacantes/index.vue') },
+      { path: 'vacantes/new', name: 'home.vacantes.new', component: page('home/vacantes/create.vue') },
+      { path: 'vacantes/:id/edit', name: 'home.vacantes.edit', component: page('home/vacantes/edit.vue'), props: true },
     ]
   },
   { path: '/settings',

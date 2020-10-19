@@ -365,7 +365,7 @@
           </div>
         </div>
       </div>
-      <div v-if="role === 'aspirante'" class="col-md-6">
+      <div v-if="role && role === 'aspirante'" class="col-md-6">
         <div class="big_form_group">
           <h4>
             Formación <button type="button" class="btn btn-success btn-sm">
@@ -374,9 +374,10 @@
           </h4>
         </div>
       </div>
-      <div v-if="role === 'aspirante'" class="col-md-6">
+      <div v-if="role && role === 'aspirante'" class="col-md-6">
         <div class="big_form_group">
-          <h4>Experiencia laboral <button type="button" class="btn btn-success btn-sm">
+          <h4>
+            Experiencia laboral <button type="button" class="btn btn-success btn-sm">
               Agregar
             </button>
           </h4>
