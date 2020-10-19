@@ -89,7 +89,6 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  middleware: 'guest',
   props: {
     id: { type: String, default: '' }
   },

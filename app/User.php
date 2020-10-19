@@ -77,6 +77,16 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     }
 
     /**
+     * Retorna el perfil segun el tipo de usuario.
+     *
+     * @return bool
+     */
+    public function getCanPostAttribute()
+    {
+      $compra
+    }
+
+    /**
      * Retorna el primer rol del user.
      *
      * @return string

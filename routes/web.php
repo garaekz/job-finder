@@ -19,3 +19,6 @@ use Illuminate\Support\Facades\Route;
     dd($test);
 });
  */
+
+Route::get('/paypal/pay', 'PaymentController@payWithPayPal');
+Route::get('/paypal/status', 'PaymentController@payPalStatus');

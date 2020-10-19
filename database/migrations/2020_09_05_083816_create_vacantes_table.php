@@ -35,6 +35,8 @@ class CreateVacantesTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('email')->nullable();
             $table->unsignedBigInteger('user_id');
+            $table->string('is_active')->default(true);
+            $table->dateTime('finish_at');
             $table->timestamps();
 
             $table->foreign('estado_id')->references('id')->on('estados')

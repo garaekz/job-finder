@@ -13,6 +13,7 @@
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "paypal/rest-api-sdk-php": "^1.14",
         "santigarcor/laratrust": "^6.1",
         "tymon/jwt-auth": "^1.0.0"
     },

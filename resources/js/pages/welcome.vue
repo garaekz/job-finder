@@ -439,7 +439,9 @@
                 <li><i class="fas fa-check" />Subir cv + portafolio</li>
                 <li><i class="fas fa-check" />Conectar con clientes</li>
               </ul>
-              <a class="btn btn-third" href="index.html#">Unirse Ahora</a>
+              <router-link :to="{ name: 'register', params: {type: 'empresa' } }" class="btn btn-third">
+                Unirse Ahora
+              </router-link>
             </div>
           </div>
           <div class="col-md-4">
@@ -465,7 +467,10 @@
                 <li><i class="fas fa-check" />Subir cv + portafolio</li>
                 <li><i class="fas fa-check" />Conectar con clientes</li>
               </ul>
-              <a class="btn btn-third" href="index.html#">Mejorar a Plan Destacado</a>
+              <a v-if="authenticated" class="btn btn-third" :href="`/paypal/pay?user_id=${user.id}&plan_id=2`" target="_blank">Mejorar a Plan Destacado</a>
+              <router-link v-else :to="{ name: 'register', params: {type: 'empresa' } }" class="btn btn-third">
+                Mejorar a Plan Destacado
+              </router-link>
             </div>
           </div>
           <div class="col-md-4" data-aos="fade-right" data-aos-delay="600">
@@ -490,7 +495,10 @@
                 <li><i class="fas fa-check" />Subir cv + portafolio</li>
                 <li><i class="fas fa-check" />Conectar con clientes</li>
               </ul>
-              <a class="btn btn-third" href="index.html#">Mejorar a Plan Plus</a>
+              <a v-if="authenticated" class="btn btn-third" :href="`/paypal/pay?user_id=${user.id}&plan_id=3`" target="_blank">Mejorar a Plan Destacado</a>
+              <router-link v-else :to="{ name: 'register', params: {type: 'empresa' } }" class="btn btn-third">
+                Mejorar a Plan Plus
+              </router-link>
             </div>
           </div>
         </div>
@@ -614,7 +622,8 @@ export default {
     plan: false
   }),
   computed: mapGetters({
-    authenticated: 'auth/check'
+    authenticated: 'auth/check',
+    user: 'auth/user'
   })
 }
 </script>

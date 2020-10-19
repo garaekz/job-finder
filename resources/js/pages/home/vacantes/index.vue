@@ -38,10 +38,10 @@
                         Editar
                       </router-link>
                     </li>
-                    <li>
+                    <!-- <li>
                       <a href="#" class="job-dashboard-action-mark_filled">
                         Desactivar</a>
-                    </li>
+                    </li> -->
                     <li>
                       <a href="javascript:void(0);" class="job-dashboard-action-delete" @click="borrarVacante(vacante.id)">
                         Borrar

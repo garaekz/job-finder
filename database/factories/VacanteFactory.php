@@ -19,5 +19,6 @@ $factory->define(Vacante::class, function (Faker $faker) {
         'comentario' => $faker->paragraph(8, true),
         'telefono' => $faker->phoneNumber,
         'email' => $faker->email,
+        'finish_at' => '2100-01-01 00:00:00',
     ];
 });
