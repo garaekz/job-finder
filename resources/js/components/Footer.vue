@@ -18,9 +18,6 @@
               <li>
                 <a href="edit-profile.html">Update my profile</a>
               </li>
-              <li>
-                <a href="edit-password.html">Change password</a>
-              </li>
             </ul>
           </div>
         </div>
@@ -42,9 +39,6 @@
               </li>
               <li>
                 <a href="emp-edit-profile.html">Update profile</a>
-              </li>
-              <li>
-                <a href="emp-edit-password.html">Change password</a>
               </li>
             </ul>
           </div>

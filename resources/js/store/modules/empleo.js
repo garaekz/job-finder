@@ -50,6 +50,14 @@ export const actions = {
       console.log(e)
     }
   },
+  async fetchNuevasVacantes ({ commit }) {
+    try {
+      const { data } = await axios.get(`/api/vacantes?nuevas=true`)
+      return data
+    } catch (e) {
+      console.log(e)
+    }
+  },
   async fetchEmpresaVacantes ({ commit }, page = 1) {
     try {
       const { data } = await axios.get(`/api/empresa/vacantes?page=${page}`)
@@ -63,7 +71,9 @@ export const actions = {
     try {
       const { data } = await axios.post(`/api/vacantes`, payload)
       return data
-    } catch (e) { }
+    } catch (e) {
+      return { error: true }
+    }
   },
   async updateVacante ({ commit }, payload) {
     try {

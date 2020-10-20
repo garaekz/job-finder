@@ -6,9 +6,12 @@
           <h5>Mis vacantes publicadas</h5>
         </div>
         <div class="col-md-6 text-right">
-          <router-link class="btn btn-success" :to="{ name: 'home.vacantes.new' }">
+          <router-link v-if="user.can_post" class="btn btn-success" :to="{ name: 'home.vacantes.new' }">
             Nueva vacante
           </router-link>
+          <button v-else href="#" class="btn btn-danger" disabled>
+            Tu plan ha vencido
+          </button>
         </div>
       </div>
     </div>
@@ -21,7 +24,6 @@
               <tr>
                 <th>Nombre del puesto</th>
                 <th>Empresa</th>
-                <th>Status</th>
                 <th>Fecha de publicación</th>
                 <th>Fecha de finalización</th>
                 <th>Interesados</th>
@@ -53,13 +55,10 @@
                   {{ vacante.empresa }}
                 </td>
                 <td>
-                  2
-                </td>
-                <td>
                   {{ $moment(vacante.created_at).format('DD/MM/YYYY') }}
                 </td>
                 <td>
-                  2020/10/01
+                  {{ $moment(vacante.finish_at).format('DD/MM/YYYY') }}
                 </td>
                 <td>
                   1

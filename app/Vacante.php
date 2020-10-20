@@ -24,6 +24,7 @@ class Vacante extends Model
     'otras_prestaciones',
     'actividades',
     'descripcion',
+    'finish_at'
   ];
   /**
    * El Estado al que pertenece la Vacante.

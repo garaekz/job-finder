@@ -4,6 +4,7 @@ namespace App;
 
 use App\Notifications\ResetPassword;
 use App\Notifications\VerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -51,6 +52,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
         'perfil',
         'role',
         'photo_url',
+        'can_post'
     ];
 
     /**
@@ -83,7 +85,11 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
      */
     public function getCanPostAttribute()
     {
-      $compra
+      $compra = Compra::where([
+        ['user_id', $this->id],
+        ['finish_at', '>', Carbon::now()->toDateTimeString()]
+      ])->first();
+      return $compra ? true : false;
     }
 
     /**

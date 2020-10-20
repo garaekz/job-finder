@@ -133,270 +133,56 @@
       </div>
       <div class="container">
         <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
-          Trabajos Destacados
+          Nuevos Empleos
         </h2>
         <div class="row two_col featured_box_outer">
-          <div class="col-sm-6">
+          <div v-for="vacante in vacantes" :key="vacante.id" class="col-sm-6">
             <div class="featured_box ">
               <div class="fb_image">
                 <a href="compnay-profile-single.html">
-                  <img alt="brand logo" src="/images/c-logo-01.webp">
+                  <img alt="brand logo" :src="vacante.user.perfil.logo">
                 </a>
               </div>
               <div class="fb_content">
                 <h4>
-                  <a href="job-single.html">2000 Words English to German</a>
+                  <a href="job-single.html"> {{ vacante.puesto }}</a>
                 </h4>
                 <ul>
                   <li>
                     <a href="index.html#">
                       <i class="fas fa-landmark" />
-                      Magna Aliqua
+                      {{ vacante.empresa }}
                     </a>
                   </li>
                   <li>
                     <a href="index.html#">
                       <i class="fas fa-map-marker-alt" />
-                      New York
+                      {{ vacante.estado.name }}
                     </a>
                   </li>
                   <li>
                     <a href="index.html#">
                       <i class="far fa-clock" />
-                      2 days ago
+                      {{ $moment(vacante.created_at).fromNow() }}
                     </a>
                   </li>
                 </ul>
               </div>
               <div class="fb_action">
-                <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a>
-                <a class="btn btn-third" href="job-single.html">Apply Now</a>
+                <!-- <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a> -->
+                <router-link :to="{ name: 'empleos.ver', params: { id: vacante.id }}" class="btn btn-third">
+                  Ver vacante
+                </router-link>
                 <ul class="tags">
-                  <li>copywriting</li>
+                  <!-- <li>copywriting</li>
                   <li>translating</li>
-                  <li>editing</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="featured_box ">
-              <div class="fb_image">
-                <a href="compnay-profile-single.html">
-                  <img alt="brand logo" src="/images/c-logo-02.webp">
-                </a>
-              </div>
-              <div class="fb_content">
-                <h4>
-                  <a href="job-single.html">Fix Python Selenium Code</a>
-                </h4>
-                <ul>
-                  <li>
-                    <a href="index.html#">
-                      <i class="fas fa-landmark" />
-                      Magna Aliqua
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.html#">
-                      <i class="fas fa-map-marker-alt" />
-                      New York
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.html#">
-                      <i class="far fa-clock" />
-                      3 days ago
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="fb_action">
-                <a title="add to favourite" href="index.html#"><i class="fas fa-heart" /></a>
-                <a class="btn btn-third" href="job-single.html">Apply Now</a>
-                <ul class="tags">
-                  <li>Python</li>
-                  <li>Flask</li>
-                  <li>API Development</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="featured_box ">
-              <div class="fb_image">
-                <a href="compnay-profile-single.html">
-                  <img alt="brand logo" src="/images/c-logo-03.webp">
-                </a>
-              </div>
-              <div class="fb_content">
-                <h4>
-                  <a href="job-single.html">Restaurant General Manager</a>
-                </h4>
-                <ul>
-                  <li>
-                    <a href="index.html#">
-                      <i class="fas fa-landmark" />
-                      Magna Aliqua
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.html#">
-                      <i class="fas fa-map-marker-alt" />
-                      New York
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.html#">
-                      <i class="far fa-clock" />
-                      5 days ago
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="fb_action">
-                <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a>
-                <a class="btn btn-third disabled" href="job-single.html">Applied</a>
-                <ul class="tags">
-                  <li>Python</li>
-                  <li>Flask</li>
-                  <li>API Development</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="featured_box ">
-              <div class="fb_image">
-                <a href="compnay-profile-single.html">
-                  <img alt="brand logo" src="/images/c-logo-05.webp">
-                </a>
-              </div>
-              <div class="fb_content">
-                <h4>
-                  <a href="job-single.html">PHP Core Website Fixes</a>
-                </h4>
-                <ul>
-                  <li>
-                    <a href="index.html#">
-                      <i class="fas fa-landmark" />
-                      Magna Aliqua
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.html#">
-                      <i class="fas fa-map-marker-alt" />
-                      New York
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.html#">
-                      <i class="far fa-clock" />
-                      5 days ago
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="fb_action">
-                <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a>
-                <a class="btn btn-third" href="job-single.html">Apply Now</a>
-                <ul class="tags">
-                  <li>PHP</li>
-                  <li>MySQL </li>
-                  <li>API Development</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="featured_box ">
-              <div class="fb_image">
-                <a href="compnay-profile-single.html">
-                  <img alt="brand logo" src="/images/c-logo-05.webp">
-                </a>
-              </div>
-              <div class="fb_content">
-                <h4>
-                  <a href="job-single.html">Restaurant General Manager</a>
-                </h4>
-                <ul>
-                  <li>
-                    <a href="index.html#">
-                      <i class="fas fa-landmark" />
-                      Magna Aliqua
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.html#">
-                      <i class="fas fa-map-marker-alt" />
-                      New York
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.html#">
-                      <i class="far fa-clock" />
-                      7 days ago
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="fb_action">
-                <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a>
-                <a class="btn btn-third" href="job-single.html">Apply Now</a>
-                <ul class="tags">
-                  <li>PHP</li>
-                  <li>MySQL </li>
-                  <li>API Development</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="featured_box ">
-              <div class="fb_image">
-                <a href="compnay-profile-single.html">
-                  <img alt="brand logo" src="/images/c-logo-05.webp">
-                </a>
-              </div>
-              <div class="fb_content">
-                <h4>
-                  <a href="job-single.html">Food Delviery Mobile App</a>
-                </h4>
-                <ul>
-                  <li>
-                    <a href="index.html#">
-                      <i class="fas fa-landmark" />
-                      Magna Aliqua
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.html#">
-                      <i class="fas fa-map-marker-alt" />
-                      New York
-                    </a>
-                  </li>
-                  <li>
-                    <a href="index.html#">
-                      <i class="far fa-clock" />
-                      9 days ago
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="fb_action">
-                <a title="add to favourite" href="index.html#"><i class="far fa-heart" /></a>
-                <a class="btn btn-third" href="job-single.html">Apply Now</a>
-                <ul class="tags">
-                  <li>IOS</li>
-                  <li>Android</li>
-                  <li>mobile apps</li>
-                  <li>design</li>
+                  <li>editing</li> -->
                 </ul>
               </div>
             </div>
           </div>
           <div class="col-md-12 text-right">
-            <a data-aos="fade-down" data-aos-delay="400" class="btn btn-primary" href="browse-jobs.html">Browse All Jobs <i class="fas fa-long-arrow-alt-right" /></a>
+            <a data-aos="fade-down" data-aos-delay="400" class="btn btn-primary" href="/empleos">Ver todos los empleos <i class="fas fa-long-arrow-alt-right" /></a>
           </div>
         </div>
       </div>
@@ -608,23 +394,35 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import carousel from 'vue-owl-carousel'
 
 export default {
   components: { carousel },
+
   metaInfo () {
     return { title: this.$t('home') }
   },
-
   data: () => ({
     title: window.config.appName,
-    plan: false
+    plan: false,
+    vacantes: []
   }),
   computed: mapGetters({
     authenticated: 'auth/check',
     user: 'auth/user'
-  })
+  }),
+  mounted () {
+    this.fetchNuevasVacantes().then((res) => {
+      console.log(res)
+      this.vacantes = res
+    })
+  },
+  methods: {
+    ...mapActions({
+      fetchNuevasVacantes: 'empleo/fetchNuevasVacantes'
+    })
+  }
 }
 </script>
 

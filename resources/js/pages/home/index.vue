@@ -4,13 +4,13 @@
       <div class="row job_main">
         <div class="sidebar">
           <ul class="user_navigation">
-            <li>
+            <!-- <li>
               <a href="browse-jobs.html"><i class="fas fa-search" /> Buscar empleos </a>
               <a class="filter_btn" href="job-seeker-dashboard.html#sidebar_filter_option">
                 <i class="fas fa-filter" />
                 <i class="fas fa-times" />
               </a>
-            </li>
+            </li> -->
             <li>
               <form id="#sidebar_filter_option" class="filter_option">
                 <div class="form-group">
@@ -121,16 +121,13 @@
             </li>
           </ul>
           <h5 v-if="user">
-            Account
+            Cuenta
           </h5>
           <ul v-if="user" class="user_navigation">
             <li>
               <router-link :to="{ name: 'home' }">
                 <i class="fas fa-user" /> Ver mi perfil
               </router-link>
-            </li>
-            <li>
-              <a href="edit-password.html"><i class="fas fa-key" />Change Password</a>
             </li>
             <li>
               <a href="#logout" @click="logout"><i class="fas fa-power-off" /> Logout</a>
@@ -149,6 +146,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
 export default {
   name: 'HomeLayout',
 

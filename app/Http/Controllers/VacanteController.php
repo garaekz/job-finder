@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Prestacion;
 use App\Vacante;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -15,8 +16,11 @@ class VacanteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+      if ($request->nuevas) {
+        return Vacante::with(['estado','user'])->orderBy('id', 'desc')->limit(6)->get();
+      }
       return Vacante::with(['estado','user'])->orderBy('id', 'desc')->paginate(15);
     }
 
@@ -43,9 +47,10 @@ class VacanteController extends Controller
         'email' => 'required',
         'prestaciones' => 'required'
       ]);
-
+      $finish_at = Carbon::now()->addDays(60)->format('Y-m-d H:i:s');
       $data = $request->all();
       $data['user_id'] = Auth::id();
+      $data['finish_at'] = $finish_at;
 
       try {
         DB::beginTransaction();
@@ -56,7 +61,7 @@ class VacanteController extends Controller
         return response()->json($vacante);
       } catch (\Illuminate\Database\QueryException $e) {
         DB::rollBack();
-        return response()->json(['error' => 'Error al guardar los datos'], 500);
+        return response()->json(['error' => 'Error al guardar los datos'], 422);
       }
     }
 

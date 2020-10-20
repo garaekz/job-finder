@@ -396,6 +396,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import Swal from 'sweetalert2'
 
 export default {
   middleware: 'auth',
@@ -434,6 +435,25 @@ export default {
         url = this.user.perfil.foto ?? '/images/avatar-placeholder.png'
       }
       this.fileList.push({ url: url })
+    }
+    console.log(this.$route.query.status)
+    if (this.$route.query.status) {
+      switch (this.$route.query.status) {
+        case 'success':
+          Swal.fire({
+            type: 'success',
+            title: 'La compra se ha realizado exitosamente',
+            showConfirmButton: true
+          })
+          break
+        case 'error':
+          Swal.fire({
+            type: 'error',
+            title: 'No se ha podido realizar el pago, verifica con tu servicio bancario',
+            showConfirmButton: true
+          })
+          break
+      }
     }
   },
   methods: {

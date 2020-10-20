@@ -75,19 +75,16 @@
                       </div>
                     </div>
                     <ul>
-                      <li>
+                      <!-- <li>
                         <a href="browse-jobs.html"><i class="fas fa-search" /> Browse Jobs </a>
                       </li>
                       <li>
                         <a href="my-stared-jobs.html"><i class="fas fa-star" /> View My Stared Jobs</a>
-                      </li>
+                      </li> -->
                       <li>
                         <router-link :to="{ name: 'home' }">
                           <i class="fas fa-user" /> Ver mi perfil
                         </router-link>
-                      </li>
-                      <li>
-                        <a href="edit-password.html"><i class="fas fa-key" />Change Password</a>
                       </li>
                       <li>
                         <a href="#" @click="logout">
@@ -104,19 +101,16 @@
                       </div>
                     </div>
                     <ul>
-                      <li>
+                      <!-- <li>
                         <a href="browse-jobs.html"><i class="fas fa-search" /> Browse Jobs </a>
                       </li>
                       <li>
                         <a href="my-stared-jobs.html"><i class="fas fa-star" /> View My Stared Jobs</a>
-                      </li>
+                      </li> -->
                       <li>
                         <router-link :to="{ name: 'home' }">
                           <i class="fas fa-user" /> Ver mi perfil
                         </router-link>
-                      </li>
-                      <li>
-                        <a href="edit-password.html"><i class="fas fa-key" />Change Password</a>
                       </li>
                       <li>
                         <a href="#" @click="logout">
@@ -200,9 +194,9 @@
                           </select> -->
                         </div>
                         <div class="fild-wrap fw-submit">
-                          <button type="submit" class="btn btn-primary" value="">
+                          <router-link :to="{ name: 'empleos' }" class="btn btn-primary">
                             <i class="material-icons">search</i> BUSCAR
-                          </button>
+                          </router-link>
                         </div>
                       </div>
                     </form>

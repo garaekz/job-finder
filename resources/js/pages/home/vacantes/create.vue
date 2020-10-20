@@ -154,6 +154,7 @@ import { mapActions, mapGetters } from 'vuex'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import { quillEditor } from 'vue-quill-editor'
+import Swal from 'sweetalert2'
 
 export default {
   middleware: 'auth',
@@ -206,8 +207,17 @@ export default {
       saveVacante: 'empleo/saveVacante'
     }),
     onSaveVacante () {
-      this.saveVacante(this.vacante).then(() => {
-        this.$router.push({ name: 'home.vacantes' })
+      this.saveVacante(this.vacante).then(res => {
+        if (res.error) {
+          Swal.fire({
+            type: 'error',
+            title: 'No se ha podido guardar el registro, verifica tu formulario',
+            showConfirmButton: true
+          })
+        } else {
+          this.$router.push({ name: 'home.vacantes' })
+        }
+        console.log(res)
       })
     }
   }
