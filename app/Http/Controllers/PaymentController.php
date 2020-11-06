@@ -9,12 +9,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use PayPal\Api\Amount;
+use PayPal\Api\Item;
+use PayPal\Api\ItemList;
 use PayPal\Api\Payer;
 use PayPal\Api\Payment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Auth\OAuthTokenCredential;
+use PayPal\Exception\PayPalConnectionException;
 use PayPal\Rest\ApiContext;
 
 class PaymentController extends Controller
@@ -50,7 +53,18 @@ class PaymentController extends Controller
         $amount->setTotal($plan->price);
         $amount->setCurrency('MXN');
 
+        $item = new Item();
+        //$item->setSku('Product Id');
+        $item->setName($plan->name);
+        $item->setPrice($plan->price);
+        $item->setCurrency('MXN');
+        $item->setQuantity(1);
+
+        $itemList = new ItemList();
+        $itemList->setItems(array($item));
+
         $transaction = new Transaction();
+        $transaction->setItemList($itemList);
         $transaction->setAmount($amount);
         $transaction->setDescription($plan->name);
 
@@ -100,25 +114,14 @@ class PaymentController extends Controller
         if ($result->getState() === 'approved') {
           $currentTimestamp = Carbon::now();
           $plan = Plan::find($plan_id);
-          $alreadyPlan = Compra::where([
-              ['user_id', $user_id],
-              ['plan_id', $plan_id],
-              ['finish_at', '>', $currentTimestamp]
-          ])->first();
 
           //Inicializamos compra
           $compra = new Compra;
           $compra->user_id = $user_id;
           $compra->plan_id = $plan_id;
           $compra->price = $plan->price;
-
-          if($alreadyPlan){
-              $compra->start_at = $alreadyPlan->finish_at;
-              $compra->finish_at = Carbon::createFromFormat('Y-m-d H:i:s', $alreadyPlan->finish_at)->addDays(30)->format('Y-m-d H:i:s');
-          }else{
-              $compra->start_at = $currentTimestamp;
-              $compra->finish_at = $currentTimestamp->addDays(30)->format('Y-m-d H:i:s');
-          }
+          $compra->start_at = $currentTimestamp;
+          $compra->finish_at = $currentTimestamp->addDays(30)->format('Y-m-d H:i:s');
           $compra->save();
 
           return redirect('/home?status=success');

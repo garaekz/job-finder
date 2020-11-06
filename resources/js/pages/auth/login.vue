@@ -18,7 +18,7 @@
                   <input class="btn btn-primary" type="submit" value="Ingresar">
                 </div>
                 <div class="form-group form-check">
-                  <checkbox v-model="remember" name="remember">
+                  <checkbox v-model="form.remember" name="remember">
                     {{ $t('remember_me') }}
                   </checkbox>
                 </div>

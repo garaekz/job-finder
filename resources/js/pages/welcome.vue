@@ -219,11 +219,9 @@
               </div>
               <h5>Características del Plan Básico</h5>
               <ul>
-                <li><i class="fas fa-check" />10 visualizaciones Gratis x Mes</li>
+                <li><i class="fas fa-check" />1 publicación gratis x 30 días</li>
                 <li><i class="fas fa-check" />Acceso a la plataforma</li>
                 <li><i class="fas fa-check" />Gestion de perfil</li>
-                <li><i class="fas fa-check" />Subir cv + portafolio</li>
-                <li><i class="fas fa-check" />Conectar con clientes</li>
               </ul>
               <router-link :to="{ name: 'register', params: {type: 'empresa' } }" class="btn btn-third">
                 Unirse Ahora
@@ -245,15 +243,12 @@
               </div>
               <h5>Características del Plan Destacado</h5>
               <ul>
-                <li><i class="fas fa-check" />10 visualizaciones Gratis x Mes</li>
-                <li><i class="fas fa-check" />60 días de publicación</li>
-                <li><i class="fas fa-check" />Visualización de perfiles (30 días)</li>
+                <li><i class="fas fa-check" />30 visualizaciones Gratis x Mes</li>
+                <li><i class="fas fa-check" />4 publicaciones x 30 días</li>
                 <li><i class="fas fa-check" />Acceso a la plataforma</li>
                 <li><i class="fas fa-check" />Gestion de perfil</li>
-                <li><i class="fas fa-check" />Subir cv + portafolio</li>
-                <li><i class="fas fa-check" />Conectar con clientes</li>
               </ul>
-              <a v-if="authenticated" class="btn btn-third" :href="`/paypal/pay?user_id=${user.id}&plan_id=2`" target="_blank">Mejorar a Plan Destacado</a>
+              <a v-if="authenticated" class="btn btn-third" :href="`/paypal/pay?user_id=${user.id}&plan_id=${plan ? 4 : 2}`" target="_blank">Mejorar a Plan Destacado</a>
               <router-link v-else :to="{ name: 'register', params: {type: 'empresa' } }" class="btn btn-third">
                 Mejorar a Plan Destacado
               </router-link>
@@ -271,17 +266,14 @@
               </div>
               <h5>Características del Plan Plus</h5>
               <ul>
-                <li><i class="fas fa-check" />10 visualizaciones Gratis x Mes</li>
-                <li><i class="fas fa-check" />60 días de publicación</li>
-                <li><i class="fas fa-check" />Visualización de perfiles (30 días)</li>
-                <li><i class="fas fa-check" />Filtros Especializados</li>
-                <li><i class="fas fa-check" />Oferta Urgente (2) X (30 días)</li>
+                <li><i class="fas fa-check" />Visualizaciones ilimitadas</li>
+                <li><i class="fas fa-check" />4 publicaciones x 30 días</li>
+                <li><i class="fas fa-check" />Filtros Avanzados</li>
+                <li><i class="fas fa-check" />2 Publicaciones Urgentes x 30 días</li>
                 <li><i class="fas fa-check" />Acceso a la plataforma</li>
                 <li><i class="fas fa-check" />Gestion de perfil</li>
-                <li><i class="fas fa-check" />Subir cv + portafolio</li>
-                <li><i class="fas fa-check" />Conectar con clientes</li>
               </ul>
-              <a v-if="authenticated" class="btn btn-third" :href="`/paypal/pay?user_id=${user.id}&plan_id=3`" target="_blank">Mejorar a Plan Destacado</a>
+              <a v-if="authenticated" class="btn btn-third" :href="`/paypal/pay?user_id=${user.id}&plan_id=${plan ? 5 : 3}`" target="_blank">Mejorar a Plan Destacado</a>
               <router-link v-else :to="{ name: 'register', params: {type: 'empresa' } }" class="btn btn-third">
                 Mejorar a Plan Plus
               </router-link>
@@ -335,7 +327,7 @@
         </div>
       </div>
     </div>
-    <div class="section gray  partner_section">
+    <!-- <div class="section gray  partner_section">
       <div class="bg-v">
         <div class="bg-v-1 bg-t-l" />
         <div class="bg-v-3 bg-b-r" />
@@ -356,40 +348,8 @@
           <a href="index.html#"><img alt="brand logo" src="/images/company-logo-4.png"></a>
           <a href="index.html#"><img alt="brand logo" src="/images/company-logo-5.png"></a>
         </carousel>
-        <!-- <ul class="partner_carousel owl-carousel owl-theme">
-          <li>
-            <a href="index.html#"><img  alt="brand logo" src="/images/company-logo-1.svg"></a>
-          </li>
-          <li>
-            <a href="index.html#"><img   alt="brand logo" src="/images/company-logo-2.svg"></a>
-          </li>
-          <li>
-            <a href="index.html#"><img   alt="brand logo" src="/images/company-logo-3.svg"></a>
-          </li>
-          <li>
-            <a href="index.html#"><img  alt="brand logo" src="/images/company-logo-4.png"></a>
-          </li>
-          <li>
-            <a href="index.html#"><img   alt="brand logo" src="/images/company-logo-5.png"></a>
-          </li>
-          <li>
-            <a href="index.html#"><img   alt="brand logo" src="/images/company-logo-1.svg"></a>
-          </li>
-          <li>
-            <a href="index.html#"><img  alt="brand logo" src="/images/company-logo-2.svg"></a>
-          </li>
-          <li>
-            <a href="index.html#"><img  alt="brand logo" src="/images/company-logo-3.svg"></a>
-          </li>
-          <li>
-            <a href="index.html#"><img   alt="brand logo" src="/images/company-logo-4.png"></a>
-          </li>
-          <li>
-            <a href="index.html#"><img  alt="brand logo" src="/images/company-logo-5.png"></a>
-          </li>
-        </ul> -->
       </div>
-    </div>
+    </div> -->
   </main>
 </template>
 

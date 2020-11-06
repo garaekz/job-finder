@@ -32,6 +32,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/vacantes/{id}', 'VacanteController@update');
     Route::delete('/vacantes/{id}', 'VacanteController@destroy');
 
+    Route::apiResource('/experiencia', 'ExperienciaController');
+    Route::apiResource('/formacion', 'FormacionController');
+
     Route::group(['prefix' => 'empresa', 'middleware' => ['role:empresa']], function() {
       Route::get('/vacantes', 'Empresa\VacanteController@index');
   });

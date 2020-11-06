@@ -1,9 +1,11 @@
 <?php
 
+use App\Compra;
 use App\PerfilEmpresa;
 use App\Prestacion;
 use App\Role;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DummySeeder extends Seeder
@@ -43,8 +45,18 @@ class DummySeeder extends Seeder
         $user->perfil_empresa()->save($perfil);
       }
 
+      $currentTimestamp = Carbon::now();
+
+      $compra = Compra::create([
+        'user_id' => $user->id,
+        'plan_id' => 3,
+        'price' => 2300,
+        'start_at' => $currentTimestamp->format('Y-m-d H:i:s'),
+        'finish_at' => $currentTimestamp->addYears(100)->format('Y-m-d H:i:s')
+      ]);
+
       factory(App\Vacante::class, 90)
-      ->create(['user_id' => $user->id])
+      ->create(['user_id' => $user->id, 'compra_id' => $compra->id])
       ->each(function ($vacante)
       {
         $faker = Faker\Factory::create();

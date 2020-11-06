@@ -3,7 +3,7 @@
     <div class="">
       <div class="row">
         <div class="col-md-6">
-          <h5>Crear nueva vacante</h5>
+          <h5>Editar vacante</h5>
         </div>
       </div>
     </div>

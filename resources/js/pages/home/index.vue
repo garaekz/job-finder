@@ -107,12 +107,12 @@
               </a>
             </li> -->
           </ul>
-          <h5>Organizar y Administrar</h5>
+          <!-- <h5>Organizar y Administrar</h5>
           <ul v-if="user && user.role === 'aspirante'" class="user_navigation">
             <li>
               <a href="my-stared-jobs.html"><i class="fas fa-star" /> Ver mis empleos favoritos</a>
             </li>
-          </ul>
+          </ul> -->
           <ul v-if="user && user.role === 'empresa'" class="user_navigation">
             <li>
               <router-link :to="{ name: 'home.vacantes' }">

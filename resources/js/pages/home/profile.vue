@@ -365,22 +365,113 @@
           </div>
         </div>
       </div>
-      <div v-if="role && role === 'aspirante'" class="col-md-6">
+      <div v-if="role && role === 'aspirante' && !edit" class="col-md-6">
         <div class="big_form_group">
           <h4>
-            Formación <button type="button" class="btn btn-success btn-sm">
+            Formación <button type="button" class="btn btn-success btn-sm" @click="clearFormacion(); formacionEdit = false; dialogFormacionVisible = true">
               Agregar
             </button>
           </h4>
+          <el-table
+            :data="formaciones"
+            style="width: 100%"
+          >
+            <el-table-column
+              fixed
+              prop="lugar"
+              label="Lugar de aprendizaje"
+            />
+            <el-table-column
+              prop="inicio"
+              label="Inicio"
+            />
+            <el-table-column
+              prop="termino"
+              label="Fin"
+            />
+            <el-table-column
+              fixed="right"
+              label=""
+              width="100px"
+            >
+              <template slot-scope="scope">
+                <el-button type="primary" circle size="small" icon="el-icon-edit" @click="formacionEdit = true; dialogFormacionVisible = true; formacion = scope.row" />
+                <el-button type="danger" circle size="small" icon="el-icon-delete" @click="onDeleteFormacion(scope.row)" />
+              </template>
+            </el-table-column>
+          </el-table>
         </div>
       </div>
-      <div v-if="role && role === 'aspirante'" class="col-md-6">
+      <div v-if="role && role === 'aspirante' && !edit" class="col-md-6">
         <div class="big_form_group">
           <h4>
-            Experiencia laboral <button type="button" class="btn btn-success btn-sm">
+            Experiencia laboral <button type="button" class="btn btn-success btn-sm" @click="clearExperiencia(); experienciaEdit = false; dialogExperienciaVisible = true">
               Agregar
             </button>
           </h4>
+          <el-table
+            :data="experiencias"
+            style="width: 100%"
+          >
+            <el-table-column
+              fixed
+              prop="empresa"
+              label="Empresa"
+            />
+            <el-table-column
+              prop="inicio"
+              label="Inicio"
+            />
+            <el-table-column
+              prop="termino"
+              label="Fin"
+            />
+            <el-table-column
+              fixed="right"
+              label=""
+              width="100px"
+            >
+              <template slot-scope="scope">
+                <el-button type="primary" circle size="small" icon="el-icon-edit" @click="experienciaEdit = true; dialogExperienciaVisible = true; experiencia = scope.row" />
+                <el-button type="danger" circle size="small" icon="el-icon-delete" @click="onDeleteExperiencia(scope.row)" />
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </div>
+      <div v-if="role && role === 'aspirante' && !edit" class="col-md-12">
+        <div class="big_form_group">
+          <h4>
+            Curriculum y portafolio
+          </h4>
+          <el-table
+            :data="experiencias"
+            style="width: 100%"
+          >
+            <el-table-column
+              fixed
+              prop="empresa"
+              label="Empresa"
+            />
+            <el-table-column
+              prop="inicio"
+              label="Inicio"
+            />
+            <el-table-column
+              prop="termino"
+              label="Fin"
+            />
+            <el-table-column
+              fixed="right"
+              label=""
+              width="100px"
+            >
+              <template slot-scope="scope">
+                <el-button type="primary" circle size="small" icon="el-icon-edit" @click="experienciaEdit = true; dialogExperienciaVisible = true; experiencia = scope.row" />
+                <el-button type="danger" circle size="small" icon="el-icon-delete" @click="onDeleteExperiencia(scope.row)" />
+              </template>
+            </el-table-column>
+          </el-table>
         </div>
       </div>
     </div>
@@ -391,6 +482,109 @@
         </button>
       </div>
     </div>
+    <!-- Dialogs -->
+    <el-dialog :title="formacionEdit ? 'Editar formación':'Agregar nueva formación'" :visible.sync="dialogFormacionVisible" :width="formacionDialogWidth()">
+      <el-form :model="formacion">
+        <el-row :gutter="20">
+          <el-col :span="20">
+            <el-form-item label="Lugar de formación">
+              <el-input v-model="formacion.lugar" autocomplete="off" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="10">
+            <el-form-item label="Fecha de inicio">
+              <el-date-picker
+                v-model="formacion.inicio"
+                type="date"
+                value-format="yyyy-MM-dd"
+                placeholder="Elige la fecha"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="10">
+            <el-form-item label="Fecha de finalización">
+              <el-date-picker
+                v-model="formacion.termino"
+                type="date"
+                value-format="yyyy-MM-dd"
+                placeholder="Elige la fecha"
+              />
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormacionVisible = false">Cancelar</el-button>
+        <el-button type="primary" @click="onSaveFormacion(formacion, formacionEdit)">Guardar</el-button>
+      </span>
+    </el-dialog>
+    <el-dialog :title="experienciaEdit ? 'Editar experiencia laboral':'Agregar nueva experiencia laboral'" :visible.sync="dialogExperienciaVisible">
+      <el-form :model="experiencia">
+        <el-row :gutter="20">
+          <el-col :span="8">
+            <el-form-item label="Nombre de la empresa">
+              <el-input v-model="experiencia.empresa" autocomplete="off" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="Fecha de inicio">
+              <el-date-picker
+                v-model="experiencia.inicio"
+                type="date"
+                value-format="yyyy-MM-dd"
+                placeholder="Elige la fecha"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="Fecha de finalización">
+              <el-date-picker
+                v-model="experiencia.termino"
+                type="date"
+                value-format="yyyy-MM-dd"
+                placeholder="Elige la fecha"
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="Sueldo">
+              <el-input v-model="experiencia.sueldo" autocomplete="off" type="number" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="Puesto desempeñado">
+              <el-input v-model="experiencia.puesto" autocomplete="off" />
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="Actividades">
+              <el-input
+                v-model="experiencia.desc_actividades"
+                autocomplete="off"
+                type="textarea"
+                placeholder=""
+                show-word-limit
+              />
+            </el-form-item>
+          </el-col>
+          <el-col :span="24">
+            <el-form-item label="Motivo de la separación">
+              <el-input
+                v-model="experiencia.motivo_separacion"
+                autocomplete="off"
+                type="textarea"
+                placeholder=""
+                show-word-limit
+              />
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogExperienciaVisible = false">Cancelar</el-button>
+        <el-button type="primary" @click="onSaveExperiencia(experiencia, experienciaEdit)">Guardar</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -401,6 +595,13 @@ import Swal from 'sweetalert2'
 export default {
   middleware: 'auth',
   data: () => ({
+    experienciaEdit: false,
+    formacionEdit: false,
+    dialogFormacionVisible: false,
+    dialogExperienciaVisible: false,
+    windowWidth: window.innerWidth,
+    formacion: {},
+    experiencia: {},
     fileList: [],
     disabled: false,
     edit: false,
@@ -415,6 +616,8 @@ export default {
   computed: mapGetters({
     user: 'auth/user',
     role: 'auth/role',
+    experiencias: 'auth/experiencias',
+    formaciones: 'auth/formaciones',
     estados: 'resources/estados',
     estados_civiles: 'resources/estados_civiles',
     municipios: 'resources/municipios',
@@ -422,7 +625,13 @@ export default {
   }),
   mounted () {
     this.setTitle('Perfil')
+    window.onresize = () => {
+      this.windowWidth = window.innerWidth
+    }
     if (this.user) {
+      this.fetchExperiencia()
+      this.fetchFormacion()
+
       this.perfil = this.user.perfil
       this.perfil.first_name = this.user.first_name
       this.perfil.last_name = this.user.last_name
@@ -436,7 +645,7 @@ export default {
       }
       this.fileList.push({ url: url })
     }
-    console.log(this.$route.query.status)
+
     if (this.$route.query.status) {
       switch (this.$route.query.status) {
         case 'success':
@@ -463,7 +672,15 @@ export default {
       fetchMunicipios: 'resources/fetchMunicipios',
       fetchEstadosCiviles: 'resources/fetchEstadosCiviles',
       fetchAreasEspecialidad: 'resources/fetchAreasEspecialidad',
-      savePerfil: 'auth/savePerfil'
+      savePerfil: 'auth/savePerfil',
+      deleteFormacion: 'auth/deleteFormacion',
+      deleteExperiencia: 'auth/deleteExperiencia',
+      updateFormacion: 'auth/updateFormacion',
+      updateExperiencia: 'auth/updateExperiencia',
+      saveFormacion: 'auth/saveFormacion',
+      saveExperiencia: 'auth/saveExperiencia',
+      fetchExperiencia: 'auth/fetchExperiencia',
+      fetchFormacion: 'auth/fetchFormacion'
     }),
     prepareEdit (role = null) {
       this.fetchEstados()
@@ -480,6 +697,57 @@ export default {
       this.savePerfil(perfil).then(() => {
         this.edit = false
       })
+    },
+    clearExperiencia () {
+      this.experiencia = {
+        id: null,
+        desc_actividades: null,
+        empresa: null,
+        inicio: null,
+        motivo_separacion: null,
+        puesto: null,
+        sueldo: null,
+        termino: null,
+        created_at: null,
+        updated_at: null,
+        user_id: null
+      }
+    },
+    onSaveExperiencia (experiencia, edit = false) {
+      if (edit) {
+        this.updateExperiencia(experiencia).then(() => {
+          this.clearExperiencia()
+          this.dialogExperienciaVisible = false
+          this.experienciaEdit = false
+        })
+      } else {
+        this.saveExperiencia(experiencia).then(() => {
+          this.clearExperiencia()
+          this.dialogExperienciaVisible = false
+        })
+      }
+    },
+    clearFormacion () {
+      this.formacion = {
+        id: null,
+        lugar: null,
+        inicio: null,
+        termino: null
+      }
+    },
+    onSaveFormacion (formacion, edit = false) {
+      if (edit) {
+        this.updateFormacion(formacion).then(() => {
+          this.clearFormacion()
+          this.dialogFormacionVisible = false
+          this.formacionEdit = false
+        })
+      } else {
+        this.saveFormacion(formacion).then(() => {
+          this.clearFormacion()
+          this.dialogFormacionVisible = false
+        })
+      }
     },
     handleAvatarSuccess (res, file) {
       if (res) {
@@ -511,6 +779,75 @@ export default {
     handlePictureCardPreview (file) {
       this.dialogImageUrl = file.url
       this.dialogVisible = true
+    },
+    formacionDialogWidth () {
+      let width
+      if (this.windowWidth < 1024) {
+        width = '90%'
+      } else {
+        width = '30%'
+      }
+      return width
+    },
+    onDeleteExperiencia (row) {
+      console.log(row)
+      Swal.fire({
+        type: 'warning',
+        title: '¿Estás seguro?',
+        showCancelButton: true,
+        text: 'El registro se eliminará por completo y no podrás recuperarlo',
+        reverseButtons: true,
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.value) {
+          this.deleteExperiencia(row.id).then(res => {
+            console.log(res)
+            Swal.fire({
+              type: 'success',
+              title: 'Se ha eliminado exitosamente',
+              showConfirmButton: true,
+              timer: 1500
+            })
+          }).catch(() => {
+            Swal.fire({
+              type: 'error',
+              title: 'Ha habido un error al borrar el registro',
+              showConfirmButton: true
+            })
+          })
+        }
+      })
+    },
+    onDeleteFormacion (row) {
+      console.log(row)
+      Swal.fire({
+        type: 'warning',
+        title: '¿Estás seguro?',
+        showCancelButton: true,
+        text: 'El registro se eliminará por completo y no podrás recuperarlo',
+        reverseButtons: true,
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.value) {
+          this.deleteFormacion(row.id).then(res => {
+            console.log(res)
+            Swal.fire({
+              type: 'success',
+              title: 'Se ha eliminado exitosamente',
+              showConfirmButton: true,
+              timer: 1500
+            })
+          }).catch(() => {
+            Swal.fire({
+              type: 'error',
+              title: 'Ha habido un error al borrar el registro',
+              showConfirmButton: true
+            })
+          })
+        }
+      })
     }
   }
 }

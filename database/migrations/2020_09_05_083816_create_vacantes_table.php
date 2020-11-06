@@ -17,8 +17,18 @@ class CreateVacantesTable extends Migration
           $table->id();
           $table->string('name');
         });
+        Schema::create('compras', function (Blueprint $table) {
+          $table->id();
+          $table->unsignedBigInteger('user_id');
+          $table->unsignedBigInteger('plan_id');
+          $table->decimal('price', 10, 2);
+          $table->dateTime('start_at')->nullable();
+          $table->dateTime('finish_at')->nullable();
+          $table->timestamps();
+      });
         Schema::create('vacantes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('compra_id');
             $table->string('empresa');
             $table->string('puesto');
             $table->string('jornada');
@@ -35,10 +45,13 @@ class CreateVacantesTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('email')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->string('is_active')->default(true);
+            $table->boolean('is_urgente')->default(false);
+            $table->boolean('is_active')->default(true);
             $table->dateTime('finish_at');
             $table->timestamps();
 
+            $table->foreign('compra_id')->references('id')->on('compras')
+              ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('estado_id')->references('id')->on('estados')
               ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')
@@ -67,6 +80,7 @@ class CreateVacantesTable extends Migration
     {
       Schema::dropIfExists('prestacion_vacante');
       Schema::dropIfExists('vacantes');
+      Schema::dropIfExists('compras');
       Schema::dropIfExists('prestaciones');
     }
 }

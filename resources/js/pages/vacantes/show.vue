@@ -67,7 +67,7 @@
               <div class="sjs_box">
                 <h3>Qué ofrecemos:</h3>
                 <ul class="tags">
-                  <li v-for="p in vacante.prestaciones" :key="p.id">
+                  <li v-for="p in vacante.prestaciones_full" :key="p.id">
                     {{ p.name }}
                   </li>
                 </ul>

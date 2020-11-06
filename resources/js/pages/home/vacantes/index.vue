@@ -6,11 +6,14 @@
           <h5>Mis vacantes publicadas</h5>
         </div>
         <div class="col-md-6 text-right">
-          <router-link v-if="user.can_post" class="btn btn-success" :to="{ name: 'home.vacantes.new' }">
+          <router-link v-if="user.can_post_normal" class="btn btn-success" :to="{ name: 'home.vacantes.new' }">
             Nueva vacante
           </router-link>
-          <button v-else href="#" class="btn btn-danger" disabled>
-            Tu plan ha vencido
+          <router-link v-if="user.can_post_urgente" class="btn btn-success" :to="{ name: 'home.vacantes.new', params: {urgente: true } }">
+            Nueva vacante urgente
+          </router-link>
+          <button v-if="(!user.can_post_normal && !user.can_post_urgente)" href="#" class="btn btn-danger" disabled>
+            No puedes publicar vacantes
           </button>
         </div>
       </div>
@@ -112,7 +115,6 @@ export default {
       deleteVacante: 'empleo/deleteVacante'
     }),
     borrarVacante (id) {
-      console.log(id)
       Swal.fire({
         type: 'warning',
         title: '¿Estás seguro?',

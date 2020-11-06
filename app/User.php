@@ -7,6 +7,7 @@ use App\Notifications\VerifyEmail;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Laratrust\Traits\LaratrustUserTrait;
@@ -52,7 +53,8 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
         'perfil',
         'role',
         'photo_url',
-        'can_post'
+        'can_post_normal',
+        'can_post_urgente'
     ];
 
     /**
@@ -79,16 +81,40 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     }
 
     /**
-     * Retorna el perfil segun el tipo de usuario.
+     * Retorna si puede postear normales
      *
      * @return bool
      */
-    public function getCanPostAttribute()
+    public function getCanPostNormalAttribute()
     {
-      $compra = Compra::where([
-        ['user_id', $this->id],
-        ['finish_at', '>', Carbon::now()->toDateTimeString()]
-      ])->first();
+      $compra = DB::table('compras')
+            ->select('compras.*')
+            ->leftJoin('plans', 'plans.id', '=', 'compras.plan_id')
+            ->where([
+              ['compras.user_id', $this->id],
+              ['compras.finish_at', '>', Carbon::now()->toDateTimeString()]
+            ])
+            ->whereRaw('(select count(*) from `vacantes` where `compras`.`id` = `vacantes`.`compra_id`) < plans.publicaciones_normales')
+            ->first();
+
+      return $compra ? true : false;
+    }
+    /**
+     * Retorna si puede postear urgentes
+     *
+     * @return bool
+     */
+    public function getCanPostUrgenteAttribute()
+    {
+      $compra = DB::table('compras')
+            ->leftJoin('plans', 'plans.id', '=', 'compras.plan_id')
+            ->where([
+              ['compras.user_id', $this->id],
+              ['compras.finish_at', '>', Carbon::now()->toDateTimeString()]
+            ])
+            ->whereRaw('(select count(*) from `vacantes` where `compras`.`id` = `vacantes`.`compra_id`) < plans.publicaciones_urgentes')
+            ->first();
+
       return $compra ? true : false;
     }
 

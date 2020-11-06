@@ -17,6 +17,8 @@ class CreatePlansTable extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('price', 10, 2);
+            $table->integer('publicaciones_normales');
+            $table->integer('publicaciones_urgentes');
         });
     }
 

@@ -43,22 +43,30 @@ class CreateProfilesTable extends Migration
 
       Schema::create('formacions', function (Blueprint $table) {
         $table->id();
+        $table->unsignedBigInteger('user_id');
         $table->string('lugar');
         $table->date('inicio');
         $table->date('termino');
         $table->timestamps();
+
+        $table->foreign('user_id')->references('id')->on('users')
+          ->onUpdate('cascade')->onDelete('cascade');
       });
 
       Schema::create('experiencia_laborals', function (Blueprint $table) {
         $table->id();
+        $table->unsignedBigInteger('user_id');
         $table->string('empresa');
         $table->date('inicio');
         $table->date('termino');
         $table->integer('sueldo');
-        $table->date('puesto');
+        $table->string('puesto');
         $table->text('desc_actividades');
         $table->text('motivo_separacion');
         $table->timestamps();
+
+        $table->foreign('user_id')->references('id')->on('users')
+          ->onUpdate('cascade')->onDelete('cascade');
       });
 
       Schema::create('perfil_aspirantes', function (Blueprint $table) {

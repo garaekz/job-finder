@@ -7,7 +7,7 @@
     <div v-if="vacantes" class="row full_width featured_box_outer">
       <div v-for="vacante in vacantes.data" :key="vacante.id" class="col-sm-12">
         <transition name="fade">
-          <div class="featured_box ">
+          <div class="featured_box" :class="vacante.is_urgente ? 'urgente':''">
             <div class="fb_image">
               <img alt="brand logo" :src="vacante.user.perfil.logo">
             </div>

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
+import locale from 'element-ui/lib/locale/lang/es'
 import VueSanitize from 'vue-sanitize'
 import AOS from 'aos'
 import store from '~/store'
@@ -11,6 +12,7 @@ import '../sass/element-variables.scss'
 import '~/plugins'
 import '~/components'
 
+Vue.use(ElementUI, { locale })
 // Vue.component('Select2', Select2)
 Vue.component('pagination', require('laravel-vue-pagination'))
 const moment = require('moment')

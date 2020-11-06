@@ -24,7 +24,9 @@ class Vacante extends Model
     'otras_prestaciones',
     'actividades',
     'descripcion',
-    'finish_at'
+    'finish_at',
+    'compra_id',
+    'is_urgente'
   ];
   /**
    * El Estado al que pertenece la Vacante.
@@ -32,6 +34,14 @@ class Vacante extends Model
   public function estado()
   {
       return $this->belongsTo(Estado::class);
+  }
+
+  /**
+   * La Compra dueña de esta Vacante.
+   */
+  public function compra()
+  {
+      return $this->belongsTo(Compra::class);
   }
 
   /**

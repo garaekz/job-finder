@@ -27,6 +27,11 @@
                       Lista de empleos
                     </router-link>
                   </li>
+                  <li :class="currentPageClass('nosotros')">
+                    <router-link :to="{ name: 'nosotros' }">
+                      Quines somos
+                    </router-link>
+                  </li>
 
                   <!-- <li class="has-sub-menu">
                     <a href="index.html#">Pages</a>
@@ -165,7 +170,7 @@
                 <div class="col-lg-4" data-aos="fade-down" data-aos-delay="200">
                   <h2>Encuentra la oferta de <br> trabajo correcta para ti</h2>
                   <p style="color: #fff;">
-                    El sitio más completo de trabajo para decoradores y profesionales de eventos
+                    Para floristas, weeding planners y diseñadores florales
                   </p>
                   <a class="btn btn-primary" href="#planes">Conoce más
                     <i class="material-icons">arrow_right_alt</i>
@@ -204,7 +209,7 @@
                       <div class="row">
                         <div class="col-md-6">
                           <div class="user_type_inner  user_type_seeker">
-                            <a href="browse-jobs.html">
+                            <router-link :to="{ name: 'register' }" class="signjs_btn">
                               <div class="usertype_img">
                                 <img alt="" src="/images/usertype-2.png">
                                 <img alt="" class="usertype-addon" src="/images/usertype-2-addon.png">
@@ -214,12 +219,12 @@
                                 <p>Sube tu CV y aplica para un trabajo</p>
                                 <i class="fas fa-long-arrow-alt-right" />
                               </div>
-                            </a>
+                            </router-link>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="user_type_inner user_type_post">
-                            <a href="post-a-job.html">
+                            <router-link :to="{ name: 'register', params: {type: 'empresa' } }" class="signjs_btn">
                               <div class="usertype_img">
                                 <img alt="" src="/images/usertype-1.png">
                                 <img alt="" class="usertype-addon" src="/images/usertype-1-addon.png">
@@ -229,7 +234,7 @@
                                 <p>Oferta trabajos y contrata profesionales</p>
                                 <i class="fas fa-long-arrow-alt-right" />
                               </div>
-                            </a>
+                            </router-link>
                           </div>
                         </div>
                       </div>

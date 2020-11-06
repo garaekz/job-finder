@@ -26,7 +26,7 @@ export default [
     children: [
       { path: '', name: 'home', component: page('home/profile.vue') },
       { path: 'vacantes', name: 'home.vacantes', component: page('home/vacantes/index.vue') },
-      { path: 'vacantes/new', name: 'home.vacantes.new', component: page('home/vacantes/create.vue') },
+      { path: 'vacantes/new', name: 'home.vacantes.new', component: page('home/vacantes/create.vue'), props: true },
       { path: 'vacantes/:id/edit', name: 'home.vacantes.edit', component: page('home/vacantes/edit.vue'), props: true },
     ]
   },
@@ -37,6 +37,7 @@ export default [
       { path: 'profile', name: 'settings.profile', component: page('settings/profile.vue') },
       { path: 'password', name: 'settings.password', component: page('settings/password.vue') }
     ] },
-
+  { path: '/aviso-privacidad', name: 'privacidad',  component: page('privacidad.vue') },
+  { path: '/sobre-nosotros', name: 'nosotros',  component: page('about.vue') },
   { path: '*', component: page('errors/404.vue') }
 ]

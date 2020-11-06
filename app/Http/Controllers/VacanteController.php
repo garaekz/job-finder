@@ -21,7 +21,7 @@ class VacanteController extends Controller
       if ($request->nuevas) {
         return Vacante::with(['estado','user'])->orderBy('id', 'desc')->limit(6)->get();
       }
-      return Vacante::with(['estado','user'])->orderBy('id', 'desc')->paginate(15);
+      return Vacante::with(['estado','user'])->orderBy('is_urgente', 'desc')->orderBy('id', 'desc')->paginate(15);
     }
 
     /**
@@ -47,10 +47,24 @@ class VacanteController extends Controller
         'email' => 'required',
         'prestaciones' => 'required'
       ]);
+
+      $compra = DB::table('compras')
+        ->select('compras.*')
+        ->leftJoin('plans', 'plans.id', '=', 'compras.plan_id')
+        ->where([
+          ['compras.user_id', Auth::id()],
+          ['compras.finish_at', '>', Carbon::now()->toDateTimeString()]
+        ])
+        ->whereRaw('(select count(*) from `vacantes` where `compras`.`id` = `vacantes`.`compra_id`) < plans.publicaciones_normales')
+        ->first();
+      if (!$compra) {
+        return response()->json(['error' => 'No puedes publicar nuevas ofertas. Adquiere un nuevo plan'], 422);
+      }
       $finish_at = Carbon::now()->addDays(60)->format('Y-m-d H:i:s');
       $data = $request->all();
       $data['user_id'] = Auth::id();
       $data['finish_at'] = $finish_at;
+      $data['compra_id'] = $compra->id;
 
       try {
         DB::beginTransaction();
@@ -77,8 +91,9 @@ class VacanteController extends Controller
       $prestaciones = Prestacion::whereHas('vacantes', function ($q) use ($id)
       {
         $q->where('vacante_id', $id);
-      })->get()->pluck("id");
-      $vacante->prestaciones = $prestaciones;
+      })->get();
+      $vacante->prestaciones = $prestaciones->pluck("id");
+      $vacante->prestaciones_full = $prestaciones;
       return $vacante;
     }
 

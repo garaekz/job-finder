@@ -161,6 +161,9 @@ export default {
   components: {
     quillEditor
   },
+  props: {
+    urgente: { type: Boolean, default: false }
+  },
   data: () => ({
     fileList: [],
     disabled: false,
@@ -197,6 +200,7 @@ export default {
     this.fetchEmpresaVacantes()
     this.fetchEstados()
     this.fetchPrestaciones()
+    console.log('Urgente', this.urgente)
   },
   methods: {
     ...mapActions({
@@ -207,6 +211,7 @@ export default {
       saveVacante: 'empleo/saveVacante'
     }),
     onSaveVacante () {
+      this.vacante.is_urgente = this.urgente
       this.saveVacante(this.vacante).then(res => {
         if (res.error) {
           Swal.fire({
