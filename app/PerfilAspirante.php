@@ -8,6 +8,7 @@ class PerfilAspirante extends Model
 {
   protected $fillable = [
     'foto',
+    'cv',
     'fecha_nacimiento',
     'descripcion',
     'telefono',
@@ -20,4 +21,12 @@ class PerfilAspirante extends Model
     'habilidades',
     'user_id'
   ];
+
+  /**
+   * Portafolio pertenecientes a este PerfilAspirante.
+   */
+  public function portafolios()
+  {
+      return $this->hasMany(Portafolio::class);
+  }
 }

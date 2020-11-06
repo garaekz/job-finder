@@ -198,6 +198,15 @@ export const actions = {
     }
   },
 
+  async deletePortafolio ({ commit }, id) {
+    try {
+      const { data } = await axios.delete(`/api/perfil/portafolio/${id}`)
+      return data
+    } catch (e) {
+      throw e
+    }
+  },
+
   async logout ({ commit }) {
     try {
       await axios.post('/api/logout')

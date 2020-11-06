@@ -442,36 +442,79 @@
       <div v-if="role && role === 'aspirante' && !edit" class="col-md-12">
         <div class="big_form_group">
           <h4>
-            Curriculum y portafolio
+            Curriculum
           </h4>
-          <el-table
-            :data="experiencias"
-            style="width: 100%"
+          <br>
+          <el-upload
+            action="/api/perfil/cv"
+            list-type="picture-card"
+            :on-remove="handleCVRemove"
+            :on-success="handleCVSuccess"
+            :file-list="cvFileList"
+            :disabled="cvFileList.length > 0"
           >
-            <el-table-column
-              fixed
-              prop="empresa"
-              label="Empresa"
-            />
-            <el-table-column
-              prop="inicio"
-              label="Inicio"
-            />
-            <el-table-column
-              prop="termino"
-              label="Fin"
-            />
-            <el-table-column
-              fixed="right"
-              label=""
-              width="100px"
-            >
-              <template slot-scope="scope">
-                <el-button type="primary" circle size="small" icon="el-icon-edit" @click="experienciaEdit = true; dialogExperienciaVisible = true; experiencia = scope.row" />
-                <el-button type="danger" circle size="small" icon="el-icon-delete" @click="onDeleteExperiencia(scope.row)" />
-              </template>
-            </el-table-column>
-          </el-table>
+            <i class="el-icon-plus" />
+            <div slot="file" slot-scope="{file}">
+              <img
+                class="el-upload-list__item-thumbnail"
+                src="/images/cv.png" alt=""
+              >
+              <span class="el-upload-list__item-actions">
+                <span
+                  v-if="!disabled"
+                  class="el-upload-list__item-delete"
+                  @click="handleCVDownload(file)"
+                >
+                  <i class="el-icon-download" />
+                </span>
+                <span
+                  v-if="!disabled"
+                  class="el-upload-list__item-delete"
+                  @click="handleCVRemove(file, cvFileList)"
+                >
+                  <i class="el-icon-delete" />
+                </span>
+              </span>
+            </div>
+          </el-upload>
+          <br><br><br>
+          <h4>
+            Portafolio
+          </h4>
+          <br>
+          <el-upload
+            action="/api/perfil/portafolio"
+            list-type="picture-card"
+            :on-preview="handlePortafolioPreview"
+            :on-remove="handlePortafolioRemove"
+            :file-list="portafolioFileList"
+          >
+            <i class="el-icon-plus" />
+            <div slot="file" slot-scope="{file}">
+              <img
+                class="el-upload-list__item-thumbnail"
+                :src="file.url" alt=""
+              >
+              <span class="el-upload-list__item-actions">
+                <span
+                  class="el-upload-list__item-preview"
+                  @click="handlePortafolioPreview(file)"
+                >
+                  <i class="el-icon-zoom-in" />
+                </span>
+                <span
+                  v-if="!disabled"
+                  class="el-upload-list__item-delete"
+                  @click="handlePortafolioRemove(file)"
+                >
+                  <i class="el-icon-delete" />
+                </span>
+              </span>
+            </div>
+          </el-upload>
+          <el-dialog :visible.sync="dialogPortafolioVisible">
+            <img width="100%" :src="dialogPortafolioImageUrl" alt="">
+          </el-dialog>
         </div>
       </div>
     </div>
@@ -599,10 +642,14 @@ export default {
     formacionEdit: false,
     dialogFormacionVisible: false,
     dialogExperienciaVisible: false,
+    dialogPortafolioImageUrl: '',
+    dialogPortafolioVisible: false,
     windowWidth: window.innerWidth,
     formacion: {},
     experiencia: {},
+    cvFileList: [],
     fileList: [],
+    portafolioFileList: [],
     disabled: false,
     edit: false,
     dialogImageUrl: '',
@@ -636,6 +683,10 @@ export default {
       this.perfil.first_name = this.user.first_name
       this.perfil.last_name = this.user.last_name
       this.perfil.email = this.user.email
+      this.portafolioFileList = this.user.portafolio
+      if (this.perfil.cv) {
+        this.cvFileList.push({ url: this.perfil.cv })
+      }
 
       let url
       if (this.role === 'empresa') {
@@ -675,6 +726,7 @@ export default {
       savePerfil: 'auth/savePerfil',
       deleteFormacion: 'auth/deleteFormacion',
       deleteExperiencia: 'auth/deleteExperiencia',
+      deletePortafolio: 'auth/deletePortafolio',
       updateFormacion: 'auth/updateFormacion',
       updateExperiencia: 'auth/updateExperiencia',
       saveFormacion: 'auth/saveFormacion',
@@ -749,6 +801,11 @@ export default {
         })
       }
     },
+    handleCVSuccess (res, file) {
+      if (res) {
+        this.cvFileList = [{ url: res.path }]
+      }
+    },
     handleAvatarSuccess (res, file) {
       if (res) {
         this.fileList = [{ url: res.path }]
@@ -776,9 +833,28 @@ export default {
       console.log(file, fileList)
       this.fileList = []
     },
+    handleCVRemove (file, fileList) {
+      console.log(file, fileList)
+      this.cvFileList = []
+    },
+    handlePortafolioRemove (file) {
+      let index = this.portafolioFileList.findIndex(x => x.id === file.id)
+      console.log(file, this.portafolioFileList, index)
+      this.deletePortafolio(file.id).then(() => {
+        this.portafolioFileList.splice(index, 1)
+      })
+    },
     handlePictureCardPreview (file) {
       this.dialogImageUrl = file.url
       this.dialogVisible = true
+    },
+    handlePortafolioPreview (file) {
+      console.log(file)
+      this.dialogPortafolioImageUrl = file.url
+      this.dialogPortafolioVisible = true
+    },
+    handleCVDownload (file) {
+      window.open(file.url, '_blank')
     },
     formacionDialogWidth () {
       let width

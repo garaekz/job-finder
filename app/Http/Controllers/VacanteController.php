@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Prestacion;
+use App\Solicitud;
 use App\Vacante;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -153,5 +154,25 @@ class VacanteController extends Controller
         return response()->json(['error' => 'Error al eliminar el registro'], 500);
       }
 
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function aplicar($id)
+    {
+      $solicitud = Solicitud::where([
+        ['user_id', Auth::id()],
+        ['vacante_id', $id]
+      ])->first();
+
+      if ($solicitud) {
+        return $solicitud;
+      }
+
+      return Solicitud::create(['user_id' => Auth::id(), 'vacante_id' => $id]);
     }
 }

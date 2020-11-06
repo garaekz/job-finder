@@ -23,17 +23,23 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/estados-civiles', 'ResourcesController@estadosCiviles');
     Route::get('/prestaciones', 'ResourcesController@prestaciones');
 
-    Route::post('perfil/update-image', 'PerfilController@updateImage');
-    Route::post('perfil/update', 'PerfilController@update');
+    Route::post('/perfil/update-image', 'PerfilController@updateImage');
+    Route::post('/perfil/update', 'PerfilController@update');
     Route::patch('settings/profile', 'Settings\ProfileController@update');
     Route::patch('settings/password', 'Settings\PasswordController@update');
 
     Route::post('/vacantes', 'VacanteController@store');
+    Route::post('/vacantes/{id}/aplicar', 'VacanteController@aplicar');
     Route::put('/vacantes/{id}', 'VacanteController@update');
     Route::delete('/vacantes/{id}', 'VacanteController@destroy');
 
     Route::apiResource('/experiencia', 'ExperienciaController');
     Route::apiResource('/formacion', 'FormacionController');
+
+    Route::post('/perfil/portafolio', 'PerfilController@uploadPortafolio');
+    Route::delete('/perfil/portafolio/{id}', 'PerfilController@deletePortafolio');
+
+    Route::post('/perfil/cv', 'PerfilController@updateCV');
 
     Route::group(['prefix' => 'empresa', 'middleware' => ['role:empresa']], function() {
       Route::get('/vacantes', 'Empresa\VacanteController@index');

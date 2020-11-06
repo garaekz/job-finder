@@ -27,11 +27,6 @@
                       Lista de empleos
                     </router-link>
                   </li>
-                  <li :class="currentPageClass('nosotros')">
-                    <router-link :to="{ name: 'nosotros' }">
-                      Quines somos
-                    </router-link>
-                  </li>
 
                   <!-- <li class="has-sub-menu">
                     <a href="index.html#">Pages</a>
@@ -275,8 +270,8 @@
               </li>
             </ul>
           </div>
-          <div class="poster_action">
-            <a class="btn btn-third" href="#">Aplicar a la vacante</a>
+          <div v-if="user" class="poster_action">
+            <a class="btn btn-third" href="javascript:void(0)" @click="onAplicar()">Aplicar a la vacante</a>
           </div>
         </div>
       </div>
@@ -290,8 +285,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Select2 from 'v-select2-component'
+import Swal from 'sweetalert2'
 
 export default {
   components: {
@@ -330,6 +326,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      aplicar: 'empleo/aplicar'
+    }),
     async logout () {
       // Log out the user.
       await this.$store.dispatch('auth/logout')
@@ -342,6 +341,35 @@ export default {
     },
     toggleMenu () {
       this.isActive = !this.isActive
+    },
+    onAplicar () {
+      Swal.fire({
+        type: 'warning',
+        title: '¿Estás seguro?',
+        showCancelButton: true,
+        text: 'Se le proveeran sus datos de contacto al empleador',
+        reverseButtons: true,
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.value) {
+          this.aplicar(this.vacante.id).then(res => {
+            console.log(res)
+            Swal.fire({
+              type: 'success',
+              title: 'Se ha realizado exitosamente',
+              showConfirmButton: true,
+              timer: 1500
+            })
+          }).catch(() => {
+            Swal.fire({
+              type: 'error',
+              title: 'Ha habido un error al aplicar a esta vacante',
+              showConfirmButton: true
+            })
+          })
+        }
+      })
     }
   }
 }

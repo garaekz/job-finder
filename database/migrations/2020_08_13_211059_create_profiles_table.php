@@ -72,6 +72,7 @@ class CreateProfilesTable extends Migration
       Schema::create('perfil_aspirantes', function (Blueprint $table) {
         $table->id();
         $table->string('foto')->nullable();
+        $table->string('cv')->nullable();
         $table->date('fecha_nacimiento')->nullable();
         $table->string('descripcion')->nullable();
         $table->string('telefono')->nullable();
@@ -99,7 +100,7 @@ class CreateProfilesTable extends Migration
 
       Schema::create('portafolios', function (Blueprint $table) {
         $table->id();
-        $table->string('imagen');
+        $table->string('url');
         $table->unsignedBigInteger('perfil_aspirante_id');
         $table->timestamps();
 

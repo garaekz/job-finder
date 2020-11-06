@@ -73,11 +73,11 @@
                 </ul>
               </div>
             </div>
-            <div class=" sjs_box_action">
+            <!-- <div class=" sjs_box_action">
               <a class="btn btn-third" href="#">Contactar al empleador</a>
               <p>- o -</p>
               <a class="btn btn-primary" href="#">Aplicar a la vacante</a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

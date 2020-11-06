@@ -14,7 +14,17 @@
           </div>
         </div>
 
-        <div class="col-md-3" />
+        <div class="col-md-3">
+          <div class="footer_widget_box">
+            <ul data-aos="fade-in" data-aos-delay="200">
+              <li>
+                <router-link :to="{ name: 'nosotros' }">
+                  Quienes somos
+                </router-link>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div class="col-md-3" />
         <div class="col-md-3">
           <div class="footer_widget_box">

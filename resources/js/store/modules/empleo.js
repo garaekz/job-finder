@@ -29,6 +29,17 @@ export const mutations = {
 
 // actions
 export const actions = {
+  async aplicar ({ commit }, id) {
+    if (id) {
+      try {
+        const { data } = await axios.post(`/api/vacantes/${id}/aplicar`)
+        return data
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    return false
+  },
   async fetchSingleVacante ({ commit }, id) {
     if (id) {
       try {

@@ -64,7 +64,7 @@
                   {{ $moment(vacante.finish_at).format('DD/MM/YYYY') }}
                 </td>
                 <td>
-                  1
+                  {{ vacante.interesados_count }}
                 </td>
               </tr>
             </tbody>

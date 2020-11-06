@@ -51,6 +51,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
      */
     protected $appends = [
         'perfil',
+        'portafolio',
         'role',
         'photo_url',
         'can_post_normal',
@@ -78,6 +79,19 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
         return $this->perfil_empresa;
       }
       return $this->perfil_aspirante;
+    }
+
+    /**
+     * Retorna el portafolio.
+     *
+     * @return \App\Portafolio
+     */
+    public function getPortafolioAttribute()
+    {
+      if ($this->hasRole('empresa')) {
+        return null;
+      }
+      return $this->perfil_aspirante->portafolios;
     }
 
     /**

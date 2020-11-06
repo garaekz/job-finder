@@ -52,6 +52,11 @@ class Vacante extends Model
       return $this->belongsTo(User::class);
   }
 
+  public function interesados()
+  {
+      return $this->belongsToMany(User::class, 'solicituds');
+  }
+
   /**
    * Las Prestaciones que pertenecen a esta Vacante.
    */
