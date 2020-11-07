@@ -41,6 +41,9 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::post('/perfil/cv', 'PerfilController@updateCV');
 
+    Route::get('/aspirantes', 'AspiranteController@index');
+    Route::get('/aspirantes/{id}', 'AspiranteController@show');
+
     Route::group(['prefix' => 'empresa', 'middleware' => ['role:empresa']], function() {
       Route::get('/vacantes', 'Empresa\VacanteController@index');
   });

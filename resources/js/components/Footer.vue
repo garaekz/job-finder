@@ -33,16 +33,13 @@
             </h2>
             <ul data-aos="fade-in" data-aos-delay="200" class="social_list">
               <li>
-                <a href="index.html#"><i class="fab fa-twitter" /></a>
+                <a href="https://www.facebook.com/calinextia"><i class="fab fa-facebook" /></a>
               </li>
               <li>
-                <a href="index.html#"><i class="fab fa-facebook" /></a>
+                <a href="http://www.instagram.Com/calinextia/"><i class="fab fa-instagram" /></a>
               </li>
               <li>
-                <a href="index.html#"><i class="fab fa-linkedin" /></a>
-              </li>
-              <li>
-                <a href="index.html#"><i class="fab fa-youtube" /></a>
+                <a href="http://www.Youtube.com/channel/UCXyea0JwdrM4aOe-xvjy6Vg/featured?view_as=subscribe"><i class="fab fa-youtube" /></a>
               </li>
             </ul>
           </div>

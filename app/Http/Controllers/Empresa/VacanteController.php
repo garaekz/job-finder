@@ -16,7 +16,7 @@ class VacanteController extends Controller
      */
     public function index()
     {
-      return Vacante::with(['estado','user'])->withCount('interesados')->where('user_id', Auth::id())->orderBy('id', 'desc')->paginate(20);
+      return Vacante::with(['estado','user', 'interesados'])->withCount('interesados')->where('user_id', Auth::id())->orderBy('id', 'desc')->paginate(20);
     }
 
     /**

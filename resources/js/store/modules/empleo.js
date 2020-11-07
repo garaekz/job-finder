@@ -2,6 +2,8 @@ import * as types from '../mutation-types'
 import axios from 'axios'
 // state
 export const state = {
+  aspirante: null,
+  aspirantes: null,
   empresa_vacantes: null,
   vacante: null,
   vacantes: null
@@ -9,6 +11,8 @@ export const state = {
 
 // getters
 export const getters = {
+  aspirante: state => state.aspirante,
+  aspirantes: state => state.aspirantes,
   empresa_vacantes: state => state.empresa_vacantes,
   vacante: state => state.vacante,
   vacantes: state => state.vacantes
@@ -16,8 +20,15 @@ export const getters = {
 
 // mutations
 export const mutations = {
+  [types.SET_SINGLE_ASPIRANTE] (state, data) {
+    state.aspirante = data
+  },
   [types.SET_SINGLE_VACANTE] (state, data) {
     state.vacante = data
+  },
+  [types.SET_ASPIRANTES] (state, { data }) {
+    console.log(data)
+    state.aspirantes = data
   },
   [types.SET_VACANTES] (state, data) {
     state.vacantes = data
@@ -33,6 +44,27 @@ export const actions = {
     if (id) {
       try {
         const { data } = await axios.post(`/api/vacantes/${id}/aplicar`)
+        return data
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    return false
+  },
+  async fetchAspirantes ({ commit }, page = 1) {
+    try {
+      const { data } = await axios.get(`/api/aspirantes?page=${page}`)
+      commit(types.SET_ASPIRANTES, { data })
+      return data
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  async fetchSingleAspirante ({ commit }, id) {
+    if (id) {
+      try {
+        const { data } = await axios.get(`/api/aspirantes/${id}`)
+        commit(types.SET_SINGLE_ASPIRANTE, data)
         return data
       } catch (e) {
         console.log(e)

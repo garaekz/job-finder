@@ -6,7 +6,7 @@
           <div class="header_top">
             <div class="logo">
               <router-link :to="{ name: 'welcome' }">
-                <img alt="JoDice" class="img-fluid" src="/images/dice-logo.png">
+                <img alt="Calinextia" class="img-fluid" src="/images/dice-logo.png">
               </router-link>
             </div>
             <div class="navigation">
@@ -25,6 +25,11 @@
                   <li :class="currentPageClass('empleos')">
                     <router-link :to="{ name: 'empleos' }">
                       Lista de empleos
+                    </router-link>
+                  </li>
+                  <li v-if="role == 'empresa'" :class="currentPageClass('aspirantes')">
+                    <router-link :to="{ name: 'aspirantes' }">
+                      Aspirantes
                     </router-link>
                   </li>
 
@@ -241,6 +246,33 @@
           </div>
         </div>
       </div>
+      <div v-else-if="$route.name == 'aspirantes.ver'" class="header_btm header_job_single">
+        <div v-if="aspirante" class="header_job_single_inner container">
+          <div class="poster_company">
+            <img alt="brand logo" :src="aspirante.perfil.foto ? aspirante.perfil.foto : '/images/avatar-placeholder.png'">
+          </div>
+          <div class="poster_details">
+            <h2>{{ aspirante.first_name }} {{ aspirante.last_name }} <!-- <span class="varified"><i class="fas fa-check" />Verified</span> --></h2>
+            <h5>Sobre el aspirante</h5>
+            <ul>
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fas fa-envelope" />
+                  {{ aspirante.email }}&nbsp;
+                </a>
+                <a href="javascript:void(0)">
+                  <i class="fas fa-phone" />
+                  {{ aspirante.perfil.telefono ? aspirante.perfil.telefono : 'No proporcionado' }}&nbsp;
+                </a>
+                <a href="javascript:void(0)">
+                  <i class="fas fa-glasses" />
+                  {{ aspirante.perfil.especialidad ? aspirante.perfil.especialidad.name : 'No ha proporcionado una especialidad' }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div v-else-if="$route.name == 'empleos.ver'" class="header_btm header_job_single">
         <div v-if="vacante" class="header_job_single_inner container">
           <div class="poster_company">
@@ -270,7 +302,7 @@
               </li>
             </ul>
           </div>
-          <div v-if="user" class="poster_action">
+          <div v-if="user && role == 'aspirante'" class="poster_action">
             <a class="btn btn-third" href="javascript:void(0)" @click="onAplicar()">Aplicar a la vacante</a>
           </div>
         </div>
@@ -316,6 +348,7 @@ export default {
     user: 'auth/user',
     role: 'auth/role',
     header: 'page/title',
+    aspirante: 'empleo/aspirante',
     vacante: 'empleo/vacante'
   }),
   watch: {

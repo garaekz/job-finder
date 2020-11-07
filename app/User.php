@@ -146,6 +146,22 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     }
 
     /**
+     * El Estado dueño de este PerfilAspirante.
+     */
+    public function experiencias()
+    {
+        return $this->hasMany(ExperienciaLaboral::class);
+    }
+
+    /**
+     * El Estado dueño de este PerfilAspirante.
+     */
+    public function formaciones()
+    {
+        return $this->hasMany(Formacion::class);
+    }
+
+    /**
      * Retorna el perfil de el usuario con rol aspirante
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

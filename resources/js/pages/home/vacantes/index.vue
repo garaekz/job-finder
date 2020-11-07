@@ -64,7 +64,12 @@
                   {{ $moment(vacante.finish_at).format('DD/MM/YYYY') }}
                 </td>
                 <td>
-                  {{ vacante.interesados_count }}
+                  <el-button v-if="vacante.interesados_count > 0" type="primary" @click="dialogVisible = true; interesados = vacante.interesados">
+                    <strong>{{ vacante.interesados_count }} Ver</strong>
+                  </el-button>
+                  <el-button v-else disabled type="primary">
+                    <strong>No hay</strong>
+                  </el-button>
                 </td>
               </tr>
             </tbody>
@@ -78,6 +83,46 @@
         </pagination>
       </div>
     </div>
+    <el-dialog title="Lista de interesados" :visible.sync="dialogVisible">
+      <el-table
+        :data="interesados"
+        style="width: 100%"
+      >
+        <el-table-column
+          label="Nombre"
+          style="white-space: nowrap;"
+        >
+          <template slot-scope="scope">
+            {{ `${scope.row.first_name} ${scope.row.last_name}` }}
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="email"
+          label="Email"
+        />
+        <el-table-column
+          label="Teléfono"
+          style="white-space: nowrap;"
+        >
+          <template slot-scope="scope">
+            {{ scope.row.perfil_aspirante && scope.row.perfil_aspirante.telefono ? scope.row.perfil_aspirante.telefono : '-' }}
+          </template>
+        </el-table-column>
+        <el-table-column
+          fixed="right"
+          label=""
+        >
+          <template slot-scope="scope">
+            <router-link :to="{ name: 'aspirantes.ver', params: { id: scope.row.id }}" class="btn btn-primary">
+              Ver perfil
+            </router-link>
+          </template>
+        </el-table-column>
+      </el-table>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false; interesados = []">Cancelar</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -93,6 +138,7 @@ export default {
     edit: false,
     dialogImageUrl: '',
     dialogVisible: false,
+    interesados: [],
     imageUrl: '',
     perfil: {
       first_name: null,

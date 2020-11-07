@@ -13,6 +13,15 @@ export default [
   },
   { path: '/empleos/:id', name: 'empleos.ver', component: page('vacantes/show.vue'), props: true },
 
+  {
+    path: '/aspirantes',
+    component: page('home/index.vue'),
+    children: [
+      { path: '', name: 'aspirantes', component: page('aspirantes.vue') }
+    ]
+  },
+  { path: '/aspirantes/:id', name: 'aspirantes.ver', component: page('aspirantes/show.vue'), props: true },
+
   { path: '/login', name: 'login', component: page('auth/login.vue') },
   { path: '/register', name: 'register', component: page('auth/register.vue'), props: true },
   { path: '/password/reset', name: 'password.request', component: page('auth/password/email.vue') },
