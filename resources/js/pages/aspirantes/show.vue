@@ -46,6 +46,7 @@
                 <div v-else>
                   No ha proporcionado experiencia laboral
                 </div>
+                <br>
               </div>
               <div class="col-md-12 single_job_main">
                 <h2>Formación académica</h2>
@@ -73,6 +74,24 @@
                 </div>
                 <div v-else>
                   No ha proporcionado formación académica
+                </div>
+                <br>
+              </div>
+              <div class="col-md-12 single_job_main">
+                <h2>Portafolio</h2>
+                <!-- eslint-disable-next-line vue/no-v-html -->
+                <div v-if="aspirante.portafolio.length">
+                  <gallery :images="portafolio" :index="index" @close="index = null" />
+                  <div
+                    v-for="(image, imageIndex) in portafolio"
+                    :key="imageIndex"
+                    class="image"
+                    :style="{ backgroundImage: 'url(' + image + ')', width: '200px', height: '200px', backgroundSize: 'cover', backgroundPosition: 'center', float: 'left' }"
+                    @click="index = imageIndex"
+                  />
+                </div>
+                <div v-else>
+                  No tiene un portafolio
                 </div>
               </div>
               <div class="section-divider" />
@@ -142,12 +161,18 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import VueGallery from 'vue-gallery'
 
 export default {
+  components: {
+    'gallery': VueGallery
+  },
   props: {
     id: { type: String, default: '' }
   },
   data: () => ({
+    index: null,
+    portafolio: [],
     edit: false,
     imageUrl: ''
   }),
@@ -155,7 +180,11 @@ export default {
     aspirante: 'empleo/aspirante'
   }),
   mounted () {
-    this.fetchAspirante(this.id)
+    this.fetchAspirante(this.id).then(res => {
+      if (res.portafolio) {
+        this.portafolio = res.portafolio.map(({ url }) => url)
+      }
+    })
   },
   methods: {
     ...mapActions({

@@ -37,6 +37,7 @@ export default [
       { path: 'vacantes', name: 'home.vacantes', component: page('home/vacantes/index.vue') },
       { path: 'vacantes/new', name: 'home.vacantes.new', component: page('home/vacantes/create.vue'), props: true },
       { path: 'vacantes/:id/edit', name: 'home.vacantes.edit', component: page('home/vacantes/edit.vue'), props: true },
+      { path: 'vacantes/solicitudes', name: 'home.solicitudes', component: page('home/vacantes/solicitudes.vue') },
     ]
   },
   { path: '/settings',

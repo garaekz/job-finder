@@ -120,6 +120,13 @@
               </router-link>
             </li>
           </ul>
+          <ul v-if="user && user.role === 'aspirante'" class="user_navigation">
+            <li>
+              <router-link :to="{ name: 'home.solicitudes' }">
+                <i class="far fa-list-alt" /> Mis vacantes solicitadas
+              </router-link>
+            </li>
+          </ul>
           <h5 v-if="user">
             Cuenta
           </h5>

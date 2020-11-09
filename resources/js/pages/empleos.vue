@@ -49,6 +49,7 @@
         </pagination>
       </div>
     </div>
+    <h5>Aún no hay vacantes disponibles</h5>
   </div>
 </template>
 

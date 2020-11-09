@@ -23,42 +23,18 @@
       </div>
       <div class="container">
         <h2 data-aos="fade-up" data-aos-delay="400" class="section_h">
-          Categorias de Trabajo Populares
+          Categorías de trabajo populares
         </h2>
         <div class="row">
           <div class="col-lg-3 col-md-6">
             <div class="category_box">
               <div class="cb_header">
-                <img alt="" src="/images/i-code.png">
-                <span class="job_count">363</span>
+                <img alt="" src="/images/i-pan.png">
+                <!-- <span class="job_count">363</span> -->
               </div>
               <div class="cb_bottom">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="category_box">
-              <div class="cb_header">
-                <img alt="" src="/images/i-server.png">
-                <span class="job_count">572</span>
-              </div>
-              <div class="cb_bottom">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="category_box">
-              <div class="cb_header">
-                <img alt="" src="/images/i-calculator.png">
-                <span class="job_count">252</span>
-              </div>
-              <div class="cb_bottom">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
+                <h3>Floristería en general</h3>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p> -->
               </div>
             </div>
           </div>
@@ -66,59 +42,71 @@
             <div class="category_box">
               <div class="cb_header">
                 <img alt="" src="/images/i-pan.png">
-                <span class="job_count">523</span>
+                <!-- <span class="job_count">363</span> -->
               </div>
               <div class="cb_bottom">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
+                <h3>Ramos de Novia, XV`S años</h3>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p> -->
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="category_box">
               <div class="cb_header">
-                <img alt="" src="/images/i-chart.png">
-                <span class="job_count">98</span>
+                <img alt="" src="/images/i-pan.png">
+                <!-- <span class="job_count">363</span> -->
               </div>
               <div class="cb_bottom">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
+                <h3>Arreglos Florales</h3>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p> -->
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="category_box">
               <div class="cb_header">
-                <img alt="" src="/images/i-graphic.png">
-                <span class="job_count">53</span>
+                <img alt="" src="/images/i-pan.png">
+                <!-- <span class="job_count">363</span> -->
               </div>
               <div class="cb_bottom">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
+                <h3>Eventos Sociales y empresariales</h3>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p> -->
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="category_box">
               <div class="cb_header">
-                <img alt="" src="/images/i-digital.png">
-                <span class="job_count">75</span>
+                <img alt="" src="/images/i-pan.png">
+                <!-- <span class="job_count">363</span> -->
               </div>
               <div class="cb_bottom">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
+                <h3>Arreglos Fúnebres</h3>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p> -->
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="category_box">
               <div class="cb_header">
-                <img alt="" src="/images/i-education.png">
-                <span class="job_count">366</span>
+                <img alt="" src="/images/i-pan.png">
+                <!-- <span class="job_count">363</span> -->
               </div>
               <div class="cb_bottom">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p>
+                <h3>Ikebana</h3>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="category_box">
+              <div class="cb_header">
+                <img alt="" src="/images/i-pan.png">
+                <!-- <span class="job_count">363</span> -->
+              </div>
+              <div class="cb_bottom">
+                <h3>Decoración de Templos/Iglesias</h3>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit & More</p> -->
               </div>
             </div>
           </div>
@@ -273,7 +261,7 @@
                 <li><i class="fas fa-check" />Acceso a la plataforma</li>
                 <li><i class="fas fa-check" />Gestion de perfil</li>
               </ul>
-              <a v-if="authenticated" class="btn btn-third" :href="`/paypal/pay?user_id=${user.id}&plan_id=${plan ? 5 : 3}`" target="_blank">Mejorar a Plan Destacado</a>
+              <a v-if="authenticated" class="btn btn-third" :href="`/paypal/pay?user_id=${user.id}&plan_id=${plan ? 5 : 3}`" target="_blank">Mejorar a Plan Plus</a>
               <router-link v-else :to="{ name: 'register', params: {type: 'empresa' } }" class="btn btn-third">
                 Mejorar a Plan Plus
               </router-link>

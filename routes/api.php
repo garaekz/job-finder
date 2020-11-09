@@ -44,9 +44,12 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/aspirantes', 'AspiranteController@index');
     Route::get('/aspirantes/{id}', 'AspiranteController@show');
 
+    Route::group(['prefix' => 'aspirante', 'middleware' => ['role:aspirante']], function() {
+      Route::get('/vacantes', 'Aspirante\VacanteController@index');
+    });
     Route::group(['prefix' => 'empresa', 'middleware' => ['role:empresa']], function() {
       Route::get('/vacantes', 'Empresa\VacanteController@index');
-  });
+    });
 });
 
 Route::group(['middleware' => 'guest:api'], function () {

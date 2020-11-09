@@ -4,6 +4,7 @@ import axios from 'axios'
 export const state = {
   aspirante: null,
   aspirantes: null,
+  aspirante_vacantes: null,
   empresa_vacantes: null,
   vacante: null,
   vacantes: null
@@ -13,6 +14,7 @@ export const state = {
 export const getters = {
   aspirante: state => state.aspirante,
   aspirantes: state => state.aspirantes,
+  aspirante_vacantes: state => state.aspirante_vacantes,
   empresa_vacantes: state => state.empresa_vacantes,
   vacante: state => state.vacante,
   vacantes: state => state.vacantes
@@ -32,6 +34,9 @@ export const mutations = {
   },
   [types.SET_VACANTES] (state, data) {
     state.vacantes = data
+  },
+  [types.SET_ASPIRANTE_VACANTES] (state, data) {
+    state.aspirante_vacantes = data
   },
   [types.SET_EMPRESA_VACANTES] (state, data) {
     state.empresa_vacantes = data
@@ -96,6 +101,15 @@ export const actions = {
   async fetchNuevasVacantes ({ commit }) {
     try {
       const { data } = await axios.get(`/api/vacantes?nuevas=true`)
+      return data
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  async fetchAspiranteVacantes ({ commit }, page = 1) {
+    try {
+      const { data } = await axios.get(`/api/aspirante/vacantes?page=${page}`)
+      commit(types.SET_ASPIRANTE_VACANTES, data)
       return data
     } catch (e) {
       console.log(e)
