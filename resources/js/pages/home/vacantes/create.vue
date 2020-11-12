@@ -208,7 +208,8 @@ export default {
       fetchEmpresaVacantes: 'empleo/fetchEmpresaVacantes',
       fetchEstados: 'resources/fetchEstados',
       fetchPrestaciones: 'resources/fetchPrestaciones',
-      saveVacante: 'empleo/saveVacante'
+      saveVacante: 'empleo/saveVacante',
+      fetchUser: 'auth/fetchUser'
     }),
     onSaveVacante () {
       this.vacante.is_urgente = this.urgente
@@ -220,7 +221,9 @@ export default {
             showConfirmButton: true
           })
         } else {
-          this.$router.push({ name: 'home.vacantes' })
+          this.fetchUser().then(() => {
+            this.$router.push({ name: 'home.vacantes' })
+          })
         }
         console.log(res)
       })

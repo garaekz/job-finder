@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Compra;
 use App\Prestacion;
 use App\Solicitud;
 use App\Vacante;
@@ -58,9 +59,23 @@ class VacanteController extends Controller
         ])
         ->whereRaw('(select count(*) from `vacantes` where `compras`.`id` = `vacantes`.`compra_id`) < plans.publicaciones_normales')
         ->first();
-      if (!$compra) {
+      $post = Vacante::whereRaw('user_id = ? AND ? > created_at', [Auth::id(), Carbon::now()->addDays(30)->toDateTimeString()])->first();
+
+      if (!$compra && $post) {
         return response()->json(['error' => 'No puedes publicar nuevas ofertas. Adquiere un nuevo plan'], 422);
       }
+      if (!$compra) {
+        $currentTimestamp = Carbon::now();
+
+        $compra = Compra::create([
+          'user_id' => Auth::id(),
+          'plan_id' => 1,
+          'price' => 0,
+          'start_at' => $currentTimestamp->format('Y-m-d H:i:s'),
+          'finish_at' => $currentTimestamp->addDays(30)->format('Y-m-d H:i:s')
+        ]);
+      }
+
       $finish_at = Carbon::now()->addDays(60)->format('Y-m-d H:i:s');
       $data = $request->all();
       $data['user_id'] = Auth::id();

@@ -111,7 +111,9 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
             ->whereRaw('(select count(*) from `vacantes` where `compras`.`id` = `vacantes`.`compra_id`) < plans.publicaciones_normales')
             ->first();
 
-      return $compra ? true : false;
+      $post = Vacante::whereRaw('user_id = ? AND ? > created_at', [$this->id, Carbon::now()->addDays(30)->toDateTimeString()])->first();
+
+      return $compra || !$post ? true : false;
     }
     /**
      * Retorna si puede postear urgentes

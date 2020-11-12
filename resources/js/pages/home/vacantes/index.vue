@@ -158,7 +158,8 @@ export default {
     ...mapActions({
       setTitle: 'page/setTitle',
       fetchEmpresaVacantes: 'empleo/fetchEmpresaVacantes',
-      deleteVacante: 'empleo/deleteVacante'
+      deleteVacante: 'empleo/deleteVacante',
+      fetchUser: 'auth/fetchUser'
     }),
     borrarVacante (id) {
       Swal.fire({
@@ -172,6 +173,7 @@ export default {
       }).then((result) => {
         if (result.value) {
           this.deleteVacante(id).then(() => {
+            this.fetchUser()
             Swal.fire({
               type: 'success',
               title: 'Se ha eliminado exitosamente',

@@ -56,7 +56,10 @@ class AspiranteController extends Controller
         ])
         ->whereRaw('(select count(*) from `vacantes` where `compras`.`id` = `vacantes`.`compra_id`) < plans.publicaciones_normales')
         ->first();
-      if (!$compra) {
+
+      $post = Vacante::whereRaw('user_id = ? AND ? > created_at', [Auth::id(), Carbon::now()->addDays(30)->toDateTimeString()])->first();
+
+      if (!$compra && $post) {
         return response()->json(['error' => 'No puedes publicar nuevas ofertas. Adquiere un nuevo plan'], 422);
       }
       $finish_at = Carbon::now()->addDays(60)->format('Y-m-d H:i:s');
